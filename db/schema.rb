@@ -10,10 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_20_125630) do
+ActiveRecord::Schema.define(version: 2018_08_20_133300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "images", force: :cascade do |t|
+    t.bigint "project_id"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_images_on_project_id"
+  end
+
+  create_table "investments", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "project_id"
+    t.integer "number_of_panels"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_investments_on_project_id"
+    t.index ["user_id"], name: "index_investments_on_user_id"
+  end
+
+  create_table "outputs", force: :cascade do |t|
+    t.date "date"
+    t.float "quantity"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_outputs_on_project_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.float "price_per_panel"
+    t.float "yield"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "panels_quantity"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "rents", force: :cascade do |t|
+    t.bigint "investment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["investment_id"], name: "index_rents_on_investment_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,8 +76,20 @@ ActiveRecord::Schema.define(version: 2018_08_20_125630) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
+    t.string "first_name"
+    t.string "last_name"
+    t.date "birth_date"
+    t.boolean "is_company"
+    t.string "company_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "images", "projects"
+  add_foreign_key "investments", "projects"
+  add_foreign_key "investments", "users"
+  add_foreign_key "outputs", "projects"
+  add_foreign_key "projects", "users"
+  add_foreign_key "rents", "investments"
 end
