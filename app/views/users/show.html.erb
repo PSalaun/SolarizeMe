@@ -1,2 +1,13 @@
-<h1><%= current_user.name %></h1>
-<%= link_to "Edit my profile", edit_user_registration_path(current_user), class: ".btn_projects" %>
+<% if @user.is_company == true %>
+  <h1><%= @user.company_name %></h1>
+<% else %>
+  <h1><%= @user.name %></h1>
+  <%= link_to "Edit my profile", edit_user_registration_path(current_user), class: ".btn_projects" %>
+  <% @user.investments.each do |investment| %>
+  <h2>Name: <%= investment.project.name %></h2>
+  <h2>Number of panels: <%= investment.number_of_panels %></h2>
+  <h2>Total investment: <%= investment.number_of_panels * investment.project.price_per_panel %>€</h2>
+  <h2>Project yield: <%= number_to_percentage(investment.project.yield * 100, precision: 2) %></h2>
+  <br>
+  <% end %>
+<% end %>
