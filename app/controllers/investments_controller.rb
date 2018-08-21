@@ -2,7 +2,7 @@ class InvestmentsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :new ]
 
   def show
-
+    @investment = Investment.find(params[:id])
   end
 
   def new
