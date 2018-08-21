@@ -56,7 +56,7 @@ puts "generating projects"
     yield: 0.079,
     start_date: Faker::Date.between(100.days.ago, Date.today),
     end_date: Faker::Date.forward(23),
-    panels_quantity: 1 + rand(10),
+    panels_quantity: 100 + rand(1000),
     )
   project.user = User.first
   project.save!

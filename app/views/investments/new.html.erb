@@ -1,0 +1,17 @@
+<div class="container">
+  Please fill in your investment selection for project
+  <%= @project.name %>
+  <br>
+  Project size:
+  <%= @project.panels_quantity %>
+  <br>
+  Available panels:
+  <%= @project.panels_quantity %>
+  <br>
+  Price per panel:
+  <%= @project.price_per_panel %> EUR
+  <br>
+  How many panels would you like to buy?
+  <br>
+  <%= render "investments/form", investment: @investment %>
+</div>

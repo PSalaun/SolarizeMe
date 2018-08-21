@@ -13,4 +13,7 @@ class PagesController < ApplicationController
   def top
     @projects = Project.where("end_date > ?", Date.today).where("start_date < ?", Date.today).order(end_date: :asc).limit(3)
   end
+
+  def learn_more
+  end
 end

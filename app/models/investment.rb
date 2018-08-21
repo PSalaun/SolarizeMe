@@ -5,6 +5,6 @@ class Investment < ApplicationRecord
 
   validates :number_of_panels, presence: true
   validates :status, presence: true
-  validates :status, inclusion: { in: %w(pending confimed) }
+  # validates :status, inclusion: { in: %w(pending confimed) }
 
 end
