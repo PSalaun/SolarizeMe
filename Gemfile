@@ -22,6 +22,9 @@ gem 'rails_admin', '>= 1.0.0.rc'
 
 gem 'faker'
 
+gem 'money-rails'
+gem 'stripe'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
