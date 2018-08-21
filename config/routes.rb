@@ -3,22 +3,19 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resources :projects, only: [:index, :show]
+  # resources :projects
 
-  resources :projects do
+  resources :projects, only: [:index, :show] do
     collection do
-      get "top3"
+      get "top", to: "projects#top", as: :top
     end
   end
 
   resources :investments, only: [:new]
 
-  resources :users do
+  resources :users, only: [:show] do
     resources :investments, only: [:index]
   end
-
-  resources :users, only: [:show]
-
 
   get "learn_more", to: "pages#learn_more", as: :learn_more
 
