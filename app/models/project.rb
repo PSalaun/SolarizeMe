@@ -10,4 +10,6 @@ class Project < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :panels_quantity, presence: true
+
+  monetize :price_cents
 end
