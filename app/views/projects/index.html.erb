@@ -2,10 +2,16 @@
 
 
 
-  <!-- List all projects -->
+
+<br>
+<br>
+  <!-- List all projects: we need to seed description company name and company url -->
+
+<ul>
 <% @projects.each do |project| %>
-  <%= project.name %>
-  <%= project.description %>
-  <%= project.price_per_panel %>
-  <%= project.yield %>
+  <li> Project <strong> <%= project.name %> </strong>:
+    provides a yield of <strong><%= project.yield %></strong>. Price per panel: <strong><%= project.price_per_panel %></strong> (Company: , link: )
+    <%= link_to "See more details", project_path(project), class:"btn btn-warning" %>
+    </li>
 <% end %>
+</ul>
