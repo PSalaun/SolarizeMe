@@ -10,6 +10,6 @@
     </div>
   </div>
 </div>
-
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% @projects.each do |project| %>
+  <h3><%= project.name %> - <%= project.end_date %></h3>
+<% end %>
