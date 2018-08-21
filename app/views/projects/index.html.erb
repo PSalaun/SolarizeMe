@@ -1,0 +1,11 @@
+<h1>Our Projects</h1>
+
+
+
+  <!-- List all projects -->
+<% @projects.each do |project| %>
+  <%= project.name %>
+  <%= project.description %>
+  <%= project.price_per_panel %>
+  <%= project.yield %>
+<% end %>
