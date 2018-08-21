@@ -14,6 +14,10 @@ puts "Erasing database"
 Project.delete_all
 User.delete_all
 
+puts "generating admin"
+
+User.create( email: "admin@admin.com", password: 123456, is_admin: true )
+
 puts "generating investors"
 20.times do
   User.create(
