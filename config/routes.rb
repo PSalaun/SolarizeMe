@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     collection do
       get "top", to: "projects#top", as: :top
     end
-    resources :investments, only: [ :new, :create ]
+    resources :investments, only: [ :new, :create ] do
+      resources :payments, only: [:new, :create]
+    end
   end
 
 
