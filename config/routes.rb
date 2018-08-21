@@ -5,16 +5,16 @@ Rails.application.routes.draw do
 
   # resources :projects
 
-  resources :projects, only: [:index, :show] do
+  resources :projects, only: [ :index, :show ] do
     collection do
       get "top", to: "projects#top", as: :top
     end
   end
 
-  resources :investments, only: [:new]
+  resources :investments, only: [ :new, :create ]
 
-  resources :users, only: [:show] do
-    resources :investments, only: [:index]
+  resources :users, only: [ :show ] do
+    resources :investments, only: [ :index ]
   end
 
   get "learn_more", to: "pages#learn_more", as: :learn_more
