@@ -13,6 +13,6 @@ class Project < ApplicationRecord
   validates :end_of_contract, presence: true
 
   def days_to_completion
-    (end_date - Date.now).to_i
+    (end_date - Date.today).to_i
   end
 end

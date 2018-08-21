@@ -1,13 +1,48 @@
+<!-- VARIABLES -->
+
+<!-- This probably needs to be refactor into several components -->
 <% if @user.is_company == true %>
   <h1><%= @user.company_name %></h1>
 <% else %>
   <h1><%= @user.name %></h1>
   <%= link_to "Edit my profile", edit_user_registration_path(current_user), class: ".btn_projects" %>
   <% @user.investments.each do |investment| %>
-  <h2>Name: <%= investment.project.name %></h2>
-  <h2>Number of panels: <%= investment.number_of_panels %></h2>
-  <h2>Total investment: <%= investment.number_of_panels * investment.project.price_per_panel %>€</h2>
-  <h2>Project yield: <%= number_to_percentage(investment.project.yield * 100, precision: 2) %></h2>
-  <br>
+    <% investments_sum = investment.project.investments.sum(:number_of_panels) %> <!-- TODO: Maybe this can be put in the model? -->
+    <% completion_rate = (investment.project.panels_quantity / investments_sum).to_f %>
+    <% contract_start_date = investment.project.end_date %> <!-- TODO: We need to add a proper "contract start date" in the model-->
+    <% start_date_month = (contract_start_date.year * 12 + contract_start_date.month) %>
+    <% contract_end_date = investment.project.end_of_contract %>
+    <% end_date_month = (contract_end_date.year * 12 + contract_end_date.month) %>
+    <% current_month = (Date.today.year * 12 + Date.today.month)  %>
+    <% initial_investment = investment.number_of_panels * investment.project.price_per_panel %>
+    <% remaining_months = end_date_month - current_month %>
+    <% past_gains = (current_month - start_date_month) / 12.to_f * initial_investment * investment.project.yield %> <!-- TODO: We need to refactor by using the number of rents here -->
+    <% remaining_gains = remaining_months / 12 * initial_investment * investment.project.yield %>
+    <% total_gains = remaining_gains + past_gains %>
+    <% profits = total_gains - initial_investment %>
+    <% return_on_investment = profits / initial_investment %>
+    <% if investment.status == "pending" %>
+      <h1>Pending investments</h1>
+      <h3>Name: <%= investment.project.name %></h3>
+      <h4>Number of panels: <%= investment.number_of_panels %></h4>
+      <h4>Total investment: <%= number_to_currency(initial_investment, precision: 2, unit: "€") %></h4>
+      <h4>Days remaining: <%= investment.project.days_to_completion %></h4>
+      <h4>Completion rate: <%= number_to_percentage(completion_rate, precision: 0) %></h4>
+      <h4>Project yield: <%= number_to_percentage(investment.project.yield * 100, precision: 2) %></h4>
+    <% else %>
+      <h1>Active investments</h1>
+      <h3>Name: <%= investment.project.name %></h3>
+      <h4>Number of panels: <%= investment.number_of_panels %></h4>
+      <h4>Total investment: <%= number_to_currency(initial_investment, precision: 2, unit: "€") %></h4>
+      <h4>Yield: <%= number_to_percentage(investment.project.yield * 100, precision: 2) %></h4>
+      <h4>Remaining months: <%= remaining_months %></h4>
+      <h4>number of months: <%= (current_month - start_date_month) %></h4>
+      <h4>Past gains: <%= number_to_currency(past_gains, precision: 2, unit: "€") %></h4>
+      <h4>Forecasted remaining gains: <%= number_to_currency(remaining_gains, precision: 2, unit: "€") %></h4>
+      <h4>Total potential gains: <%= number_to_currency(total_gains, precision: 2, unit: "€") %></h4>
+      <h4>Profits: <%= number_to_currency(profits, precision: 2, unit: "€") %></h4>
+      <h4>ROI: <%= number_to_percentage(return_on_investment * 100, precision: 2) %></h4>
+    <% end %>
+    <br>
   <% end %>
 <% end %>
