@@ -1,17 +1,25 @@
-<h1>Our Projects</h1>
-
-
-
-
 <br>
-<br>
-  <!-- List all projects: we need to seed description company name and company url -->
+<div class="container text-center">
+  <br>
+  <br>
+  <h1>Our Projects</h1>
+  <br>
+  <br>
+  <%= form_tag projects_path, method: "get" do  %>
+    <%= select_tag "query", options_from_collection_for_select(@projects, "id", "country") %>
+    <%= submit_tag "filter", class: "btn btn-success" %>
+    <%= link_to "Reset", projects_path, class:"btn btn-primary" %>
+  <% end %>
 
-<ul>
-<% @projects.each do |project| %>
-  <li> Project <strong> <%= project.name %> </strong>:
-    provides a yield of <strong><%= project.yield %></strong>. Price per panel: <strong><%= project.price_per_panel %></strong> (Company: , link: )
-    <%= link_to "See more details", project_path(project), class:"btn btn-warning" %>
+  <br>
+  <br>
+
+  <ul>
+    <% @projects.each do |project| %>
+    <li> Project <strong> <%= project.name %> </strong>:
+      provides a yield of <strong><%= project.yield %></strong>. Price per panel: <strong><%= project.price_per_panel %></strong> (Company: , link: )
+      <%= link_to "See more details", project_path(project), class:"btn btn-warning" %>
     </li>
-<% end %>
-</ul>
+    <% end %>
+  </ul>
+</div>

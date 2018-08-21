@@ -57,6 +57,7 @@ puts "generating projects"
     start_date: Faker::Date.between(100.days.ago, Date.today),
     end_date: Faker::Date.forward(23),
     panels_quantity: 1 + rand(10),
+    country: Faker::Nation.nationality
     )
   project.user = User.first
   project.save!
