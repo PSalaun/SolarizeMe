@@ -9,12 +9,12 @@ Rails.application.routes.draw do
     collection do
       get "top", to: "projects#top", as: :top
     end
+    resources :investments, only: [ :new, :create ]
   end
 
-  resources :investments, only: [ :new, :create ]
 
   resources :users, only: [ :show ] do
-    resources :investments, only: [ :index ]
+    resources :investments, only: [ :index, :show ]
   end
 
   get "learn_more", to: "pages#learn_more", as: :learn_more
