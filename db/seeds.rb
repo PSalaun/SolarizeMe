@@ -68,6 +68,7 @@ User.create(
 puts "created #{User.count} users"
 
 puts "generating projects"
+
 current_campaign = Project.new(
   name: "Coca Cola Roma (current campaign)",
   price_per_panel: 250,
