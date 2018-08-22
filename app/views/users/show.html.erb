@@ -15,7 +15,7 @@
     <% contract_end_date = investment.project.end_of_contract %>
     <% end_date_month = (contract_end_date.year * 12 + contract_end_date.month) %>
     <% current_month = (Date.today.year * 12 + Date.today.month)  %>
-    <% initial_investment = investment.number_of_panels * investment.project.price_per_panel %>
+    <% initial_investment = investment.number_of_panels * investment.project.price %>
     <% remaining_months = end_date_month - current_month %>
     <% past_gains = (current_month - start_date_month) / 12.to_f * initial_investment * investment.project.yield %> <!-- TODO: We need to refactor by using the number of rents here -->
     <% remaining_gains = remaining_months / 12 * initial_investment * investment.project.yield %>
@@ -26,15 +26,16 @@
       <h1>Pending investments</h1>
       <h3>Name: <%= investment.project.name %></h3>
       <h4>Number of panels: <%= investment.number_of_panels %></h4>
-      <h4>Total investment: <%= number_to_currency(initial_investment, precision: 2, unit: "€") %></h4>
+      <h4>Total investment: <%= humanized_money_with_symbol(initial_investment) %></h4>
       <h4>Days remaining: <%= investment.project.days_to_completion %></h4>
       <h4>Completion rate: <%= number_to_percentage(completion_rate, precision: 0) %></h4>
       <h4>Project yield: <%= number_to_percentage(investment.project.yield * 100, precision: 2) %></h4>
+      <h4>Payment state: <%= investment.state %></h4>
     <% else %>
       <h1>Active investments</h1>
       <h3>Name: <%= investment.project.name %></h3>
       <h4>Number of panels: <%= investment.number_of_panels %></h4>
-      <h4>Total investment: <%= number_to_currency(initial_investment, precision: 2, unit: "€") %></h4>
+      <h4>Total investment: <%= humanized_money_with_symbol(initial_investment) %></h4></h4>
       <h4>Yield: <%= number_to_percentage(investment.project.yield * 100, precision: 2) %></h4>
       <h4>Remaining months: <%= remaining_months %></h4>
       <h4>number of months: <%= (current_month - start_date_month) %></h4>
@@ -43,6 +44,7 @@
       <h4>Total potential gains: <%= number_to_currency(total_gains, precision: 2, unit: "€") %></h4>
       <h4>Profits: <%= number_to_currency(profits, precision: 2, unit: "€") %></h4>
       <h4>ROI: <%= number_to_percentage(return_on_investment * 100, precision: 2) %></h4>
+      <h4>Payment state: <%= investment.state %></h4>
     <% end %>
     <br>
   <% end %>

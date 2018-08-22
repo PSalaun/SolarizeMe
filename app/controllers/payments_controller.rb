@@ -20,12 +20,12 @@ class PaymentsController < ApplicationController
     currency:     @investment.amount.currency
   )
 
-  @investment.update(payment: charge.to_json, state: 'paid')
+  @investment.update(payment: charge.to_json, state: 'confirmed')
   redirect_to user_investment_path(@investment.user, @investment)
 
-rescue Stripe::CardError => e
-  flash[:alert] = e.message
-  redirect_to new_project_investment_payment_path(@investment.project, @investment)
+  rescue Stripe::CardError => e
+    flash[:alert] = e.message
+    redirect_to new_project_investment_payment_path(@investment.project, @investment)
   end
 
   private

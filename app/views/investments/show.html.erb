@@ -4,5 +4,6 @@
   <p> Number of panels: <%= @investment.number_of_panels %> </p>
   <p> Price per panel: <%= humanized_money_with_symbol(@investment.project.price) %></p>
   <p> Total amount: <%= humanized_money_with_symbol(@investment.amount) %></p>
-  <p> Payment status: <%= @investment.state %> </p>
+  <p> Payment state: <%= @investment.state %> </p>
+  <%= link_to "Back to my profile", user_path(current_user)  %>
 </div>
