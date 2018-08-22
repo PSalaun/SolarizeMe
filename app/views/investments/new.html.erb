@@ -5,17 +5,12 @@
   <%= @project.name %></p>
   <p>
     Project size:
-    <%= @project.panels_quantity %> panels </p>
-    <p>Availability:
-    <% sum = 0 %>
-    <% @project.investments.each do |investment| %>
-      <% sum += investment.number_of_panels %>
-    <% end %>
-    <%= @project.panels_quantity - sum %> panels
+    <%= @project.panels_quantity %> panels
+  </p>
+  <p>Availability:
+    <%= @project.available_panels%> panels
   </p>
   <p>Price per panel: <%= humanized_money_with_symbol(@project.price) %></p>
   Quantity to invest:
   <%= render "investments/form", investment: @investment %>
-
-
 </div>

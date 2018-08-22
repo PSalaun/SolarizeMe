@@ -7,4 +7,7 @@ class Investment < ApplicationRecord
   validates :state, presence: true, inclusion: { in: %w(pending confirmed) }
 
   monetize :amount_cents
+
+
+
 end
