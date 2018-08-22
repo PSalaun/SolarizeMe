@@ -58,13 +58,10 @@ ActiveRecord::Schema.define(version: 2018_08_21_161223) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "company_logo_name"
-    t.integer "price_cents", default: 0, null: false
-    t.string "company_name"
     t.string "company_url"
     t.string "country"
-
+    t.integer "price_cents", default: 0, null: false
     t.date "end_of_contract"
-
     t.text "description"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
