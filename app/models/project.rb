@@ -10,8 +10,9 @@ class Project < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :panels_quantity, presence: true
+  validates :end_of_contract, presence: true
 
   def days_to_completion
-    (end_date - Date.now).to_i
+    (end_date - Date.today).to_i
   end
 end

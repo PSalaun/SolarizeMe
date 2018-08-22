@@ -4,9 +4,9 @@ class Investment < ApplicationRecord
   has_many :rents
 
   validates :number_of_panels, presence: true
-  # validates :status, presence: true
+  validates :status, presence: true, inclusion: { in: %w(pending confirmed) }
   validates :state, presence: true
-  # validates :status, inclusion: { in: %w(pending confimed) }
+
 
   monetize :amount_cents
 end
