@@ -22,7 +22,7 @@
     <% total_gains = remaining_gains + past_gains %>
     <% profits = total_gains - initial_investment %>
     <% return_on_investment = profits / initial_investment %>
-    <% if investment.status == "pending" %>
+    <% if investment.state == "pending" %>
       <h1>Pending investments</h1>
       <h3>Name: <%= investment.project.name %></h3>
       <h4>Number of panels: <%= investment.number_of_panels %></h4>
