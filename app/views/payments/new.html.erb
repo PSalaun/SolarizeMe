@@ -3,6 +3,7 @@
   <p>Confirmation page </p>
   <p>Number of panels: <%= @investment.number_of_panels %> panels </p>
   <p>Price per panel: <%= humanized_money_with_symbol(@investment.project.price) %></p>
+  <p>Income per year <%= @investment.income_per_year %></p>
   <%= form_tag project_investment_payments_path(@investment) do %>
     <article>
       <label class="amount">
