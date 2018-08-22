@@ -30,6 +30,10 @@ ActiveRecord::Schema.define(version: 2018_08_21_155736) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "state"
+    t.string "project_sku"
+    t.jsonb "payment"
+    t.integer "amount_cents", default: 0, null: false
     t.index ["project_id"], name: "index_investments_on_project_id"
     t.index ["user_id"], name: "index_investments_on_user_id"
   end
@@ -54,6 +58,8 @@ ActiveRecord::Schema.define(version: 2018_08_21_155736) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "company_logo_name"
+    t.integer "price_cents", default: 0, null: false
+    t.string "company_name"
     t.string "company_url"
     t.string "country"
     t.text "description"

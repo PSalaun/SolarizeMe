@@ -53,6 +53,7 @@ puts "generating projects"
   project = Project.new(
     name: Faker::Nation.capital_city,
     price_per_panel: 250,
+    price_cents: 25000,
     yield: 0.079,
     start_date: Faker::Date.between(100.days.ago, Date.today),
     end_date: Faker::Date.forward(23),

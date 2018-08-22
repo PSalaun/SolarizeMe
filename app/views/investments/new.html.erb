@@ -7,9 +7,7 @@
   <br>
   Available panels:
   <%= @project.panels_quantity %>
-  <br>
-  Price per panel:
-  <%= @project.price_per_panel %> EUR
+  <p>Price per panel: <%= humanized_money_with_symbol(@project.price) %></p>
   <br>
   How many panels would you like to buy?
   <br>
