@@ -127,7 +127,7 @@ puts "generating investments"
 
 investment = Investment.new(
   number_of_panels: 50,
-  status: "pending"
+  state: "pending"
   )
 investment.user = User.where(username: "johndoe").first
 investment.project = Project.where(name: "Coca Cola Roma (current campaign)").first
@@ -135,7 +135,7 @@ investment.save!
 
 investment = Investment.new(
   number_of_panels: 10,
-  status: "pending"
+  state: "pending"
   )
 investment.user = User.where(username: "janedoe").first
 investment.project = Project.where(name: "Coca Cola Roma (current campaign)").first
@@ -143,7 +143,7 @@ investment.save!
 
 investment = Investment.new(
   number_of_panels: 200,
-  status: "confirmed"
+  state: "confirmed"
   )
 investment.user = User.where(username: "johndoe").first
 investment.project = Project.where(name: "Monsato Paris (running project)").first
@@ -151,7 +151,7 @@ investment.save!
 
 investment = Investment.new(
   number_of_panels: 5,
-  status: "confirmed"
+  state: "confirmed"
   )
 investment.user = User.where(username: "johndoe").first
 investment.project = Project.where(name: "Coca Cola Madrid (running project)").first
