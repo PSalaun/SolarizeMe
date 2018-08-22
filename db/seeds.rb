@@ -71,7 +71,7 @@ puts "generating projects"
 
 current_campaign = Project.new(
   name: "Coca Cola Roma (current campaign)",
-  price_per_panel: 250,
+  price_cents: 25000,
   yield: 0.051,
   start_date: Date.new(2018, 7, 23),
   end_date: Date.new(2018, 9, 22),
@@ -84,7 +84,7 @@ current_campaign.save!
 
 future_campaign = Project.new(
   name: "Coca Cola Bari (future campaign)",
-  price_per_panel: 400,
+  price_cents: 40000,
   yield: 0.082,
   start_date: Date.new(2018, 10, 2),
   end_date: Date.new(2018, 11, 1),
@@ -97,7 +97,7 @@ future_campaign.save!
 
 running_coca = Project.new(
   name: "Coca Cola Madrid (running project)",
-  price_per_panel: 300,
+  price_cents: 30000,
   yield: 0.062,
   start_date: Date.new(2018, 1, 2),
   end_date: Date.new(2018, 2, 20),
@@ -110,7 +110,7 @@ running_coca.save!
 
 running_Monsato = Project.new(
   name: "Monsato Paris (running project)",
-  price_per_panel: 600,
+  price_cents: 60000,
   yield: 0.042,
   start_date: Date.new(2017, 10, 2),
   end_date: Date.new(2017, 11, 1),

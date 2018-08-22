@@ -3,8 +3,7 @@
   <br>
   <br>
   <h1>Our Projects</h1>
-  <br>
-  <br>
+
   <%= form_tag projects_path, method: "get" do  %>
     <%= select_tag "query", options_from_collection_for_select(@projects, "id", "country") %>
     <%= submit_tag "filter", class: "btn btn-success" %>
@@ -17,10 +16,6 @@
       <%= render 'shared/card', project: project %>
       <br>
     <% end %>
-<br>
-<br>
-
-<br>
-
-
+  <br>
+  <br>
 </div>

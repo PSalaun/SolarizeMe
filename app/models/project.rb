@@ -12,6 +12,8 @@ class Project < ApplicationRecord
   validates :panels_quantity, presence: true
   validates :end_of_contract, presence: true
 
+  monetize :price_cents
+
   def days_to_completion
     (end_date - Date.today).to_i
   end
