@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2018_08_21_161223) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "state", default: "pending"
+    t.string "state"
     t.string "project_sku"
     t.jsonb "payment"
     t.integer "amount_cents", default: 0, null: false
