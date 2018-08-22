@@ -1,10 +1,12 @@
 <div class="container">
   <%= link_to 'Back', :back %>
-  <h1>Purchase of <%= @investment.number_of_panels %> panels </h1>
+  <p>Confirmation page </p>
+  <p>Number of panels: <%= @investment.number_of_panels %> panels </p>
+  <p>Price per panel: <%= humanized_money_with_symbol(@investment.project.price) %></p>
   <%= form_tag project_investment_payments_path(@investment) do %>
     <article>
       <label class="amount">
-        <span>Amount: <%= humanized_money_with_symbol(@investment.amount) %></span>
+        <span>Total amount due: <%= humanized_money_with_symbol(@investment.amount) %></span>
       </label>
     </article>
 

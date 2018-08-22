@@ -1,16 +1,21 @@
 <div class="container">
   <%= link_to 'Back', :back %>
-  Please fill in your investment selection for project
-  <%= @project.name %>
   <br>
-  Project size:
-  <%= @project.panels_quantity %>
-  <br>
-  Available panels:
-  <%= @project.panels_quantity %>
+  <p>Please fill in your investment selection for project
+  <%= @project.name %></p>
+  <p>
+    Project size:
+    <%= @project.panels_quantity %> panels </p>
+    <p>Availability:
+    <% sum = 0 %>
+    <% @project.investments.each do |investment| %>
+      <% sum += investment.number_of_panels %>
+    <% end %>
+    <%= @project.panels_quantity - sum %> panels
+  </p>
   <p>Price per panel: <%= humanized_money_with_symbol(@project.price) %></p>
-  <br>
-  How many panels would you like to buy?
-  <br>
+  Quantity to invest:
   <%= render "investments/form", investment: @investment %>
+
+
 </div>
