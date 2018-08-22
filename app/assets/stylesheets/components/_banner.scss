@@ -1,20 +1,78 @@
-.home_banner {
-  background-color: blue;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+@media only screen and (max-width: 600px) {
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One');
+
+  .home_banner {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), asset-url('solarpower.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .home_banner_content {
+    color: white;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    h1 {
+      font-size: 70px;
+      padding: 10px 10px 0 10px;
+      margin: 0 10px 20px 10px;
+      font-family: 'Alfa Slab One', cursive;
+
+    }
+    h2 {
+      font-size: 36px;
+      padding: 0 10px;
+      margin: 0 10px 180px 10px;
+    }
+    .btn_projects {
+      background-color: #88D881;
+      font-size: 16px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .btn_learn-more {
+      background-color: #11ffee00;
+      font-size: 16px;
+      margin-bottom: 100px;
+      color: white;
+      border: solid white 1px;
+      border-radius: 5px;
+    }
+  }
+
+  .home_banner_wrapper .container-fluid {
+    padding: 0px;
+}
 }
 
-.home_banner_content {
-  color: white;
-  height: 40vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+@media only screen and (min-width: 768px) {
+  .home_banner {
+    background-color: blue;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), asset-url('solarpower.png');
+  }
+  .home_banner_content {
+    color: white;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .home_banner_wrapper .container-fluid {
+    padding: 0px;
+}
 }
 
-.home_banner_wrapper .container-fluid {
-  padding: 0px;
-}
+
