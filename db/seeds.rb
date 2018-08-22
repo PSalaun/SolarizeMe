@@ -1,13 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 require 'faker'
-
 
 puts "Erasing database"
 
@@ -70,12 +61,13 @@ puts "created #{User.count} users"
 puts "generating projects"
 
 current_campaign = Project.new(
-  name: "Coca Cola Roma (current campaign)",
+  name: "Coca Cola Roma",
   price_cents: 25000,
   yield: 0.051,
-  start_date: Date.new(2018, 7, 23),
-  end_date: Date.new(2018, 9, 22),
-  end_of_contract: Date.new(2030, 12, 30),
+  crowdfunding_start_date: Date.new(2018, 7, 23),
+  crowdfunding_end_date: Date.new(2018, 9, 22),
+  end_of_contract: Date.new(2038, 12, 31),
+  comissioning_date: Date.new(2018, 12, 31),
   panels_quantity: 1200,
   country: "Italy"
   )
@@ -83,12 +75,13 @@ current_campaign.user = User.where(company_name: "Coca-Cola").first
 current_campaign.save!
 
 future_campaign = Project.new(
-  name: "Coca Cola Bari (future campaign)",
+  name: "Coca Cola Bari",
   price_cents: 40000,
   yield: 0.082,
-  start_date: Date.new(2018, 10, 2),
-  end_date: Date.new(2018, 11, 1),
-  end_of_contract: Date.new(2030, 12, 30),
+  crowdfunding_start_date: Date.new(2018, 10, 2),
+  crowdfunding_end_date: Date.new(2018, 11, 1),
+  end_of_contract: Date.new(2035, 12, 31),
+  comissioning_date: Date.new(2018, 12, 31),
   panels_quantity: 800,
   country: "Italy"
   )
@@ -96,12 +89,13 @@ future_campaign.user = User.where(company_name: "Coca-Cola").first
 future_campaign.save!
 
 running_coca = Project.new(
-  name: "Coca Cola Madrid (running project)",
+  name: "Coca Cola Madrid",
   price_cents: 30000,
   yield: 0.062,
-  start_date: Date.new(2018, 1, 2),
-  end_date: Date.new(2018, 2, 20),
-  end_of_contract: Date.new(2030, 12, 30),
+  crowdfunding_start_date: Date.new(2018, 1, 2),
+  crowdfunding_end_date: Date.new(2018, 2, 20),
+  end_of_contract: Date.new(2030, 12, 31),
+  comissioning_date: Date.new(2018, 12, 31),
   panels_quantity: 2000,
   country: "Spain"
   )
@@ -109,12 +103,13 @@ running_coca.user = User.where(company_name: "Coca-Cola").first
 running_coca.save!
 
 running_Monsato = Project.new(
-  name: "Monsato Paris (running project)",
+  name: "Monsato Paris",
   price_cents: 60000,
   yield: 0.042,
-  start_date: Date.new(2017, 10, 2),
-  end_date: Date.new(2017, 11, 1),
-  end_of_contract: Date.new(2030, 12, 30),
+  crowdfunding_start_date: Date.new(2017, 10, 2),
+  crowdfunding_end_date: Date.new(2017, 11, 1),
+  end_of_contract: Date.new(2038, 1, 31),
+  comissioning_date: Date.new(2018, 1, 31),
   panels_quantity: 200,
   country: "France"
   )

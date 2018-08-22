@@ -1,13 +1,15 @@
 <div class="container">
   <p>Photos (with right-left scroll</p>
   <img style="height: 30vh" src="http://www.coherentchronicle.com/wp-content/uploads/2018/03/Microsoft-to-Collaborate-with-Sunseap-for-Solar-Project-in-Singapore.jpg" alt="">
-  <h1> Rome Prima </h1>
+  <h1> <%= @project.name %> </h1>
   <p> <%= link_to "by #{@project.user.company_name}", user_path(@project.user) %></p>
   <p> <%= @project.description %> </p>
-  <p> 10.845 EUR out of 50.000 EUR </p>
-  <p> 7 days to go</p>
+  <p> <%= humanized_money_with_symbol(@project.funds_pledged) %> out of <%= humanized_money_with_symbol(@project.total_cost) %>   raised </p>
+  <p> Project status: <%= @project.status %> </p>
+  <p> <%= @project.remaining_crowdfunding_days %></p>
   <p> <%= @project.country %></p>
   <%= link_to "Invest now", new_project_investment_path(@project), class: "btn btn-primary" %>
+
   <h2> Detailed description </h2>
   <p>Minimum investment: 250 EUR</p>
   <p>Return 8% per year</p>

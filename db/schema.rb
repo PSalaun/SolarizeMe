@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_22_101157) do
+ActiveRecord::Schema.define(version: 2018_08_22_134734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,9 +69,12 @@ ActiveRecord::Schema.define(version: 2018_08_22_101157) do
     t.string "company_logo_name"
     t.string "company_url"
     t.string "country"
-    t.text "description"
     t.integer "price_cents", default: 0, null: false
     t.date "end_of_contract"
+    t.text "description"
+    t.date "crowdfunding_start_date"
+    t.date "crowdfunding_end_date"
+    t.date "comissioning_date"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
