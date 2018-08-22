@@ -126,6 +126,7 @@ investment = Investment.new(
   )
 investment.user = User.where(username: "johndoe").first
 investment.project = Project.where(name: "Coca Cola Roma").first
+investment.amount_cents = investment.number_of_panels * investment.project.price_cents
 investment.save!
 
 investment = Investment.new(
@@ -134,6 +135,7 @@ investment = Investment.new(
   )
 investment.user = User.where(username: "janedoe").first
 investment.project = Project.where(name: "Coca Cola Roma").first
+investment.amount_cents = investment.number_of_panels * investment.project.price_cents
 investment.save!
 
 investment = Investment.new(
@@ -142,6 +144,7 @@ investment = Investment.new(
   )
 investment.user = User.where(username: "johndoe").first
 investment.project = Project.where(name: "Monsato Paris").first
+investment.amount_cents = investment.number_of_panels * investment.project.price_cents
 investment.save!
 
 investment = Investment.new(
@@ -150,6 +153,7 @@ investment = Investment.new(
   )
 investment.user = User.where(username: "johndoe").first
 investment.project = Project.where(name: "Coca Cola Madrid").first
+investment.amount_cents = investment.number_of_panels * investment.project.price_cents
 investment.save!
 
 puts "created #{Investment.count} investments"

@@ -13,15 +13,18 @@ class Investment < ApplicationRecord
   end
 
   def past_gains
-    project.active_months / 12.to_f * amount * project.yield
+    (project.active_months / 12.to_f * amount_cents * project.yield) / 100
   end
 
   def remaining_gains
-    project.remaining_months / 12 * amount * project.yield
+    (project.remaining_months / 12 * amount_cents * project.yield) / 100
   end
 
   def total_gains
     remaining_gains + past_gains
   end
 
+  def profits
+    (total_gains * 100 - amount_cents) / 100
+  end
 end

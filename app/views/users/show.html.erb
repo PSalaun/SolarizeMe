@@ -5,20 +5,23 @@
 <br>
   <h1><%= @user.name %></h1>
   <%= link_to "Edit my profile", edit_user_registration_path(current_user), class: ".btn_projects" %>
-  <% @user.investments.each do |investment| %>
-    <h1>Active investments</h1>
-    <h3>Name: <%= investment.project.name %></h3>
-    <h4>Number of panels: <%= investment.number_of_panels %></h4>
-    <h4>Total investment: <%= humanized_money_with_symbol(investment.amount) %></h4></h4>
-    <h4>Yield: <%= number_to_percentage(investment.project.yield * 100, precision: 2) %></h4>
-    <h4>Remaining months: <%= investment.project.remaining_months %></h4>
-    <h4>number of months: <%= (current_month - start_date_month) %></h4>
-    <h4>Past gains: <%= number_to_currency(past_gains, precision: 2, unit: "€") %></h4>
-    <h4>Forecasted remaining gains: <%= number_to_currency(remaining_gains, precision: 2, unit: "€") %></h4>
-    <h4>Total potential gains: <%= number_to_currency(total_gains, precision: 2, unit: "€") %></h4>
-    <h4>Profits: <%= number_to_currency(profits, precision: 2, unit: "€") %></h4>
-    <h4>ROI: <%= number_to_percentage(return_on_investment * 100, precision: 2) %></h4>
-    <h4>Payment state: <%= investment.state %></h4>
-  <% end %>
+  <h1>List of investments</h1>
+  <ul class="list-group">
+    <% @user.investments.each do |investment| %>
+      <li class="list-group-item" > <strong>Name: <%= investment.project.name %> </strong></li>
+      <li class="list-group-item" >Number of panels: <%= investment.number_of_panels %></li>
+      <li class="list-group-item" >Total investment: <%= humanized_money_with_symbol(investment.amount) %></li>
+      <li class="list-group-item" >Payment state: <%= investment.state %></li>
+      <li class="list-group-item" >Yield: <%= number_to_percentage(investment.project.yield * 100, precision: 2) %></li>
+      <li class="list-group-item" >Income per year: <%= humanized_money_with_symbol(investment.income_per_year) %></li>
+      <li class="list-group-item" >Active months: <%= investment.project.active_months %></li>
+      <li class="list-group-item" >Remaining months: <%= investment.project.remaining_months %></li>
+      <li class="list-group-item" >Past gains: <%= humanized_money_with_symbol(investment.past_gains) %></li>
+      <li class="list-group-item" >Forecasted remaining gains: <%= humanized_money_with_symbol(investment.remaining_gains) %></li>
+      <li class="list-group-item" >Total potential gains: <%= humanized_money_with_symbol(investment.total_gains) %></li>
+      <li class="list-group-item" >Profits: <%= humanized_money_with_symbol(investment.profits) %></li>
+      <br>
+    <% end %>
+  </ul>
 
 

@@ -63,18 +63,16 @@ class Project < ApplicationRecord
     funds_pledged / total_cost
   end
 
-  def remaining_months
-    end_date_month = comissioning_date.year * 12 + end_of_contract.month
-    current_month = (Date.today.year * 12 + Date.today.month)
-    end_date_month - current_month
-  end
-
   def active_months
-    start_date_month = comissining_date.year * 12 + comissining_date.year.month
+    start_date_month = comissioning_date.year * 12 + comissioning_date.month
     current_month = (Date.today.year * 12 + Date.today.month)
     current_month - start_date_month
   end
 
-
+  def remaining_months
+    end_date_month = end_of_contract.year * 12 + end_of_contract.month
+    current_month = (Date.today.year * 12 + Date.today.month)
+    end_date_month - current_month
+  end
 
 end
