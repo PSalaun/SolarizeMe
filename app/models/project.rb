@@ -7,10 +7,10 @@ class Project < ApplicationRecord
   validates :name, uniqueness: true, presence: true
   validates :price_cents, presence: true
   validates :yield, presence: true
+  validates :panels_quantity, presence: true
   validates :crowdfunding_start_date, presence: true
   validates :crowdfunding_end_date, presence: true
   validates :comissioning_date, presence: true
-  validates :panels_quantity, presence: true
   validates :end_of_contract, presence: true
 
   monetize :price_cents
@@ -58,4 +58,21 @@ class Project < ApplicationRecord
       return "#{days} days to go"
     end
   end
+
+  def completion_rate
+    funds_pledged / total_cost
+  end
+
+  def active_months
+    start_date_month = comissioning_date.year * 12 + comissioning_date.month
+    current_month = (Date.today.year * 12 + Date.today.month)
+    current_month - start_date_month
+  end
+
+  def remaining_months
+    end_date_month = end_of_contract.year * 12 + end_of_contract.month
+    current_month = (Date.today.year * 12 + Date.today.month)
+    end_date_month - current_month
+  end
+
 end

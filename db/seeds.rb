@@ -122,18 +122,20 @@ puts "generating investments"
 
 investment = Investment.new(
   number_of_panels: 50,
-  state: "pending"
+  state: "confirmed"
   )
 investment.user = User.where(username: "johndoe").first
-investment.project = Project.where(name: "Coca Cola Roma (current campaign)").first
+investment.project = Project.where(name: "Coca Cola Roma").first
+investment.amount_cents = investment.number_of_panels * investment.project.price_cents
 investment.save!
 
 investment = Investment.new(
   number_of_panels: 10,
-  state: "pending"
+  state: "confirmed"
   )
 investment.user = User.where(username: "janedoe").first
-investment.project = Project.where(name: "Coca Cola Roma (current campaign)").first
+investment.project = Project.where(name: "Coca Cola Roma").first
+investment.amount_cents = investment.number_of_panels * investment.project.price_cents
 investment.save!
 
 investment = Investment.new(
@@ -141,7 +143,8 @@ investment = Investment.new(
   state: "confirmed"
   )
 investment.user = User.where(username: "johndoe").first
-investment.project = Project.where(name: "Monsato Paris (running project)").first
+investment.project = Project.where(name: "Monsato Paris").first
+investment.amount_cents = investment.number_of_panels * investment.project.price_cents
 investment.save!
 
 investment = Investment.new(
@@ -149,7 +152,8 @@ investment = Investment.new(
   state: "confirmed"
   )
 investment.user = User.where(username: "johndoe").first
-investment.project = Project.where(name: "Coca Cola Madrid (running project)").first
+investment.project = Project.where(name: "Coca Cola Madrid").first
+investment.amount_cents = investment.number_of_panels * investment.project.price_cents
 investment.save!
 
 puts "created #{Investment.count} investments"
