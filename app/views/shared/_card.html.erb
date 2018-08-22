@@ -7,15 +7,12 @@
   <img class="card-user-avatar-projects" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnL6GSKqq0ScFpX_ok8NSa96aXB0PzvkSNagsL6tgo56acCDgi">
 
   <img class="card-user-image" src="http://www.coherentchronicle.com/wp-content/uploads/2018/03/Microsoft-to-Collaborate-with-Sunseap-for-Solar-Project-in-Singapore.jpg" alt="">
-
-  <div class="card-dynamicbar-projects">
-    <div id="myProgress">
-      <div id="myBar">
-       <h4>25%</h4> </div>
-    </div>
+  <div class="progress-bar-card">
+  This Project yields <%= project.yield %> % per year  <br>
+  Price per panel: <%= project.price_per_panel %> Euro <br>
+  Project completion: <%= project.completion_rate %> % <br>
+    <progress  max="100" value="<%= project.completion_rate %>"> <%= project.completion_rate %> </progress>
   </div>
-
-
   <div class="card-country-projects">
     <h3><%= project.country %></h3>
   </div>
