@@ -9,7 +9,7 @@
   <%= link_to "Edit my profile", edit_user_registration_path(current_user), class: ".btn_projects" %>
   <% @user.investments.each do |investment| %>
     <% investments_sum = investment.project.investments.sum(:number_of_panels) %> <!-- TODO: Maybe this can be put in the model? -->
-    <% completion_rate = (investment.project.panels_quantity / investments_sum).to_f %>
+    <% completion_rate = (investments_sum / investment.project.panels_quantity).to_f %>
     <% contract_start_date = investment.project.end_date %> <!-- TODO: We need to add a proper "contract start date" in the model-->
     <% start_date_month = (contract_start_date.year * 12 + contract_start_date.month) %>
     <% contract_end_date = investment.project.end_of_contract %>
