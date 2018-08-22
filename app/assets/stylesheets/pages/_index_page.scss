@@ -1,0 +1,41 @@
+.wrapper-projects{
+  background-color: white;
+}
+
+#filter-projects{
+  margin: 20px;
+}
+
+.dropdown-filter {
+  width: 180px;
+  margin: 20px;
+}
+
+.btn-filter{
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bolder;
+  background-color: #469AE0;
+  width: 120px;
+  border: solid #469AE0 1px;
+  color: white;
+}
+.btn-filter:hover{
+  opacity: 0.7;
+
+}
+
+
+.btn-reset {
+  background-color: #EE5F5B;
+  padding: 10px 20px;
+  font-weight: bolder;
+  border-radius: 5px;
+  width: 120px;
+  border: solid #EE5F5B 1px;
+  color: white;
+}
+.btn-reset:hover{
+  opacity: 0.7;
+
+}
