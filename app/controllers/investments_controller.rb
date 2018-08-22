@@ -14,9 +14,9 @@ class InvestmentsController < ApplicationController
     @investment = Investment.new(params_investment)
     @investment.project = Project.find(params[:project_id])
     @investment.user = current_user
-    @investment.status = "pending"
+    @investment.state = "pending"
     if @investment.save!
-      redirect_to user_investment_path(current_user, @investment)
+      redirect_to new_project_investment_payment_path(@investment.project, @investment)
     else
       render :new
     end

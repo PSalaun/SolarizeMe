@@ -2,4 +2,7 @@
   <p> Your investment details: </p>
   <p> Project name:<%= @investment.project.name %> </p>
   <p> Number of panels: <%= @investment.number_of_panels %> </p>
+  <p> Price per panel: <%= humanized_money_with_symbol(@investment.project.price) %></p>
+  <p> Total amount: <%= humanized_money_with_symbol(@investment.amount) %></p>
+  <p> Payment status: <%= @investment.state %> </p>
 </div>

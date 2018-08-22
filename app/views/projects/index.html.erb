@@ -1,5 +1,5 @@
 <br>
-<div class="container text-center">
+<div class="container">
   <br>
   <br>
   <h1>Our Projects</h1>
@@ -12,14 +12,15 @@
   <% end %>
 
   <br>
-  <br>
 
-  <ul>
     <% @projects.each do |project| %>
-    <li> Project <strong> <%= project.name %> </strong>:
-      provides a yield of <strong><%= project.yield %></strong>. Price per panel: <strong><%= project.price_per_panel %></strong> (Company: , link: )
-      <%= link_to "See more details", project_path(project), class:"btn btn-warning" %>
-    </li>
+      <%= render 'shared/card', project: project %>
+      <br>
     <% end %>
-  </ul>
+<br>
+<br>
+
+<br>
+
+
 </div>
