@@ -4,6 +4,6 @@ class Investment < ApplicationRecord
   has_many :rents
 
   validates :number_of_panels, presence: true
-  validates :status, presence: true, inclusion: { in: %w(pending confirmed) }
+  validates :status, presence: true, inclusion: { in: %w(pending confirmed) }, default: "pending"
 
 end
