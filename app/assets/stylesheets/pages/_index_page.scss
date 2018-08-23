@@ -4,11 +4,17 @@
   }
 }
 
-#filter-projects{
+#filter-projects {
   margin: 20px;
 }
 
 .dropdown-filter {
   width: 242px;
   margin: 20px;
+}
+
+.cards-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }

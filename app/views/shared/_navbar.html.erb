@@ -1,12 +1,10 @@
 <div class="navbar-solarize" id="navbar">
   <!-- Logo -->
-  <div class="navbar-logo-with-text">
-   <%= link_to "SolarizeMe", root_path, class: "navbar-solarize-brand" %>
- </div>
+  <%= link_to "SolarizeMe", root_path, class: "navbar-solarize-brand" %>
 
 
  <!-- Right Navigation -->
-  <div class="navbar-right">
+  <div class="navbar-solarize-right">
     <%= link_to "All projects", projects_path, class: "navbar-solarize-item navbar-solarize-link" %>
     <!-- Dropdown list appearing on mobile only -->
     <% if user_signed_in? %>

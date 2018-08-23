@@ -13,6 +13,12 @@
   align-items: center;
   // justify-content: space-between;
 
+  &:hover {
+    text-decoration: none;
+    color: $text-dark;
+    opacity: 0.9;
+  }
+
   .card-project-image {
     flex: 0 0 200px;
     width: 320px;
@@ -80,22 +86,6 @@
     top: 30px;
   }
 }
-
-.card-link-projects {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  z-index: 2;
-  background: black;
-  opacity: 0;
-}
-.card-link-projects:hover {
-  opacity: 0.1;
-}
-
-
 
 progress[value] {
   /* Reset the default appearance */
