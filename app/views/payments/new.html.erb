@@ -1,13 +1,13 @@
-<div class="container">
-  <%= link_to 'Back', :back %>
-  <p>Confirmation page </p>
-  <p>Number of panels: <%= @investment.number_of_panels %> panels </p>
-  <p>Price per panel: <%= humanized_money_with_symbol(@investment.project.price) %></p>
-  <p>Income per year <%= @investment.income_per_year %></p>
+<div class="container confirmation-container">
+
+  <h5>You are buying: </h5>
+  <h5 class="number-panels-confirmation"> <strong> <%= @investment.number_of_panels %> </strong> panels </h5>
+  <!-- <p>Price per panel: <%= humanized_money_with_symbol(@investment.project.price) %></p>
+  <p>Income per year <%= @investment.income_per_year %></p> -->
   <%= form_tag project_investment_payments_path(@investment) do %>
     <article>
       <label class="amount">
-        <span>Total amount due: <%= humanized_money_with_symbol(@investment.amount) %></span>
+        <span>Total amount due: <br> <%= humanized_money_with_symbol(@investment.amount) %></span>
       </label>
     </article>
 
@@ -20,5 +20,7 @@
       data-currency="<%= @investment.amount.currency %>"></script>
 
   <% end %>
+  <br>
+    <%= link_to 'Back', :back, class: "btn btn-goback" %>
 </div>
 

@@ -6,14 +6,14 @@
       <h1> <%= card.name %> </h1>
       <h3> <%= card.user.company_name %> </h3>
     </div>
-    <img class="card-company-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnL6GSKqq0ScFpX_ok8NSa96aXB0PzvkSNagsL6tgo56acCDgi">
+    <img class="card-company-logo" src="https://vignette.wikia.nocookie.net/logopedia/images/0/0d/Coca-Cola_square_logo.svg/revision/latest?cb=20180131095139">
   </div>
 
 
   <div class="card-financial-details text-left">
     <progress  max="100" value="<%= card.completion_rate %>"> <%= card.completion_rate %> </progress>
-    <p>card completion: <%= card.completion_rate %> % </p>
-    <p>Price per panel: <%= card.price_per_panel %></p>
+    <p>Project funding: <%= card.completion_rate %> % </p>
+    <p>Price per panel: <%= humanized_money_with_symbol(card.price) %></p>
     <p>Yield: <%= card.yield %> % per year  </p>
   </div>
   <div class="card-country-projects">
