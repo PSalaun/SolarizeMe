@@ -5,6 +5,7 @@ puts "Erasing database"
 Project.delete_all
 User.delete_all
 Investment.delete_all
+Output.delete_all
 
 puts "generating admin"
 
@@ -63,13 +64,16 @@ puts "generating projects"
 current_campaign = Project.new(
   name: "Coca Cola Roma",
   price_cents: 25000,
+  panel_watt: 270,
+  lat: 52,
+  lon: 25,
   kwh_price_cents: 21,
   yield: 0.151,
   roi_decimals: 412,
-  crowdfunding_start_date: Date.new(2018, 7, 23),
-  crowdfunding_end_date: Date.new(2018, 9, 22),
+  crowdfunding_start_date: Date.new(2015, 7, 23),
+  crowdfunding_end_date: Date.new(2015, 9, 22),
+  comissioning_date: Date.new(2015, 12, 31),
   end_of_contract: Date.new(2038, 12, 31),
-  comissioning_date: Date.new(2018, 12, 31),
   panels_quantity: 1200,
   country: "Italy"
   )
@@ -79,13 +83,16 @@ current_campaign.save!
 future_campaign = Project.new(
   name: "Coca Cola Bari",
   price_cents: 40000,
+  panel_watt: 270,
+  lat: 52,
+  lon: 25,
   kwh_price_cents: 25,
   yield: 0.182,
   roi_decimals: 712,
   crowdfunding_start_date: Date.new(2018, 10, 2),
   crowdfunding_end_date: Date.new(2018, 11, 1),
-  end_of_contract: Date.new(2035, 12, 31),
   comissioning_date: Date.new(2018, 12, 31),
+  end_of_contract: Date.new(2035, 12, 31),
   panels_quantity: 800,
   country: "Italy"
   )
@@ -95,6 +102,9 @@ future_campaign.save!
 running_coca = Project.new(
   name: "Coca Cola Madrid",
   price_cents: 30000,
+  panel_watt: 320,
+  lat: 52,
+  lon: 25,
   kwh_price_cents: 22,
   yield: 0.162,
   roi_decimals: 612,
@@ -111,6 +121,9 @@ running_coca.save!
 running_Monsato = Project.new(
   name: "Monsato Paris",
   price_cents: 50000,
+  panel_watt: 400,
+  lat: 52,
+  lon: 25,
   kwh_price_cents: 27,
   yield: 0.142,
   roi_decimals: 512,
@@ -165,3 +178,31 @@ investment.amount_cents = investment.number_of_panels * investment.project.price
 investment.save!
 
 puts "created #{Investment.count} investments"
+
+puts "generating random outputs"
+
+days = 0
+1200.times do
+  output = Output.new ()
+  madrid = Project.where(name: "Coca Cola Roma").first
+  output.project = madrid
+  output.quantity = madrid.panel_watt / 1000 * madrid.panels_quantity  * 5 * rand(1000) / 500
+  output.date = Date.today - days
+  days += 1
+  output.save!
+end
+
+days = 0
+365.times do
+  output = Output.new ()
+  madrid = Project.where(name: "Monsato Paris").first
+  output.project = madrid
+  output.quantity = madrid.panel_watt / 1000 * madrid.panels_quantity  * 5 * rand(1000) / 500
+  output.date = Date.today - days
+  days += 1
+  output.save!
+end
+
+puts "generated #{Output.count} outputs"
+
+

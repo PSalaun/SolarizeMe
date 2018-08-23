@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
   belongs_to :user
   has_many :investments, dependent: :destroy
-  has_many :outputs
+  has_many :outputs, dependent: :destroy
   has_many :images
 
   validates :name, uniqueness: true, presence: true
@@ -79,5 +79,10 @@ class Project < ApplicationRecord
   def duration_months
     active_months + remaining_months
   end
+
+  def kwc
+    panels_quantity * panel_watt / 1000000
+  end
+
 
 end

@@ -10,6 +10,7 @@
     <% @user.investments.each do |investment| %>
       <li class="list-group-item" > <strong>Name: <%= investment.project.name %> </strong></li>
       <li class="list-group-item" >Number of panels: <%= investment.number_of_panels %></li>
+      <li class="list-group-item" >kWc: <%= investment.kwc %></li>
       <li class="list-group-item" >Total investment: <%= humanized_money_with_symbol(investment.amount) %></li>
       <li class="list-group-item" >Payment state: <%= investment.state %></li>
       <li class="list-group-item" >Yield: <%= number_to_percentage(investment.project.yield * 100, precision: 2) %></li>
@@ -20,6 +21,12 @@
       <li class="list-group-item" >Forecasted remaining gains: <%= humanized_money_with_symbol(investment.remaining_gains) %></li>
       <li class="list-group-item" >Total potential gains: <%= humanized_money_with_symbol(investment.total_gains) %></li>
       <li class="list-group-item" >Profits: <%= humanized_money_with_symbol(investment.profits) %></li>
+      <li class="list-group-item" >Last month production: <%= humanized_money_with_symbol(investment.last_month_gain) %></li>
+        <p>Production per month</p>
+
+      <%= javascript_pack_tag "init_charts" %>
+      <%= bar_chart investment.project.outputs.group_by_month(:date, format: "%b %Y").sum(:quantity) %>
+
       <br>
     <% end %>
   </ul>
