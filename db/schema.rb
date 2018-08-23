@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_23_095102) do
+ActiveRecord::Schema.define(version: 2018_08_23_111934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,9 @@ ActiveRecord::Schema.define(version: 2018_08_23_095102) do
     t.date "comissioning_date"
     t.integer "roi_decimals"
     t.integer "kwh_price_cents", default: 0, null: false
+    t.integer "panel_watt"
+    t.float "lat"
+    t.float "lon"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 

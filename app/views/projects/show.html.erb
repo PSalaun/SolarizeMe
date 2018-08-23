@@ -3,7 +3,8 @@
   <img style="height: 30vh" src="http://www.coherentchronicle.com/wp-content/uploads/2018/03/Microsoft-to-Collaborate-with-Sunseap-for-Solar-Project-in-Singapore.jpg" alt="">
   <h1> <%= @project.name %> </h1>
   <p> <%= link_to "by #{@project.user.company_name}", user_path(@project.user) %></p>
-  <p> <%= @project.description %> </p>
+  <p> Description: <%= @project.description %> </p>
+  <p> Project power: <%= @project.kwc %> MWc</p>
   <p> <%= humanized_money_with_symbol(@project.funds_pledged) %> out of <%= humanized_money_with_symbol(@project.total_cost) %>   raised </p>
   <p> Project status: <%= @project.status %> </p>
   <p> <%= @project.remaining_crowdfunding_days %></p>
@@ -12,6 +13,9 @@
   <p>Estimated income: <%= @project.yield * 100 %> % per year</p>
   <p>Project duration: <%= @project.duration_months %> months </p>
   <p>Estimated ROI: <%= @project.roi_decimals / 100.0 %> % </p>
+  <p>Comissioning date : <%= @project.comissioning_date %></p>
+
+
   <%= link_to "Invest now", new_project_investment_path(@project), class: "btn btn-primary" %>
 
   <h2> Detailed description </h2>
