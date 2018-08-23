@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
   belongs_to :user
-  has_many :investments
+  has_many :investments, dependent: :destroy
   has_many :outputs
   has_many :images
 
@@ -14,6 +14,7 @@ class Project < ApplicationRecord
   validates :end_of_contract, presence: true
 
   monetize :price_cents
+  monetize :kwh_price_cents
 
   def days_to_completion
     (end_date - Date.today).to_i
@@ -73,6 +74,10 @@ class Project < ApplicationRecord
     end_date_month = end_of_contract.year * 12 + end_of_contract.month
     current_month = (Date.today.year * 12 + Date.today.month)
     end_date_month - current_month
+  end
+
+  def duration_months
+    active_months + remaining_months
   end
 
 end
