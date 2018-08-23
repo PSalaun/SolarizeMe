@@ -1,34 +1,42 @@
 <!-- VARIABLES -->
 
 <!-- This probably needs to be refactor into several components -->
-<%= link_to 'Back', :back %>
-<br>
-  <h1><%= @user.name %></h1>
-  <%= link_to "Edit my profile", edit_user_registration_path(current_user), class: ".btn_projects" %>
-  <h1>List of investments</h1>
-  <ul class="list-group">
-    <% @user.investments.each do |investment| %>
-      <li class="list-group-item" > <strong>Name: <%= investment.project.name %> </strong></li>
-      <li class="list-group-item" >Number of panels: <%= investment.number_of_panels %></li>
-      <li class="list-group-item" >kWc: <%= investment.kwc %></li>
-      <li class="list-group-item" >Total investment: <%= humanized_money_with_symbol(investment.amount) %></li>
-      <li class="list-group-item" >Payment state: <%= investment.state %></li>
-      <li class="list-group-item" >Yield: <%= number_to_percentage(investment.project.yield * 100, precision: 2) %></li>
-      <li class="list-group-item" >Income per year: <%= humanized_money_with_symbol(investment.income_per_year) %></li>
-      <li class="list-group-item" >Active months: <%= investment.project.active_months %></li>
-      <li class="list-group-item" >Remaining months: <%= investment.project.remaining_months %></li>
-      <li class="list-group-item" >Past gains: <%= humanized_money_with_symbol(investment.past_gains) %></li>
-      <li class="list-group-item" >Forecasted remaining gains: <%= humanized_money_with_symbol(investment.remaining_gains) %></li>
-      <li class="list-group-item" >Total potential gains: <%= humanized_money_with_symbol(investment.total_gains) %></li>
-      <li class="list-group-item" >Profits: <%= humanized_money_with_symbol(investment.profits) %></li>
-      <li class="list-group-item" >Last month production: <%= humanized_money_with_symbol(investment.last_month_gain) %></li>
-        <p>Production per month</p>
 
-      <%= javascript_pack_tag "init_charts" %>
-      <%= bar_chart investment.project.outputs.group_by_month(:date, format: "%b %Y").sum(:quantity) %>
+<div class="container dashboard-container">
 
-      <br>
-    <% end %>
-  </ul>
+    <h1><%= @user.name %></h1>
+
+    <h1>My investments</h1>
+    <ul class="list-group">
+      <% @user.investments.each do |investment| %>
+        <li class="list-group-item project-dashboard" > <strong>Name: <%= investment.project.name %> </strong></li>
+        <li class="list-group-item" >Number of panels: <%= investment.number_of_panels %></li>
+        <li class="list-group-item" >kWc: <%= investment.kwc %></li>
+        <li class="list-group-item" >Total investment: <%= humanized_money_with_symbol(investment.amount) %></li>
+        <li class="list-group-item" >Payment state: <%= investment.state %></li>
+        <li class="list-group-item" >Yield: <%= number_to_percentage(investment.project.yield * 100, precision: 2) %></li>
+        <li class="list-group-item" >Income per year: <%= humanized_money_with_symbol(investment.income_per_year) %></li>
+        <li class="list-group-item" >Active months: <%= investment.project.active_months %></li>
+        <li class="list-group-item" >Remaining months: <%= investment.project.remaining_months %></li>
+        <li class="list-group-item" >Past gains: <%= humanized_money_with_symbol(investment.past_gains) %></li>
+        <li class="list-group-item" >Forecasted remaining gains: <%= humanized_money_with_symbol(investment.remaining_gains) %></li>
+        <li class="list-group-item" >Total potential gains: <%= humanized_money_with_symbol(investment.total_gains) %></li>
+        <li class="list-group-item" >Profits: <%= humanized_money_with_symbol(investment.profits) %></li>
+        <li class="list-group-item" >Last month production: <%= humanized_money_with_symbol(investment.last_month_gain) %></li>
+        <br>
+        <h2>Production per month</h2>
+
+        <%= javascript_pack_tag "init_charts" %>
+        <%= bar_chart investment.project.outputs.group_by_month(:date, format: "%b %Y").sum(:quantity) %>
+
+        <br>
+      <% end %>
+    </ul>
+  <br>
+  <div class="box-dashboard">
+    <%= link_to "Edit my profile", edit_user_registration_path(current_user), class: "btn-main-green" %>
+    <%= link_to 'Back', :back, class: "btn-ancilliary" %>
+   </div>
+</div>
 
 
