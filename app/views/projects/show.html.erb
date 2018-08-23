@@ -12,28 +12,30 @@
       </div>
 
       <div class="card-financial-details-show text-left">
-        <h3> <%= @project.description %></h3>
+        <h2> <%= @project.description %></h2>
         <br>
-        <p> Project status: <%= @project.status %> </p>
-        <p> Comissioning date : <%= @project.comissioning_date %></p>
+        <p> <strong>Project status:</strong> <%= @project.status %> </p>
+        <p> <strong>Comissioning date </strong>: <%= @project.comissioning_date %></p>
         <br>
-        <p> Project power: <%= @project.kwc %> kWc</p>
-        <p> Panel type: <%= @project.panel_watt %> Watts</p>
-        <p> Price per panel: <%= humanized_money_with_symbol(@project.price) %></p>
+        <p> <strong>Project power:</strong> <%= @project.kwc %> kWc</p>
+        <p> <strong>Panel type:</strong> <%= @project.panel_watt %> Watts</p>
+        <p> <strong>Price per panel:</strong> <%= humanized_money_with_symbol(@project.price) %></p>
         <br>
-        <p> Yield: <%= @project.yield * 100 %> % per year  </p>
-        <p>Project duration: <%= @project.duration_months %> months </p>
-        <p>Estimated ROI: <%= @project.roi_decimals / 100.0 %> % </p>
+        <p> <strong>Yield: </strong><%= @project.yield * 100 %> % per year  </p>
+        <p><strong>Project duration:</strong> <%= @project.duration_months %> months </p>
+        <p><strong>Estimated ROI:</strong> <%= @project.roi_decimals / 100.0 %> % </p>
         <br>
       </div>
 
-<p> </p>
+
         <progress  max="100" value="<%= @project.completion_rate %>"> <%= @project.completion_rate %> </progress>
-<p> </p>
+
         <p> <%= humanized_money_with_symbol(@project.funds_pledged) %> out of <%= humanized_money_with_symbol(@project.total_cost) %>   raised </p>
         <p> <%= @project.remaining_crowdfunding_days %> </p>
-<p> </p>
-        <%= link_to "Invest now", new_project_investment_path(@project), class: "btn btn-primary" %>
+
+        <% if @project.status == "Crowdfunding" %>
+          <%= link_to "Invest now", new_project_investment_path(@project), class: "btn btn-primary" %>
+        <% end %>
 
 
       <h2> Detailed description </h2>
