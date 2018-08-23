@@ -11,17 +11,8 @@
       <% end %>
     </div>
 
-    <br>
-    <div class="row" id="cards-list">
-
-      <% @projects.each do |project| %>
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <%= render 'shared/card', project: project %>
-      </div>
-      <% end %>
-      <br>
+    <div class="cards-list">
+      <%= render partial: 'shared/card', collection: @projects %>
     </div>
-    <br>
-    <br>
   </div>
 </div>

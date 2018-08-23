@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   private
 
   def top
-    @projects = Project.where("end_date > ?", Date.today).where("start_date < ?", Date.today).order(end_date: :asc).limit(3)
+    @projects = Project.all.where("crowdfunding_end_date > ?", Date.today).where("crowdfunding_start_date < ?", Date.today).order(crowdfunding_end_date: :asc).limit(3)
   end
 
   def learn_more

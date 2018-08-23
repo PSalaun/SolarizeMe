@@ -11,7 +11,6 @@
     </div>
   </div>
 </div>
-
-<% @projects.each do |project| %>
-  <h3><%= project.name %> - <%= project.end_date %></h3>
-<% end %>
+<div class="cards-list">
+  <%= render partial: "shared/card", collection: @projects %>
+</div>
