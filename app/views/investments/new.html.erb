@@ -1,16 +1,15 @@
-<div class="container">
-  <%= link_to 'Back', :back %>
-  <br>
-  <p>Please fill in your investment selection for project
-  <%= @project.name %></p>
-  <p>
-    Project size:
-    <%= @project.panels_quantity %> panels
-  </p>
-  <p>Availability:
+<div class="container investment-container">
+
+  <strong>  <h4> Summary information </h4> </strong>
+
+  <p> <strong> Project:</strong>  <%= @project.name %></p>
+  <p> <strong> Project size: </strong> <%= @project.panels_quantity %> panels </p>
+  <p> <strong> Availability: </strong>
     <%= @project.available_panels%> panels
   </p>
-  <p>Price per panel: <%= humanized_money_with_symbol(@project.price) %></p>
-  Quantity to invest:
-  <%= render "investments/form", investment: @investment %>
+  <p> <strong>Price per panel: </strong> <%= humanized_money_with_symbol(@project.price) %></p>
+  <br>
+
+  <%= render "investments/form", investment: @investment, class:"investment-form" %> <br>
+  <%= link_to 'Back', :back, class: "btn btn-goback" %>
 </div>
