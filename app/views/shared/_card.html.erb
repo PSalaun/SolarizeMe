@@ -1,23 +1,22 @@
-<div class="card-projects">
+<%= link_to project_path(card), class: "card-projects" do %>
   <img class="card-project-image" src="http://www.coherentchronicle.com/wp-content/uploads/2018/03/Microsoft-to-Collaborate-with-Sunseap-for-Solar-Project-in-Singapore.jpg" alt="">
 
   <div class="card-header-projects text-left">
     <div class="card-title-and-company-name">
-      <h1> <%= project.name %> </h1>
-      <h3> <%= project.user.company_name %> </h3>
+      <h1> <%= card.name %> </h1>
+      <h3> <%= card.user.company_name %> </h3>
     </div>
     <img class="card-company-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnL6GSKqq0ScFpX_ok8NSa96aXB0PzvkSNagsL6tgo56acCDgi">
   </div>
 
 
   <div class="card-financial-details text-left">
-    <progress  max="100" value="<%= project.completion_rate %>"> <%= project.completion_rate %> </progress>
-    <p>Project completion: <%= project.completion_rate %> % </p>
-    <p>Price per panel: <%= project.price_per_panel %></p>
-    <p>Yield: <%= project.yield %> % per year  </p>
+    <progress  max="100" value="<%= card.completion_rate %>"> <%= card.completion_rate %> </progress>
+    <p>card completion: <%= card.completion_rate %> % </p>
+    <p>Price per panel: <%= card.price_per_panel %></p>
+    <p>Yield: <%= card.yield %> % per year  </p>
   </div>
   <div class="card-country-projects">
-    <h1><%= project.country %></h1>
+    <h1><%= card.country %></h1>
   </div>
-  <%= link_to "", project_path(project), class: "card-link-projects" %>
-</div>
+<% end %>
