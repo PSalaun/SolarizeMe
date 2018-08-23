@@ -1,28 +1,26 @@
-<br>
-<div class="container text-center">
-  <br>
-  <br>
-  <div class="wrapper-projects">
-  <h1>Our Projects</h1>
+<div class="wrapper-projects">
+  <div class="container-fluid text-center">
+    <div class="page-header">
+      <h1>Our Projects</h1>
+    </div>
+    <div id="filter-projects">
+      <%= form_tag projects_path, method: "get" do  %>
+        <%= select_tag "query", options_from_collection_for_select(@projects, "id", "country"), class: "dropdown-filter", include_blank: true %> <br>
+        <%= submit_tag "Filter", class: "btn-filter" %>
+        <%= link_to "Reset", projects_path, class:"btn-reset-f" %>
+      <% end %>
+    </div>
 
-  <div id="filter-projects">
-    <%= form_tag projects_path, method: "get" do  %>
-      <%= select_tag "query", options_from_collection_for_select(@projects, "id", "country"), class: "dropdown-filter" %> <br>
-      <%= submit_tag "Filter", class: "btn btn-filter" %>
-      <%= link_to "Reset", projects_path, class:"btn btn-reset" %>
-    <% end %>
-  </div>
-
-  <br>
-  <div class="row">
+    <br>
+    <div class="row" id="cards-list">
 
       <% @projects.each do |project| %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <%= render 'shared/card', project: project %>
-        </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= render 'shared/card', project: project %>
+      </div>
       <% end %>
       <br>
-   </div>
+    </div>
     <br>
     <br>
   </div>

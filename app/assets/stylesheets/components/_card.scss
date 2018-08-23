@@ -1,50 +1,82 @@
 .card-projects {
   height: 580px;
   width: 340px;
-  color: black;
-  position: relative;
-  border: solid lightgrey 1px;
+  color: $text-dark;
+  border: solid $light-gray 1px;
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07);
-  margin: 10px;
-}
-.card-user-avatar-projects {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-}
-.card-user-image {
-  position: absolute;
-  top: 100px;
-  left: 10px;
-  font-size: 15px;
-  text-transform: uppercase;
-  width: 320px;
+  margin: 15px;
+  border-radius: 5px;
+  background: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: space-between;
+
+  .card-project-image {
+    flex: 0 0 200px;
+    width: 320px;
+  }
+
+  .card-header-projects {
+    display: flex;
+    justify-content: space-between;
+    flex: 1 0 auto;
+    width: 320px;
+    padding-top: 20px;
+
+    .card-title-and-company-name {
+      flex: 0 0 auto;
+      h1 {
+        margin-bottom: 5px;
+      }
+    }
+
+    .card-company-logo {
+      height: 50px;
+      width: 50px;
+      flex: 0 0 50px;
+      border-radius: 50%;
+    }
+  }
+
+  .card-financial-details {
+    flex: 0 0 100px;
+  }
+
+  .card-country-projects {
+    flex: 0 0 40px;
+    align-self: flex-end;
+  }
 
 }
-.card-country-projects {
-  bottom: 10px;
-  right: 10px;
-  position: absolute;
-}
+
+
+
+
+
+
+
+
+
+
+
 
 .card-description-projects {
   position: absolute;
   left: 10px;
   width: 150px;
   h2 {
-  top: 10px;
-  font-size: 20px;
+    top: 10px;
+    font-size: 20px;
   }
   p {
-  font-size: 14px;
-  opacity: 0.7;
-  font-weight: lighter;
-  top: 30px;
+    font-size: 14px;
+    opacity: 0.7;
+    font-weight: lighter;
+    top: 30px;
   }
- }
+}
 
 .card-link-projects {
   position: absolute;
@@ -61,26 +93,22 @@
 }
 
 
-.progress-bar-card {
-    position: absolute;
-    bottom: 70px;
-    margin: 20px;
-}
-  progress[value] {
+
+progress[value] {
   /* Reset the default appearance */
-    -webkit-appearance: none;
-    appearance: none;
-    width: 300px;
-    height: 10px;
-  }
-  progress[value]::-webkit-progress-bar {
-    border-radius: 8px;
-    background-color: lightgreen;
-  }
-  progress[value]::-webkit-progress-value{
-    border-radius: 7px;
-    background-color: #345995;
-  }
+  -webkit-appearance: none;
+  appearance: none;
+  width: 300px;
+  height: 10px;
+}
+progress[value]::-webkit-progress-bar {
+  border-radius: 8px;
+  background-color: lightgreen;
+}
+progress[value]::-webkit-progress-value{
+  border-radius: 7px;
+  background-color: #345995;
+}
 
 
 

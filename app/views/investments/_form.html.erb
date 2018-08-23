@@ -1,4 +1,7 @@
+<div class="container investment-container-form">
   <%= simple_form_for(investment, method: :post, url: project_investments_path)  do |f| %>
-      <%= f.input :number_of_panels %>
-      <%= f.button :submit, "Buy now", class: "btn btn-primary" %>
+      <%= f.input :number_of_panels, label: "Select your panels", wrapper_html: { class: 'number-panels-form' }%>
+      <%= f.button :submit, "Buy now", class: "btn btn_projects" %>
   <% end %>
+</div>
+
