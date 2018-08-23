@@ -1,4 +1,3 @@
-debugger;
 const navbar = document.getElementById("navbar");
 
 function scrollNavbar() {
@@ -17,8 +16,9 @@ function navbarSolidColorOnCards() {
   const scrollPos = $(document).scrollTop();
   const cardsListPosition = $('#cards-list').offset().top;
   if (scrollPos > cardsListPosition) {
-    navbar.style.background-color = black;
-    navbar.style.color = white;
+    navbar.classList.toggle("navbar-dark-background", true);
+  } else {
+    navbar.classList.toggle("navbar-dark-background", false);
   }
 }
 
@@ -27,6 +27,9 @@ if (window.location.pathname === "/") {
   hideNavbarOnHomeTop();
   window.onscroll = function() {scrollNavbar()};
 }
+
 if (document.getElementById("cards-list")) {
-  navbarSolidColorOnCards();
+  window.onscroll = function() {navbarSolidColorOnCards()};
 }
+
+// debugger;
