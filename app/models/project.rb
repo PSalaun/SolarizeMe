@@ -57,11 +57,15 @@ class Project < ApplicationRecord
     if status == "crowdfunding"
       days = (crowdfunding_end_date - crowdfunding_start_date).to_i
       return "#{days} days to go"
+    elsif status = "inactive"
+      return "More news soon!"
+    else
+      return "Project already fully funded!"
     end
   end
 
   def completion_rate
-    funds_pledged / total_cost
+    funds_pledged / total_cost * 100
   end
 
   def active_months
@@ -81,7 +85,7 @@ class Project < ApplicationRecord
   end
 
   def kwc
-    panels_quantity * panel_watt / 1000000
+    panels_quantity * panel_watt / 1000
   end
 
 
