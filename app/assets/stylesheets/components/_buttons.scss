@@ -31,3 +31,33 @@
   margin: 10px;
   text-align: center;
 }
+
+.btn-filter{
+  display: inline-block;
+  height: 42px;
+  width: 120px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bolder;
+  background-color: #469AE0;
+  border: solid #469AE0 1px;
+  color: white;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.btn-reset-f {
+  display: inline-block;
+  height: 42px;
+  width: 120px;
+  background-color: #EE5F5B;
+  padding: 10px 20px;
+  font-weight: bolder;
+  border-radius: 5px;
+  border: solid #EE5F5B 1px;
+  color: white;
+  &:hover {
+    opacity: 0.7;
+  }
+}
