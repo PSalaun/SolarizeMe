@@ -1,16 +1,30 @@
-.btn_projects {
-  width: 200px;
-  padding:15px 5px;
-  background-color: red;
+.btn-main-green {
+  height: 42px;
+  width: 188px;
+  background: $button-main;
+  border-radius: 5px;
+  padding: 10px 8px;
   color: white;
-  text-align: center;
+  margin: 10px;
 }
 
-.btn_learn-more {
-  width: 200px;
-  padding:15px 5px;
-  color: red;
-  border: 1px solid red;
-  text-align: center;
-  margin-top: 10px;
+.btn-main-blue {
+  height: 42px;
+  width: 188px;
+  background: $button-main-alt;
+  border-radius: 5px;
+  padding: 10px 8px;
+  color: white;
+  margin: 10px;
+}
+
+.btn-ancilliary {
+  height: 42px;
+  width: 188px;
+  background: none;
+  border-radius: 5px;
+  padding: 10px 8px;
+  border: 1px solid white;
+  color: white;
+  margin: 10px;
 }
