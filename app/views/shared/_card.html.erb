@@ -12,12 +12,18 @@
 
   <div class="card-financial-details text-left">
     <progress  max="100" value="<%= project.completion_rate %>"> <%= project.completion_rate %> </progress>
-    <p>Project funding: <%= project.completion_rate %> % </p>
+    <p> <%= humanized_money_with_symbol(project.funds_pledged) %> out of <%= humanized_money_with_symbol(project.total_cost) %>   raised </p>
     <p>Price per panel: <%= humanized_money_with_symbol(project.price) %></p>
-    <p>Yield: <%= project.yield %> % per year  </p>
+    <p>Yield: <%= project.yield * 100 %> % per year  </p>
   </div>
   <div class="card-country-projects">
-    <h1><%= project.country %></h1>
+    <div>
+      <h2><%= project.status %></h2>
+    </div>
+    <div>
+      <h1><%= project.country %></h1>
+    </div>
+
   </div>
   <%= link_to "", project_path(project), class: "card-link-projects" %>
 </div>

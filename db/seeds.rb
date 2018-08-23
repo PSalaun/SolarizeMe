@@ -102,7 +102,7 @@ future_campaign.user = User.where(company_name: "Coca-Cola").first
 future_campaign.save!
 
 running_coca = Project.new(
-  name: "Madrid Warehouse",
+  name: "Madrid Depot",
   description: "Excelent location with very reliable company!",
   price_cents: 30000,
   panel_watt: 320,
@@ -112,7 +112,7 @@ running_coca = Project.new(
   yield: 0.162,
   roi_decimals: 612,
   crowdfunding_start_date: Date.new(2018, 1, 2),
-  crowdfunding_end_date: Date.new(2018, 2, 20),
+  crowdfunding_end_date: Date.new(2018, 10, 20),
   end_of_contract: Date.new(2030, 12, 31),
   comissioning_date: Date.new(2018, 12, 31),
   panels_quantity: 2000,
@@ -173,11 +173,11 @@ investment.amount_cents = investment.number_of_panels * investment.project.price
 investment.save!
 
 investment = Investment.new(
-  number_of_panels: 50,
+  number_of_panels: 500,
   state: "confirmed"
   )
 investment.user = User.where(username: "johndoe").first
-investment.project = Project.where(name: "Madrid Warehouse").first
+investment.project = Project.where(name: "Madrid Depot").first
 investment.amount_cents = investment.number_of_panels * investment.project.price_cents
 investment.save!
 

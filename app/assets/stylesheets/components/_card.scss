@@ -45,8 +45,11 @@
   }
 
   .card-country-projects {
-    flex: 0 0 40px;
-    align-self: flex-end;
+    // flex: 0 0 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
 }
