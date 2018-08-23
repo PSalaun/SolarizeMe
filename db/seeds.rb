@@ -54,7 +54,7 @@ User.create(
   last_name: nil,
   birth_date: nil,
   is_company: true,
-  company_name: "Monsato"
+  company_name: "Monsanto"
   )
 
 puts "created #{User.count} users"
@@ -62,7 +62,8 @@ puts "created #{User.count} users"
 puts "generating projects"
 
 current_campaign = Project.new(
-  name: "Coca Cola Roma",
+  name: "Rome Factory",
+  description: "Excelent location with very reliable company!",
   price_cents: 25000,
   panel_watt: 270,
   lat: 52,
@@ -81,7 +82,8 @@ current_campaign.user = User.where(company_name: "Coca-Cola").first
 current_campaign.save!
 
 future_campaign = Project.new(
-  name: "Coca Cola Bari",
+  name: "Italy HQ",
+  description: "Excelent location with very reliable company!",
   price_cents: 40000,
   panel_watt: 270,
   lat: 52,
@@ -100,7 +102,8 @@ future_campaign.user = User.where(company_name: "Coca-Cola").first
 future_campaign.save!
 
 running_coca = Project.new(
-  name: "Coca Cola Madrid",
+  name: "Madrid Warehouse",
+  description: "Excelent location with very reliable company!",
   price_cents: 30000,
   panel_watt: 320,
   lat: 52,
@@ -118,8 +121,9 @@ running_coca = Project.new(
 running_coca.user = User.where(company_name: "Coca-Cola").first
 running_coca.save!
 
-running_Monsato = Project.new(
-  name: "Monsato Paris",
+running_Monsanto = Project.new(
+  name: "Paris Offices",
+  description: "Excelent location with very reliable company!",
   price_cents: 50000,
   panel_watt: 400,
   lat: 52,
@@ -134,28 +138,28 @@ running_Monsato = Project.new(
   panels_quantity: 200,
   country: "France"
   )
-running_Monsato.user = User.where(company_name: "Monsato").first
-running_Monsato.save!
+running_Monsanto.user = User.where(company_name: "Monsanto").first
+running_Monsanto.save!
 
 puts "created #{Project.count} projects"
 
 puts "generating investments"
 
 investment = Investment.new(
-  number_of_panels: 50,
+  number_of_panels: 1000,
   state: "confirmed"
   )
 investment.user = User.where(username: "johndoe").first
-investment.project = Project.where(name: "Coca Cola Roma").first
+investment.project = Project.where(name: "Rome Factory").first
 investment.amount_cents = investment.number_of_panels * investment.project.price_cents
 investment.save!
 
 investment = Investment.new(
-  number_of_panels: 10,
+  number_of_panels: 200,
   state: "confirmed"
   )
 investment.user = User.where(username: "janedoe").first
-investment.project = Project.where(name: "Coca Cola Roma").first
+investment.project = Project.where(name: "Rome Factory").first
 investment.amount_cents = investment.number_of_panels * investment.project.price_cents
 investment.save!
 
@@ -164,16 +168,16 @@ investment = Investment.new(
   state: "confirmed"
   )
 investment.user = User.where(username: "johndoe").first
-investment.project = Project.where(name: "Monsato Paris").first
+investment.project = Project.where(name: "Paris Offices").first
 investment.amount_cents = investment.number_of_panels * investment.project.price_cents
 investment.save!
 
 investment = Investment.new(
-  number_of_panels: 5,
+  number_of_panels: 50,
   state: "confirmed"
   )
 investment.user = User.where(username: "johndoe").first
-investment.project = Project.where(name: "Coca Cola Madrid").first
+investment.project = Project.where(name: "Madrid Warehouse").first
 investment.amount_cents = investment.number_of_panels * investment.project.price_cents
 investment.save!
 
@@ -184,7 +188,7 @@ puts "generating random outputs"
 days = 0
 1200.times do
   output = Output.new ()
-  madrid = Project.where(name: "Coca Cola Roma").first
+  madrid = Project.where(name: "Rome Factory").first
   output.project = madrid
   output.quantity = madrid.panel_watt / 1000 * madrid.panels_quantity  * 5 * rand(1000) / 500
   output.date = Date.today - days
@@ -195,7 +199,7 @@ end
 days = 0
 365.times do
   output = Output.new ()
-  madrid = Project.where(name: "Monsato Paris").first
+  madrid = Project.where(name: "Paris Offices").first
   output.project = madrid
   output.quantity = madrid.panel_watt / 1000 * madrid.panels_quantity  * 5 * rand(1000) / 500
   output.date = Date.today - days
