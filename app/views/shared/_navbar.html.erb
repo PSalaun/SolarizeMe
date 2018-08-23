@@ -1,18 +1,15 @@
 <div class="navbar-solarize">
   <!-- Logo -->
-<!--   <div class="navbar-logo-with-text">
-    <div>
-      <%= link_to root_path, class: "navbar-solarize-brand" do %>
-        <%= image_tag "logo.png", height: 50 %>
-      <% end %>
-    </div>
-    <div class="navbar-logo-title">SolarizeMe</div>
-  </div> -->
+  <div class="navbar-logo-with-text">
+   <%= link_to "SolarizeMe", root_path, class: "navbar-solarize-brand" %>
+ </div>
 
-  <!-- Right Navigation -->
-  <%= link_to "All projects", projects_path, class: "navbar-solarize-item navbar-solarize-link" %>
-  <!-- Dropdown list appearing on mobile only -->
-  <% if user_signed_in? %>
+
+ <!-- Right Navigation -->
+  <div class="navbar-right">
+    <%= link_to "All projects", projects_path, class: "navbar-solarize-item navbar-solarize-link" %>
+    <!-- Dropdown list appearing on mobile only -->
+    <% if user_signed_in? %>
     <div class="navbar-solarize-item">
       <div class="dropdown">
         <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
@@ -25,14 +22,14 @@
           </li>
           <li>
             <%= link_to destroy_user_session_path, method: :delete do %>
-              <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+            <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
             <% end %>
           </li>
         </ul>
       </div>
     </div>
-  <% else %>
+    <% else %>
     <%= link_to "Login", new_user_session_path %>
-  <% end %>
-
+    <% end %>
+  </div>
 </div>
