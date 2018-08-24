@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 
   def index
     if params[:query].present?
-      @projects = policy_scope(Project).where(id: params[:query])
+      @projects = policy_scope(Project).where(country: params[:query])
     else
       @projects = policy_scope(Project).all
     end
