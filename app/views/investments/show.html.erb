@@ -1,11 +1,13 @@
 <div class="container text-center after-payment-container">
   <h4> Your payment is <%= @investment.state %>! </h4>
   <br>
-  <strong><p> Project name: </strong><%= @investment.project.name %> </p>
-  <strong><p> Number of panels: </strong> <%= @investment.number_of_panels %> </p>
-  <strong><p> Price per panel: </strong><%= humanized_money_with_symbol(@investment.project.price) %></p>
-  <strong><p> Total amount: </strong><%= humanized_money_with_symbol(@investment.amount) %></p>
+  <div class="after-payment-info-container">
+    <strong><p> Project name: </strong><%= @investment.project.name %> </p>
 
+    <strong><p> Number of panels: </strong> <%= @investment.number_of_panels %> </p>
+    <strong><p> Price per panel: </strong><%= humanized_money_with_symbol(@investment.project.price) %></p>
+    <strong><p> Total amount: </strong><%= humanized_money_with_symbol(@investment.amount) %></p>
+  </div>
   <br>
-  <%= link_to "Go to my profile", user_path(current_user), class:"btn btn_projects"  %>
+  <%= link_to "Go to my profile", user_path(current_user), class:"btn btn-main-green"  %>
 </div>
