@@ -1,7 +1,13 @@
 <div class="navbar-solarize" id="navbar">
   <!-- Logo -->
-  <%= link_to "SolarizeMe", root_path, class: "navbar-solarize-brand" %>
-
+  <div class="navbar-solarize-logo-and-brand">
+    <div class="navbar-solarize-logo">
+      <%= icon("fas", "solar-panel") %>
+    </div>
+    <div class="navbar-solarize-brand">
+      <%= link_to "SolarizeMe", root_path, class: "navbar-solarize-brand" %>
+    </div>
+  </div>
 
  <!-- Right Navigation -->
   <div class="navbar-solarize-right">

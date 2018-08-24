@@ -39,8 +39,15 @@
 /* COMPONENTS OF THE NAVBAR */
 
 /* Left section */
-.navbar-solarize-brand {
+.navbar-solarize-logo-and-brand {
   flex: initial;
+  display: flex;
+}
+
+.navbar-solarize-brand {
+  margin-left: 5px;
+  font-family: $banner-font;
+  line-height: 1.7;
 }
 
 /* Right section */
