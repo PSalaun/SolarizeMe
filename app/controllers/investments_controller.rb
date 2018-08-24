@@ -3,15 +3,18 @@ class InvestmentsController < ApplicationController
 
   def show
     @investment = Investment.find(params[:id])
+    authorize @investment
   end
 
   def new
     @investment = Investment.new
+    authorize @investment
     @project = Project.find(params[:project_id])
   end
 
   def create
     @investment = Investment.new(params_investment)
+    authorize @investment
     @investment.project = Project.find(params[:project_id])
     @investment.user = current_user
     @investment.state = "pending"
