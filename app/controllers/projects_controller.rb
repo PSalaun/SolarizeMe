@@ -6,7 +6,6 @@ class ProjectsController < ApplicationController
       @projects = policy_scope(Project).where(id: params[:query])
     else
       @projects = policy_scope(Project).all
-
     end
   end
 

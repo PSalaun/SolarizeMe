@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :projects
   has_many :investments
 
+  mount_uploader :photo, PhotoUploader
+
   def name
     "#{self.first_name} #{self.last_name}"
   end

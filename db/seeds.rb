@@ -43,7 +43,8 @@ User.create(
   last_name: nil,
   birth_date: nil,
   is_company: true,
-  company_name: "Coca-Cola"
+  company_name: "Coca-Cola",
+  remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535108918/akhcxlnmwrt9fqyiultg.jpg"
   )
 
 User.create(
@@ -54,35 +55,18 @@ User.create(
   last_name: nil,
   birth_date: nil,
   is_company: true,
-  company_name: "Nike"
+  company_name: "Nike",
+  remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535109018/vnijnbdtozqinposnkap.jpg"
   )
 
 puts "created #{User.count} users"
 
 puts "generating projects"
 
-current_campaign = Project.new(
-  name: "Rome Factory",
-  description: "Excelent location with very reliable company!",
-  price_cents: 25000,
-  panel_watt: 270,
-  lat: 52,
-  lon: 25,
-  kwh_price_cents: 21,
-  yield: 0.151,
-  roi_decimals: 412,
-  crowdfunding_start_date: Date.new(2015, 7, 23),
-  crowdfunding_end_date: Date.new(2015, 9, 22),
-  comissioning_date: Date.new(2015, 12, 31),
-  end_of_contract: Date.new(2038, 12, 31),
-  panels_quantity: 1200,
-  country: "Italy"
-  )
-current_campaign.user = User.where(company_name: "Coca-Cola").first
-current_campaign.save!
+
 
 future_campaign = Project.new(
-  name: "Italy HQ",
+  name: "Rome HQ",
   description: "Excelent location with very reliable company!",
   price_cents: 40000,
   panel_watt: 270,
@@ -95,36 +79,38 @@ future_campaign = Project.new(
   crowdfunding_end_date: Date.new(2018, 11, 1),
   comissioning_date: Date.new(2018, 12, 31),
   end_of_contract: Date.new(2035, 12, 31),
-  panels_quantity: 800,
-  country: "Italy"
+  panels_quantity: 500,
+  country: "Italy",
+  remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535108330/ch3bxjozyrm1lkj8wh3n.jpg"
   )
-future_campaign.user = User.where(company_name: "Coca-Cola").first
+future_campaign.user = User.where(company_name: "Nike").first
 future_campaign.save!
 
 future_campaign = Project.new(
-  name: "Italy HQ",
+  name: "Vienna HQ",
   description: "Excelent location with very reliable company!",
-  price_cents: 40000,
+  price_cents: 35000,
   panel_watt: 270,
   lat: 52,
   lon: 25,
   kwh_price_cents: 25,
   yield: 0.182,
   roi_decimals: 712,
-  crowdfunding_start_date: Date.new(2018, 10, 2),
-  crowdfunding_end_date: Date.new(2018, 11, 1),
+  crowdfunding_start_date: Date.new(2018, 8, 2),
+  crowdfunding_end_date: Date.new(2018, 10, 1),
   comissioning_date: Date.new(2018, 12, 31),
   end_of_contract: Date.new(2035, 12, 31),
   panels_quantity: 800,
-  country: "Italy"
+  country: "Austria",
+  remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535108270/hlt6yqkbp36ju5uk49jj.jpg"
   )
-future_campaign.user = User.where(company_name: "Coca-Cola").first
+future_campaign.user = User.where(company_name: "Nike").first
 future_campaign.save!
 
 running_coca = Project.new(
   name: "Madrid Depot",
   description: "Excelent location with very reliable company!",
-  price_cents: 30000,
+  price_cents: 32000,
   panel_watt: 320,
   lat: 52,
   lon: 25,
@@ -136,15 +122,16 @@ running_coca = Project.new(
   end_of_contract: Date.new(2030, 12, 31),
   comissioning_date: Date.new(2018, 12, 31),
   panels_quantity: 2000,
-  country: "Spain"
+  country: "Spain",
+  remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535108222/avuoydt0sicqtpiybyee.jpg"
   )
 running_coca.user = User.where(company_name: "Coca-Cola").first
 running_coca.save!
 
 running_coca = Project.new(
-  name: "Madrid Depot",
+  name: "Madrid HQ",
   description: "Excelent location with very reliable company!",
-  price_cents: 30000,
+  price_cents: 27000,
   panel_watt: 320,
   lat: 52,
   lon: 25,
@@ -152,11 +139,12 @@ running_coca = Project.new(
   yield: 0.162,
   roi_decimals: 612,
   crowdfunding_start_date: Date.new(2018, 1, 2),
-  crowdfunding_end_date: Date.new(2018, 10, 20),
+  crowdfunding_end_date: Date.new(2018, 9, 1),
   end_of_contract: Date.new(2030, 12, 31),
   comissioning_date: Date.new(2018, 12, 31),
-  panels_quantity: 2000,
-  country: "Spain"
+  panels_quantity: 4000,
+  country: "Spain",
+  remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535106441/jgycj9bei1zkxq7c1qwu.jpg"
   )
 running_coca.user = User.where(company_name: "Coca-Cola").first
 running_coca.save!
@@ -177,10 +165,32 @@ running_Nike = Project.new(
   end_of_contract: Date.new(2038, 1, 31),
   comissioning_date: Date.new(2018, 1, 31),
   panels_quantity: 200,
-  country: "France"
+  country: "France",
+  remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535106441/jgycj9bei1zkxq7c1qwu.jpg"
   )
 running_Nike.user = User.where(company_name: "Nike").first
 running_Nike.save!
+
+current_campaign = Project.new(
+  name: "Rome Factory",
+  description: "Excelent location with very reliable company!",
+  price_cents: 25000,
+  panel_watt: 270,
+  lat: 52,
+  lon: 25,
+  kwh_price_cents: 21,
+  yield: 0.151,
+  roi_decimals: 412,
+  crowdfunding_start_date: Date.new(2015, 7, 23),
+  crowdfunding_end_date: Date.new(2015, 9, 22),
+  comissioning_date: Date.new(2015, 12, 31),
+  end_of_contract: Date.new(2038, 12, 31),
+  panels_quantity: 1200,
+  country: "Italy",
+  remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535106441/jgycj9bei1zkxq7c1qwu.jpg"
+  )
+current_campaign.user = User.where(company_name: "Coca-Cola").first
+current_campaign.save!
 
 puts "created #{Project.count} projects"
 
@@ -196,20 +206,11 @@ investment.amount_cents = investment.number_of_panels * investment.project.price
 investment.save!
 
 investment = Investment.new(
-  number_of_panels: 200,
+  number_of_panels: 400,
   state: "confirmed"
   )
 investment.user = User.where(username: "janedoe").first
-investment.project = Project.where(name: "Rome Factory").first
-investment.amount_cents = investment.number_of_panels * investment.project.price_cents
-investment.save!
-
-investment = Investment.new(
-  number_of_panels: 200,
-  state: "confirmed"
-  )
-investment.user = User.where(username: "johndoe").first
-investment.project = Project.where(name: "Paris Offices").first
+investment.project = Project.where(name: "Vienna HQ").first
 investment.amount_cents = investment.number_of_panels * investment.project.price_cents
 investment.save!
 
@@ -219,6 +220,15 @@ investment = Investment.new(
   )
 investment.user = User.where(username: "johndoe").first
 investment.project = Project.where(name: "Madrid Depot").first
+investment.amount_cents = investment.number_of_panels * investment.project.price_cents
+investment.save!
+
+investment = Investment.new(
+  number_of_panels: 500,
+  state: "confirmed"
+  )
+investment.user = User.where(username: "johndoe").first
+investment.project = Project.where(name: "Madrid HQ").first
 investment.amount_cents = investment.number_of_panels * investment.project.price_cents
 investment.save!
 

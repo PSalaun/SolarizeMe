@@ -1,12 +1,11 @@
 <%= link_to project_path(card), class: "card-projects" do %>
-  <img class="card-project-image" src="http://www.coherentchronicle.com/wp-content/uploads/2018/03/Microsoft-to-Collaborate-with-Sunseap-for-Solar-Project-in-Singapore.jpg" alt="">
-
+  <%= cl_image_tag card.photo, class: "card-project-image" %>
   <div class="card-header-projects text-left">
     <div class="card-title-and-company-name">
       <h1> <%= card.name %> </h1>
       <h3> <%= card.user.company_name %> </h3>
     </div>
-    <img class="card-company-logo" src="https://vignette.wikia.nocookie.net/logopedia/images/0/0d/Coca-Cola_square_logo.svg/revision/latest?cb=20180131095139">
+    <%= cl_image_tag card.user.photo, class: "card-company-logo" %>
   </div>
 
 
