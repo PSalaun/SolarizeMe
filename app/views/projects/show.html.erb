@@ -22,7 +22,7 @@
           <br>
           <p> <strong><%= humanized_money_with_symbol(@project.funds_pledged) %> </strong>out of <strong><%= humanized_money_with_symbol(@project.total_cost) %> </strong>  raised ! </p>
           <br>
-          <%= link_to "Invest now", new_project_investment_path(@project), class: "btn btn-primary" %>
+          <%= link_to "Invest now", new_project_investment_path(@project), class: "btn btn-success" %>
         <% end %>
       <p> <strong> <%= @project.remaining_crowdfunding_days %>!</strong></p>
       </div>
