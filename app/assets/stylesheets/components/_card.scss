@@ -59,7 +59,7 @@
 
   .card-horizontal-line {
     width: 90%;
-    height: 2px;
+    height: 1px;
     background-color: $light-gray;
     margin-top: 10px;
   }
@@ -76,17 +76,6 @@
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
 
 .card-description-projects {
   position: absolute;
@@ -113,11 +102,11 @@ progress[value] {
 }
 progress[value]::-webkit-progress-bar {
   border-radius: 8px;
-  background-color: lightgreen;
+  background-color: #345995;
 }
 progress[value]::-webkit-progress-value{
   border-radius: 7px;
-  background-color: #345995;
+  background-color: lightgreen;
 }
 
 
