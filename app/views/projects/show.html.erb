@@ -1,14 +1,14 @@
 
   <div class="col-xs-12 col-sm-6 col-md-4">
     <div class="card-projects-show">
-      <img class="card-project-image-show" src="http://www.coherentchronicle.com/wp-content/uploads/2018/03/Microsoft-to-Collaborate-with-Sunseap-for-Solar-Project-in-Singapore.jpg" alt="">
+      <%= cl_image_tag @project.photo, class: "card-project-image-show" %>
 
       <div class="card-header-projects-show text-left-show">
         <div class="card-title-and-company-name-show">
           <h1> <%= @project.name %> </h1>
           <h3> <%= link_to "by #{@project.user.company_name}", user_path(@project.user) %> </h3>
         </div>
-        <img class="card-company-logo-show" src="https://vignette.wikia.nocookie.net/logopedia/images/0/0d/Coca-Cola_square_logo.svg/revision/latest?cb=20180131095139">
+        <%= cl_image_tag @project.user.photo, class: "card-company-logo-show" %>
       </div>
 
       <div class="card-financial-details-show text-left">
