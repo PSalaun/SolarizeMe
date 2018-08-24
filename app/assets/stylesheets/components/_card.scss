@@ -48,28 +48,34 @@
 
   .card-financial-details {
     flex: 0 0 100px;
+    .card__completion-rate-text {
+      font-size: 2rem;
+      // font-weight: bold;
+    }
+    p {
+      margin-bottom: 2px;
+    }
+  }
+
+  .card-horizontal-line {
+    width: 90%;
+    height: 1px;
+    background-color: $light-gray;
+    margin-top: 10px;
   }
 
   .card-country-projects {
-    // flex: 0 0 40px;
+    flex: 0 0 60px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    > * {
+      color: $text-dark;
+    }
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
 
 .card-description-projects {
   position: absolute;
@@ -96,11 +102,11 @@ progress[value] {
 }
 progress[value]::-webkit-progress-bar {
   border-radius: 8px;
-  background-color: lightgreen;
+  background-color: #345995;
 }
 progress[value]::-webkit-progress-value{
   border-radius: 7px;
-  background-color: #345995;
+  background-color: lightgreen;
 }
 
 

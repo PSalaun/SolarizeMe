@@ -19,7 +19,7 @@ class Project < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   def days_to_completion
-    (end_date - Date.today).to_i
+    (crowdfunding_end_date - Date.today).to_i
   end
 
   def completion_rate

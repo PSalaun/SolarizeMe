@@ -1,7 +1,7 @@
 <div class="container confirmation-container">
 
-  <h5>You are buying: </h5>
-  <h5 class="number-panels-confirmation"> <strong> <%= @investment.number_of_panels %> </strong> panels </h5>
+  <!-- <h5>You are buying: </h5>
+  <h5 class="number-panels-confirmation"> <strong> <%= @investment.number_of_panels %> </strong> panels </h5> -->
   <!-- <p>Price per panel: <%= humanized_money_with_symbol(@investment.project.price) %></p>
   <p>Income per year <%= @investment.income_per_year %></p> -->
   <%= form_tag project_investment_payments_path(@investment) do %>
@@ -21,6 +21,7 @@
 
   <% end %>
   <br>
-    <%= link_to 'Back', :back, class: "btn btn-goback" %>
+    <div class="button-go-back-confirm"> <%= link_to 'Back', :back, class: "btn btn-goback" %>
+    </div>
 </div>
 
