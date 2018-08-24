@@ -11,38 +11,37 @@
     </div>
   </div>
 
-  <div class="container" id="key-facts-home"> <h1 >About the service</h1>
-
-    <div class="one-key-facts-home">
-      <div><h1>1</h1></div>
-      <div class="one-key-facts-home-first">
-        <h5> YOU are looking for a sustainable, green and scalable investment </h5>
-        <h5>WE find a company with a large roof </h5>
+  <div id="js-cards-list">
+    <div class="container" id="key-facts-home" id="js-cards-list"> <h1 >About our service</h1>
+      <div class="one-key-facts-home">
+        <div><h1>1</h1></div>
+        <div class="one-key-facts-home-first">
+          <h5>WE find a company with a large roof willing to buy solar power</h5>
+        </div>
       </div>
-     </div>
 
-    <div class="two-key-facts-home">
-      <div><h1>2</h1></div>
-      <div class="two-key-facts-home-first">
-        <h5> YOU select the number of solar panels you want </h5> <h5> WE start a solar project </h5>
+      <div class="two-key-facts-home">
+        <div><h1>2</h1></div>
+        <div class="two-key-facts-home-first">
+          <h5> YOU select the number of solar panels you want to own and WE install them for you </h5>
+        </div>
       </div>
-    </div>
 
-    <div class="three-key-facts-home">
-      <div><h1>3</h1></div>
-      <div class="three-key-facts-home-first">
-        <h5> WE build the "solar roof" </h5>
-        <h5> THEY pay you for the electricity you are generating!</h5>
+      <div class="three-key-facts-home">
+        <div><h1>3</h1></div>
+        <div class="three-key-facts-home-first">
+          <h5> YOU get reduce your CO2 footprint and great returns by selling the electricity to the company! </h5>
+        </div>
       </div>
     </div>
   </div>
-
-<div class="cards-list" id="js-cards-list">
-  <h2>Active campaigns</h2>
-  <%= render partial: "shared/card", collection: @projects %>
-</div>
-<br>
-<div class="container text-center buttons-home-beforefooter">
-    <%= link_to "Start investing now", projects_path, class: "btn-main-green" %>
-    <%= link_to "Learn more", learn_more_path, class: "btn-ancilliary" %>
+  <div class="cards-list" id="js-cards-list">
+    <h2>Active campaigns</h2>
+    <%= render partial: "shared/card", collection: @projects %>
+  </div>
+  <br>
+  <div class="container text-center buttons-home-beforefooter">
+      <%= link_to "Start investing now", projects_path, class: "btn-main-green" %>
+      <%= link_to "Learn more", learn_more_path, class: "btn-ancilliary" %>
+  </div>
 </div>
