@@ -1,7 +1,7 @@
 class ProjectPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where("crowdfunding_end_date > ?", Date.today)
     end
   end
 

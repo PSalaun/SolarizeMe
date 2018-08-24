@@ -47,14 +47,14 @@ User.create(
   )
 
 User.create(
-  email: "monsanto@company.com",
+  email: "Nike@company.com",
   password: 123456,
-  username: "monsanto",
+  username: "Nike",
   first_name: nil,
   last_name: nil,
   birth_date: nil,
   is_company: true,
-  company_name: "Monsanto"
+  company_name: "Nike"
   )
 
 puts "created #{User.count} users"
@@ -101,6 +101,26 @@ future_campaign = Project.new(
 future_campaign.user = User.where(company_name: "Coca-Cola").first
 future_campaign.save!
 
+future_campaign = Project.new(
+  name: "Italy HQ",
+  description: "Excelent location with very reliable company!",
+  price_cents: 40000,
+  panel_watt: 270,
+  lat: 52,
+  lon: 25,
+  kwh_price_cents: 25,
+  yield: 0.182,
+  roi_decimals: 712,
+  crowdfunding_start_date: Date.new(2018, 10, 2),
+  crowdfunding_end_date: Date.new(2018, 11, 1),
+  comissioning_date: Date.new(2018, 12, 31),
+  end_of_contract: Date.new(2035, 12, 31),
+  panels_quantity: 800,
+  country: "Italy"
+  )
+future_campaign.user = User.where(company_name: "Coca-Cola").first
+future_campaign.save!
+
 running_coca = Project.new(
   name: "Madrid Depot",
   description: "Excelent location with very reliable company!",
@@ -121,7 +141,28 @@ running_coca = Project.new(
 running_coca.user = User.where(company_name: "Coca-Cola").first
 running_coca.save!
 
-running_Monsanto = Project.new(
+running_coca = Project.new(
+  name: "Madrid Depot",
+  description: "Excelent location with very reliable company!",
+  price_cents: 30000,
+  panel_watt: 320,
+  lat: 52,
+  lon: 25,
+  kwh_price_cents: 22,
+  yield: 0.162,
+  roi_decimals: 612,
+  crowdfunding_start_date: Date.new(2018, 1, 2),
+  crowdfunding_end_date: Date.new(2018, 10, 20),
+  end_of_contract: Date.new(2030, 12, 31),
+  comissioning_date: Date.new(2018, 12, 31),
+  panels_quantity: 2000,
+  country: "Spain"
+  )
+running_coca.user = User.where(company_name: "Coca-Cola").first
+running_coca.save!
+
+
+running_Nike = Project.new(
   name: "Paris Offices",
   description: "Excelent location with very reliable company!",
   price_cents: 50000,
@@ -138,8 +179,8 @@ running_Monsanto = Project.new(
   panels_quantity: 200,
   country: "France"
   )
-running_Monsanto.user = User.where(company_name: "Monsanto").first
-running_Monsanto.save!
+running_Nike.user = User.where(company_name: "Nike").first
+running_Nike.save!
 
 puts "created #{Project.count} projects"
 
