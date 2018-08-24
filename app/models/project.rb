@@ -62,7 +62,7 @@ class Project < ApplicationRecord
     elsif status == "Under construction"
       return "Fully funded and under construction"
     elsif status == "Starting soon!"
-      return "More news soon!"
+      return "Crowdfunding starting soon!"
     else
       return "Project already fully funded!"
     end

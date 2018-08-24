@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: space-between;
   color: white;
-  z-index: 19999;
+  z-index: 9999;
   width: 100vw;
   position: fixed; //by giving the #yielded-content a padding-top of 70px, the navbar doesn't overlaps the content despite the fixed position.
   a {
@@ -21,13 +21,13 @@
 
 /* Classes for javascript interaction */
 .navbar-toggle-content {
-  display: none;
+  visibility: hidden;
   opacity: 0;
-  overflow: hidden;
-  transition: opacity 750ms ease-in-out;
+  transition: visibility 0s, opacity 750ms ease-in-out, background-color 750ms ease-in-out;
 }
 
 .navbar-toggle-content.is-visible {
+  visibility: visible;
   opacity: 1;
 }
 
@@ -39,8 +39,15 @@
 /* COMPONENTS OF THE NAVBAR */
 
 /* Left section */
-.navbar-solarize-brand {
+.navbar-solarize-logo-and-brand {
   flex: initial;
+  display: flex;
+}
+
+.navbar-solarize-brand {
+  margin-left: 5px;
+  font-family: $banner-font;
+  line-height: 1.7;
 }
 
 /* Right section */

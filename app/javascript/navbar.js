@@ -1,7 +1,7 @@
 const navbar = document.getElementById("navbar");
 
 function scrollNavbar() {
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+  if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
     navbar.style.top = "0";
     navbar.classList.add("is-visible");
   }
@@ -16,19 +16,26 @@ function navbarSolidColorOnCards() {
   const scrollPos = $(document).scrollTop();
   const cardsListPosition = $('#js-cards-list').offset().top;
   if (scrollPos > cardsListPosition) {
-    navbar.classList.toggle("navbar-dark-background", true);
+    navbar.classList.add("navbar-dark-background");
   } else {
-    navbar.classList.toggle("navbar-dark-background", false);
+    navbar.classList.remove("navbar-dark-background");
   }
+}
+
+function homePageNavbarDisplay() {
+  scrollNavbar();
+  navbarSolidColorOnCards();
 }
 
 // EVENTS
 if (window.location.pathname === "/") {
   hideNavbarOnHomeTop();
-  window.onscroll = function() {scrollNavbar()};
+  window.onscroll = function() {homePageNavbarDisplay()};
+} else {
+  if (document.getElementById("js-cards-list")) {
+  window.onscroll = function() {navbarSolidColorOnCards()};
+  }
 }
 
-if (document.getElementById("js-cards-list")) {
-  window.onscroll = function() {navbarSolidColorOnCards()};
-}
+
 
