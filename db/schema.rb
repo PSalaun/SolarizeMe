@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_23_111934) do
+ActiveRecord::Schema.define(version: 2018_08_24_110254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2018_08_23_111934) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "state", default: "pending"
+    t.string "state"
     t.string "project_sku"
     t.jsonb "payment"
     t.integer "amount_cents", default: 0, null: false
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2018_08_23_111934) do
     t.integer "panel_watt"
     t.float "lat"
     t.float "lon"
+    t.string "photo"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
@@ -110,6 +111,7 @@ ActiveRecord::Schema.define(version: 2018_08_23_111934) do
     t.boolean "is_company"
     t.string "company_name"
     t.boolean "admin", default: false
+    t.string "photo"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

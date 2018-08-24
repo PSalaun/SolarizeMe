@@ -16,8 +16,10 @@ class Project < ApplicationRecord
   monetize :price_cents
   monetize :kwh_price_cents
 
+  mount_uploader :photo, PhotoUploader
+
   def days_to_completion
-    (end_date - Date.today).to_i
+    (crowdfunding_end_date - Date.today).to_i
   end
 
   def completion_rate

@@ -5,12 +5,11 @@
     </div>
     <div id="filter-projects">
       <%= form_tag projects_path, method: "get" do  %>
-        <%= select_tag "query", options_from_collection_for_select(@projects, "id", "country"), class: "dropdown-filter", include_blank: true %> <br>
+        <%= select_tag "query", options_for_select(Project.pluck(:country).uniq), class: "dropdown-filter", include_blank: true %> <br>
         <%= submit_tag "Filter", class: "btn-filter" %>
         <%= link_to "Reset", projects_path, class:"btn-reset-f" %>
       <% end %>
     </div>
-
     <div class="cards-list" id="js-cards-list">
       <%= render partial: 'shared/card', collection: @projects %>
     </div>

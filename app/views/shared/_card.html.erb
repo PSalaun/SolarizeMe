@@ -1,23 +1,27 @@
 <%= link_to project_path(card), class: "card-projects" do %>
-  <img class="card-project-image" src="http://www.coherentchronicle.com/wp-content/uploads/2018/03/Microsoft-to-Collaborate-with-Sunseap-for-Solar-Project-in-Singapore.jpg" alt="">
-
+  <%= cl_image_tag card.photo, class: "card-project-image" %>
   <div class="card-header-projects text-left">
     <div class="card-title-and-company-name">
       <h1> <%= card.name %> </h1>
       <h3> <%= card.user.company_name %> </h3>
     </div>
-    <img class="card-company-logo" src="https://vignette.wikia.nocookie.net/logopedia/images/0/0d/Coca-Cola_square_logo.svg/revision/latest?cb=20180131095139">
+    <%= cl_image_tag card.user.photo, class: "card-company-logo" %>
   </div>
 
 
   <div class="card-financial-details text-left">
+    <div class="card__completion-rate-text">
+      <strong><%= number_to_percentage(card.completion_rate, precision: 0)%></strong> funded - <strong><%= card.days_to_completion %></strong> days remaining
+
+      </div>
     <progress  max="100" value="<%= card.completion_rate %>"> <%= card.completion_rate %> </progress>
     <p> <%= humanized_money_with_symbol(card.funds_pledged) %> out of <%= humanized_money_with_symbol(card.total_cost) %>   raised </p>
-    <p>Price per panel: <%= humanized_money_with_symbol(card.price) %></p>
-    <p>Yield: <%= card.yield * 100 %> % per year  </p>
+    <strong><p>Minimum investment: <%= humanized_money_with_symbol(card.price) %></p></strong>
+    <strong><p>Yield: <%= card.yield * 100 %> % per year  </p></strong>
   </div>
+  <div class="card-horizontal-line"></div>
   <div class="card-country-projects">
     <h2><%= card.status %></h2>
-    <h1><%= card.country %></h1>
+    <h1> <%= icon("fas", "globe-africa") %> <%= card.country %></h1>
   </div>
 <% end %>
