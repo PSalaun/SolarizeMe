@@ -32,5 +32,6 @@ class PaymentsController < ApplicationController
 
   def set_investments
     @investment = Investment.find(params[:investment_id])
+    authorize @investment
   end
 end

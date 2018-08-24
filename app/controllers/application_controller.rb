@@ -1,10 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_action :authenticate_user!
+  include Pundit
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :store_user_location!, if: :storable_location?
 
-   def configure_permitted_parameters
+  def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [ ])
 
@@ -16,7 +17,17 @@ class ApplicationController < ActionController::Base
     stored_location_for(resource_or_scope) || super
   end
 
+  after_action :verify_authorized, except: :index, unless: :skip_pundit?
+  after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
+
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to perform this action."
+    redirect_to(root_path)
+  end
+
   private
+
   # Its important that the location is NOT stored if:
   # - The request method is not GET (non idempotent)
   # - The request is handled by a Devise controller such as Devise::SessionsController as that could cause an
@@ -29,5 +40,9 @@ class ApplicationController < ActionController::Base
   def store_user_location!
     # :user is the scope we are authenticating
     store_location_for(:user, request.fullpath)
+  end
+
+  def skip_pundit?
+    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 end
