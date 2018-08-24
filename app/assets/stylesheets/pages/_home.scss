@@ -1,1 +1,57 @@
 // Specific CSS for your home-page
+@media only screen and (max-width: 600px) {
+#key-facts-home {
+}
+#key-facts-home h1, h5 {
+  color: white !important;
+  margin-top: 20px;
+}
+#key-facts-home h5 {
+  font-weight: lighter;
+}
+#key-facts-home  {
+  text-align: center;
+}
+.one-key-facts-home {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+// .one-key-facts-home-first {
+//   padding-left: 20px;
+// }
+
+.two-key-facts-home {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+// .two-key-facts-home-first{
+//     padding-left: 20px;
+// }
+
+.three-key-facts-home {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+// .three-key-facts-home-first {
+//   padding-left: 20px;
+// }
+
+  .buttons-home-beforefooter{
+    margin-bottom:20px;
+    display-inline: block;
+  }
+  .buttons-home-beforefooter > .btn-ancilliary{
+    padding: 10px 35px;
+  }
+  .cards-list > h2{
+    font-size: 36px;
+    color: white;
+    padding: 10px;
+  }
+}
