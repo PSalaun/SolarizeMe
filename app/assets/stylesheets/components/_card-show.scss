@@ -1,3 +1,9 @@
+.project-show-page-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .card-projects-show {
   height: auto;
   width: 340px;
@@ -43,6 +49,10 @@
   .card-financial-details-show {
     flex: 0 0 250px;
     padding-top: 20px;
+    h3 {
+      font-size: 17px;
+      // font-weight: bolder;
+    }
   }
 
   .card-country-projects-show {
@@ -55,11 +65,7 @@
   position: absolute;
   left: 10px;
   width: 150px;
-  h2 {
-    top: 10px;
-    font-size: 20px;
-    color: black;
-  }
+
   p {
     font-size: 14px;
     opacity: 0.7;

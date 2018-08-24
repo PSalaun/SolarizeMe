@@ -1,56 +1,62 @@
 
-  <div class="col-xs-12 col-sm-6 col-md-4" id="js-cards-list">
-    <div class="card-projects-show">
-      <%= cl_image_tag @project.photo, class: "card-project-image-show" %>
+<div class="project-show-page-card-container" id="js-cards-list">
+  <%= link_to "Back to the projects list", :back, class:"btn btn-goback" %>
+  <div class="card-projects-show">
+    <%= cl_image_tag @project.photo, class: "card-project-image-show" %>
 
-      <div class="card-header-projects-show text-left-show">
-        <div class="card-title-and-company-name-show">
-          <h1> <%= @project.name %> </h1>
-          <h3> <%= link_to "by #{@project.user.company_name}", user_path(@project.user) %> </h3>
-        </div>
-        <%= cl_image_tag @project.user.photo, class: "card-company-logo-show" %>
+    <div class="card-header-projects-show text-left-show">
+      <div class="card-title-and-company-name-show">
+        <h1> <%= @project.name %> </h1>
+        <h3> <%= link_to "by #{@project.user.company_name}", user_path(@project.user) %> </h3>
       </div>
-
-      <div class="card-financial-details-show text-left">
-        <h4> <%= @project.description %></h4>
-        <br>
-        <p> <strong>Project status:</strong> <%= @project.status %> </p>
-        <p> <strong>Comissioning date </strong>: <%= @project.comissioning_date %></p>
-        <br>
-        <p> <strong>Project power:</strong> <%= @project.kwc %> kWc</p>
-        <p> <strong>Panel type:</strong> <%= @project.panel_watt %> Watts</p>
-        <p> <strong>Price per panel:</strong> <%= humanized_money_with_symbol(@project.price) %></p>
-        <br>
-        <p> <strong>Yield: </strong><%= @project.yield * 100 %> % per year  </p>
-        <p><strong>Project duration:</strong> <%= @project.duration_months %> months </p>
-        <p><strong>Estimated ROI:</strong> <%= @project.roi_decimals / 100.0 %> % </p>
-        <br>
-      </div>
-
-
-        <progress  max="100" value="<%= @project.completion_rate %>"> <%= @project.completion_rate %> </progress>
-
-        <p> <%= humanized_money_with_symbol(@project.funds_pledged) %> out of <%= humanized_money_with_symbol(@project.total_cost) %>   raised </p>
-        <p> <%= @project.remaining_crowdfunding_days %> </p>
-
-        <% if @project.status == "Crowdfunding" %>
-          <%= link_to "Invest now", new_project_investment_path(@project), class: "btn btn-primary" %>
-        <% end %>
-
-
-      <h2> Detailed description </h2>
-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac erat auctor, dapibus mi ac, vulputate ipsum. Maecenas pulvinar vehicula nisl sed semper. Morbi luctus orci pulvinar nisi placerat convallis. Nullam rhoncus leo in mi bibendum, et malesuada sem porta. Quisque ut erat mollis, gravida arcu non, eleifend eros. Maecenas consectetur urna porttitor aliquet placerat. Donec quis velit non nisl suscipit commodo. Nulla facilisi. Nulla elit nisi, consectetur in orci nec, vehicula ultrices elit.
-      <br>
-      <br>
-      Proin ullamcorper est sapien, eget efficitur nisi posuere viverra. Nunc sed elementum ligula. Donec ipsum lectus, molestie ac efficitur ac, ornare id mauris. Cras auctor eros enim, vitae scelerisque elit posuere id. Praesent a augue non orci aliquam fringilla. Nunc sit amet dolor vel augue aliquam hendrerit ut sit amet augue. Mauris egestas erat ac tellus laoreet vehicula. Nullam mollis, lacus ut molestie ullamcorper, elit leo rutrum nulla, sit amet sollicitudin massa sapien id justo. In sagittis massa auctor ipsum dictum, quis molestie leo vestibulum. Praesent hendrerit, augue sed lobortis cursus, odio urna gravida lorem, quis vehicula sem eros quis risus.
-      <br>
-      <br>
-      Etiam nec lacus vel ante lobortis congue sed id mi. Curabitur at suscipit mi, at sodales purus. Phasellus auctor commodo elit, at lobortis odio pulvinar sed. Nulla eget mollis quam. Aliquam erat volutpat. Phasellus vehicula eros sollicitudin risus fermentum, posuere rhoncus nulla facilisis. Nulla id enim sed metus ultricies varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      <br>
-      <br>
-      Phasellus ornare justo ac nunc efficitur malesuada. Nullam imperdiet non tellus non laoreet. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras placerat augue urna, eu fringilla elit congue eu. Vestibulum ut velit laoreet, dapibus ipsum at, venenatis felis. Pellentesque id mauris hendrerit, vestibulum sapien eu, aliquam augue. In eleifend vel nunc eget iaculis. Praesent sit amet erat sed metus egestas laoreet id at tortor. Pellentesque ac libero sem. Etiam rutrum scelerisque ex et pulvinar.
+      <%= cl_image_tag @project.user.photo, class: "card-company-logo-show" %>
     </div>
+
+    <div class="card-financial-details-show text-left">
+      <h4> <%= @project.description %></h4>
+      <br>
+      <h3>Key technical indicators</h3>
+      <p> <strong>Panel type:</strong> <%= @project.panel_watt %> Watts</p>
+      <p> <strong>Price per panel:</strong> <%= humanized_money_with_symbol(@project.price) %></p>
+      <p> <strong>Project power:</strong> <%= @project.kwc %> kWc</p>
+      <p> <strong>Project size: </strong><%= @project.panels_quantity %> panels</p>
+      <p> <strong>Still available: </strong><%= @project.available_panels %> panels </p>
+      <p> <strong>Comissioning date </strong>: <%= @project.comissioning_date %></p>
+      <br>
+      <br>
+      <h3>Key financial indicators</h3>
+      <p> <strong>Project status:</strong> <%= @project.status %> </p>
+      <p> <strong>Yield: </strong><%= @project.yield * 100 %> % per year  </p>
+      <p><strong>Project duration:</strong> <%= @project.duration_months %> months </p>
+      <p><strong>Estimated ROI:</strong> <%= @project.roi_decimals / 100.0 %> % </p>
+      <br>
+      <progress  max="100" value="<%= @project.completion_rate %>"> <%= @project.completion_rate %> </progress>
+      <br>
+      <p> <%= humanized_money_with_symbol(@project.funds_pledged) %> out of <%= humanized_money_with_symbol(@project.total_cost) %>   raised </p>
+      <p> <%= @project.remaining_crowdfunding_days %> </p>
+      <% if @project.status == "Crowdfunding" %>
+        <%= link_to "Invest now", new_project_investment_path(@project), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+
+
+
+
+
+    <h2> Detailed description </h2>
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac erat auctor, dapibus mi ac, vulputate ipsum. Maecenas pulvinar vehicula nisl sed semper. Morbi luctus orci pulvinar nisi placerat convallis. Nullam rhoncus leo in mi bibendum, et malesuada sem porta. Quisque ut erat mollis, gravida arcu non, eleifend eros. Maecenas consectetur urna porttitor aliquet placerat. Donec quis velit non nisl suscipit commodo. Nulla facilisi. Nulla elit nisi, consectetur in orci nec, vehicula ultrices elit.
+    <br>
+    <br>
+    Proin ullamcorper est sapien, eget efficitur nisi posuere viverra. Nunc sed elementum ligula. Donec ipsum lectus, molestie ac efficitur ac, ornare id mauris. Cras auctor eros enim, vitae scelerisque elit posuere id. Praesent a augue non orci aliquam fringilla. Nunc sit amet dolor vel augue aliquam hendrerit ut sit amet augue. Mauris egestas erat ac tellus laoreet vehicula. Nullam mollis, lacus ut molestie ullamcorper, elit leo rutrum nulla, sit amet sollicitudin massa sapien id justo. In sagittis massa auctor ipsum dictum, quis molestie leo vestibulum. Praesent hendrerit, augue sed lobortis cursus, odio urna gravida lorem, quis vehicula sem eros quis risus.
+    <br>
+    <br>
+    Etiam nec lacus vel ante lobortis congue sed id mi. Curabitur at suscipit mi, at sodales purus. Phasellus auctor commodo elit, at lobortis odio pulvinar sed. Nulla eget mollis quam. Aliquam erat volutpat. Phasellus vehicula eros sollicitudin risus fermentum, posuere rhoncus nulla facilisis. Nulla id enim sed metus ultricies varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <br>
+    <br>
+    Phasellus ornare justo ac nunc efficitur malesuada. Nullam imperdiet non tellus non laoreet. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras placerat augue urna, eu fringilla elit congue eu. Vestibulum ut velit laoreet, dapibus ipsum at, venenatis felis. Pellentesque id mauris hendrerit, vestibulum sapien eu, aliquam augue. In eleifend vel nunc eget iaculis. Praesent sit amet erat sed metus egestas laoreet id at tortor. Pellentesque ac libero sem. Etiam rutrum scelerisque ex et pulvinar.
   </div>
+    <%= link_to "Back to the projects list", :back, class:"btn btn-goback" %>
+</div>
 
 
