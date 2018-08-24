@@ -14,7 +14,7 @@ function hideNavbarOnHomeTop() {
 
 function navbarSolidColorOnCards() {
   const scrollPos = $(document).scrollTop();
-  const cardsListPosition = $('#cards-list').offset().top;
+  const cardsListPosition = $('#js-cards-list').offset().top;
   if (scrollPos > cardsListPosition) {
     navbar.classList.toggle("navbar-dark-background", true);
   } else {
@@ -28,8 +28,7 @@ if (window.location.pathname === "/") {
   window.onscroll = function() {scrollNavbar()};
 }
 
-if (document.getElementById("cards-list")) {
+if (document.getElementById("js-cards-list")) {
   window.onscroll = function() {navbarSolidColorOnCards()};
 }
 
-// debugger;
