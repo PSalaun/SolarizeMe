@@ -11,13 +11,18 @@
 
 
   <div class="card-financial-details text-left">
+    <div class="card__completion-rate-text">
+      <strong><%= number_to_percentage(card.completion_rate, precision: 0)%></strong> funded - <strong><%= card.days_to_completion %></strong> days remaining
+
+      </div>
     <progress  max="100" value="<%= card.completion_rate %>"> <%= card.completion_rate %> </progress>
     <p> <%= humanized_money_with_symbol(card.funds_pledged) %> out of <%= humanized_money_with_symbol(card.total_cost) %>   raised </p>
-    <p>Price per panel: <%= humanized_money_with_symbol(card.price) %></p>
-    <p>Yield: <%= card.yield * 100 %> % per year  </p>
+    <strong><p>Minimum investment: <%= humanized_money_with_symbol(card.price) %></p></strong>
+    <strong><p>Yield: <%= card.yield * 100 %> % per year  </p></strong>
   </div>
+  <div class="card-horizontal-line"></div>
   <div class="card-country-projects">
     <h2><%= card.status %></h2>
-    <h1><%= card.country %></h1>
+    <h1> <%= icon("fas", "globe-africa") %> <%= card.country %></h1>
   </div>
 <% end %>
