@@ -1,15 +1,21 @@
-<div class="container confirmation-container">
+<div class="container investment-container" id="js-cards-list">
 
-  <!-- <h5>You are buying: </h5>
-  <h5 class="number-panels-confirmation"> <strong> <%= @investment.number_of_panels %> </strong> panels </h5> -->
-  <!-- <p>Price per panel: <%= humanized_money_with_symbol(@investment.project.price) %></p>
-  <p>Income per year <%= @investment.income_per_year %></p> -->
+  <strong>  <h4>Confirmation page: </h4> </strong>
+  <p> <strong> Project:</strong>  <%= @investment.project.name %></p>
+  <br>
+  <p> Your are purchasing  <strong><%= @investment.number_of_panels %> panels </strong></p>
+  <p> Price per panel:  <strong><%= humanized_money_with_symbol(@investment.project.price) %></strong></p>
+  <p>___________</p>
+  <p> <strong>Total amount due: <%= humanized_money_with_symbol(@investment.amount) %> </strong></p>
+  <br>
+  <br>
+  <p>Income per year: ~<strong><%= humanized_money_with_symbol(@investment.income_per_year) %></strong></p>
+  <p>Project duration: <strong><%= @investment.project.duration_months / 12 %> years </strong></p>
+  <p>___________</p>
+  <p><strong>Lifetime income: ~<%= humanized_money_with_symbol(@investment.total_gains) %> </strong></p>
+  <br>
+
   <%= form_tag project_investment_payments_path(@investment) do %>
-    <article>
-      <label class="amount">
-        <span>Total amount due: <br> <%= humanized_money_with_symbol(@investment.amount) %></span>
-      </label>
-    </article>
 
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
       data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
@@ -18,10 +24,8 @@
       data-description="Project <%= @investment.project.name %>"
       data-amount="<%= @investment.amount_cents %>"
       data-currency="<%= @investment.amount.currency %>"></script>
-
   <% end %>
   <br>
-    <div class="button-go-back-confirm"> <%= link_to 'Back', :back, class: "btn btn-goback" %>
-    </div>
+  <%= link_to 'Back', :back, class: "btn btn-goback" %>
 </div>
 
