@@ -44,6 +44,7 @@ User.create(
   birth_date: nil,
   is_company: true,
   company_name: "Coca-Cola",
+  company_description: "The Coca-Cola Company is an American corporation, and manufacturer, retailer, and marketer of nonalcoholic beverage concentrates and syrups.[2] The company is best known for its flagship product Coca-Cola, invented in 1886 by pharmacist John Stith Pemberton in Atlanta, Georgia.",
   remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535108918/akhcxlnmwrt9fqyiultg.jpg"
   )
 
@@ -56,6 +57,7 @@ User.create(
   birth_date: nil,
   is_company: true,
   company_name: "Nike",
+  company_description: "Nike, Inc. is an American multinational corporation that is engaged in the design, development, manufacturing, and worldwide marketing and sales of footwear, apparel, equipment, accessories, and services. The company is headquartered near Beaverton, Oregon, in the Portland metropolitan area.",
   remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535109018/vnijnbdtozqinposnkap.jpg"
   )
 
@@ -68,6 +70,7 @@ puts "generating projects"
 future_campaign = Project.new(
   name: "Rome HQ",
   description: "Excelent location with very reliable company!",
+  long_description: "",
   price_cents: 40000,
   panel_watt: 270,
   lat: 52,
@@ -89,6 +92,7 @@ future_campaign.save!
 future_campaign = Project.new(
   name: "Vienna HQ",
   description: "Excelent location with very reliable company!",
+  long_description: "Nike trusts us for another project, this time in Austria. The minimum investment and the yield are similar as their Italian HQ project. Though Vienna does not have as many sun as Roma, the government provides financial incentives for solar energy.\nVienna is located in northeastern Austria, at the easternmost extension of the Alps in the Vienna Basin. The earliest settlement, at the location of today's inner city, was south of the meandering Danube while the city now spans both sides of the river. Elevation ranges from 151 to 542 m (495 to 1,778 ft). The city has a total area of 414.65 square kilometres (160.1 sq mi), making it the largest city in Austria by area.\nVienna has a humid continental climate bordering a humid subtropical climate (hovering just below 22 °C in July and August), and features, according to the Köppen classification, a Cfb (oceanic) -climate. The city has relatively warm summers, however with periodical precipitations that can reach its most in June and July and average high temperatures of 21 to 27 °C, with a record maximum exceeding 38 °C and a record low of around 7 °C. Winters are relatively dry and very cold with average temperatures at about freezing point.",
   price_cents: 35000,
   panel_watt: 270,
   lat: 52,
@@ -174,6 +178,7 @@ running_Nike.save!
 current_campaign = Project.new(
   name: "Rome Factory",
   description: "Excelent location with very reliable company!",
+  long_description: "This brand new project on the top of the Italian factory of Coca-Cola is an amazing opportunity.\nWith a maximum of 11 hours of sun per day in average during the summer, Rome is a very profitable location for solar energy.\nThis project will generate an incredible yield of 18,2\% per year, which means that the break-even is reached in less than 6 years. Nike is committed to buy the energy produced during 20 years, so you are guaranteed a steady flow of incomes.\nSunshine duration in Rome is about 2,500 hours per year, from 111 – average 3.6 hours of sunshine per day in December to 332 – average 10.7 hours of sunshine per day in July. This is the middling value for the southern half of Europe because in this part of the continent, sunshine duration varies from about 2,000 to about 3,000 hours per year. However, this is 60% larger value than in northern half of Europe, where sunshine duration is around 1500 hours per year. In winter Rome has about three times more sun duration than in the northern half of Europe.",
   price_cents: 25000,
   panel_watt: 270,
   lat: 52,
