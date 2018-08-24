@@ -17,7 +17,7 @@ class Project < ApplicationRecord
   monetize :kwh_price_cents
 
   def days_to_completion
-    (end_date - Date.today).to_i
+    (crowdfunding_end_date - Date.today).to_i
   end
 
   def completion_rate
