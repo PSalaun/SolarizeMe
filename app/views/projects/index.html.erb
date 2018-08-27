@@ -1,17 +1,39 @@
 <div class="wrapper-projects">
-  <div class="container-fluid text-center">
-    <div class="page-header">
+  <div class="container">
+    <div class="page-header text-center">
       <h1>Our Projects</h1>
     </div>
-    <div id="filter-projects">
-      <%= form_tag projects_path, method: "get" do  %>
-        <%= select_tag "query", options_for_select(Project.pluck(:country).uniq), class: "dropdown-filter", include_blank: true %> <br>
-        <%= submit_tag "Filter", class: "btn-filter" %>
-        <%= link_to "Reset", projects_path, class:"btn-reset-f" %>
-      <% end %>
+    <div class="projects-filter-panel">
+      <h2>Filters</h2>
+      <div class="filter-location-panel">
+        <div class="filter-panel-header">
+          <p>Choose location</p>
+        </div>
+        <div class="location-form">
+          <%= simple_form_for projects_path, method: "get" do  %>
+            <%= select_tag "query", options_for_select(Project.pluck(:country).uniq), class: "dropdown-filter", include_blank: true %>
+            <%= check_box_tag 'Future crowdfunding' %>
+            <%= submit_tag "Filter", class: "btn-filter" %>
+            <%= link_to "Reset", projects_path, class:"btn-reset-f" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="filter-category-panel">
+        <div class="filter-panel-header">
+          <p>Category</p>
+        </div>
+        <ul class="category-form">
+          <li class="category-filter-btn btn-ancilliary">Active crowdfunding</li>
+          <li class="category-filter-btn btn-ancilliary">Future crowdfunding</li>
+          <li class="category-filter-btn btn-ancilliary">Running project</li>
+          <li class="btn-reset-f">Reset</li>
+        </ul>
+      </div>
     </div>
-    <div class="cards-list" id="js-cards-list">
-      <%= render partial: 'shared/card', collection: @projects %>
+    <div class="cards-wrapper">
+      <div class="cards-list" id="js-cards-list">
+        <%= render partial: 'shared/card', collection: @projects %>
+      </div>
     </div>
   </div>
 </div>

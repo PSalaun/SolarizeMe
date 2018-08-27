@@ -4,17 +4,49 @@
   }
 }
 
-#filter-projects {
+.projects-filter-panel {
   margin: 20px;
+
+  .filter-location-panel {
+    display: flex;
+    align-items: center;
+
+    .filter-panel-header {
+      flex: 0 0 150px;
+      color: white;
+    }
+   .dropdown-filter {
+      width: 188px;
+      margin: 0px 10px;
+    }
+  }
+
+  .filter-category-panel {
+    display: flex;
+    align-items: center;
+
+    ul.category-form {
+      margin: 0px;
+      padding: 0px;
+      display: flex;
+      align-items: center;
+      list-style-type: none;
+    }
+  }
+    .filter-panel-header {
+    flex: 0 0 150px;
+    color: white;
+  }
 }
 
-.dropdown-filter {
-  width: 242px;
-  margin: 20px;
-}
+
 
 .cards-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+}
+
+.cards-wrapper {
+  display: flex;
+  justify-content: center;
 }
