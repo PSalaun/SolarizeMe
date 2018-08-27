@@ -22,12 +22,12 @@
         <li class="list-group-item" >Forecasted remaining gains: <%= humanized_money_with_symbol(investment.remaining_gains) %></li>
         <li class="list-group-item" >Total potential gains: <%= humanized_money_with_symbol(investment.total_gains) %></li>
         <li class="list-group-item" >Profits: <%= humanized_money_with_symbol(investment.profits) %></li>
-        <li class="list-group-item" >Last month production: <%= humanized_money_with_symbol(investment.last_month_gain) %></li>
+        <li class="list-group-item" >Last month gain: <%= humanized_money_with_symbol(investment.last_month_gain) %> </li>
         <br>
-        <h2>Production per month</h2>
+        <h2>Production today</h2>
 
         <%= javascript_pack_tag "init_charts" %>
-        <%= bar_chart investment.project.outputs.group_by_month(:date, format: "%b %Y").sum(:quantity) %>
+        <%= line_chart investment.project.outputs.group_by_hour(:detailedtime, format: "%-l %P").average(:production) %>
 
         <br>
       <% end %>
