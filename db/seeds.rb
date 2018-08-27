@@ -245,7 +245,7 @@ days = 0
   output = Output.new ()
   madrid = Project.where(name: "Rome Factory").first
   output.project = madrid
-  output.quantity = madrid.panel_watt / 1000 * madrid.panels_quantity  * 5 * rand(1000) / 500
+  output.quantity = madrid.panel_watt * madrid.panels_quantity  * 5 * rand(1000) / 500 / 1000
   output.date = Date.today - days
   days += 1
   output.save!
@@ -256,7 +256,7 @@ days = 0
   output = Output.new ()
   madrid = Project.where(name: "Paris Offices").first
   output.project = madrid
-  output.quantity = madrid.panel_watt / 1000 * madrid.panels_quantity  * 5 * rand(1000) / 500
+  output.quantity = madrid.panel_watt * madrid.panels_quantity  * 5 * rand(1000) / 500 /1000
   output.date = Date.today - days
   days += 1
   output.save!
