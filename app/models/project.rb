@@ -18,6 +18,9 @@ class Project < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   def days_to_completion
     (crowdfunding_end_date - Date.today).to_i
   end
