@@ -1,5 +1,5 @@
-<div class="home_banner_wrapper">
-  <div class="container-fluid">
+<div class="container-fluid">
+  <div class="home_banner_wrapper">
     <section class="home_banner">
       <div class="container home_banner_content">
         <h1>Solarize
@@ -10,40 +10,50 @@
       </div>
     </section>
 
-    <section class="container" id="key-facts-home">
-      <h1>About the service</h1>
-
-      <div class="key-fact-home">
-        <div class="key-fact-logo">
-          <%= image_tag "002-credit-card.svg", size: "100" %>
-        </div>
-        <div class="key-fact-content">
-          <h3> You buy a solar panel on a company's roof, for a sustainable, green and scalable investment</h3>
-        </div>
+    <section id="key-facts-home">
+      <div class="home-section-header">
+        <h1>About the service</h1>
       </div>
+      <div class="home-section-content">
+        <div class="key-fact-home">
+          <div class="key-fact-logo">
+            <%= image_tag "002-credit-card.svg", size: "100" %>
+          </div>
+          <div class="key-fact-content">
+            <h3> You buy a solar panel on a company's roof, for a sustainable, green and scalable investment</h3>
+          </div>
+        </div>
 
-      <div class="key-fact-home">
-        <div class="key-fact-logo">
-          <%= image_tag "008-tools.svg", size: "100" %>
+        <div class="key-fact-home">
+          <div class="key-fact-logo">
+            <%= image_tag "008-tools.svg", size: "100" %>
+          </div>
+          <div class="key-fact-content">
+            <h3> We install and maintain the solar panel throughout all its life cycle </h3>
+          </div>
         </div>
-        <div class="key-fact-content">
-          <h3> We install and maintain the solar panel throughout all its life cycle </h3>
-        </div>
-      </div>
 
-      <div class="key-fact-home">
-        <div class="key-fact-logo">
-          <%= image_tag "001-yield.svg", size: "100" %>
-        </div>
-        <div class="key-fact-content">
-          <h3> The company pays you each year for the electricity you are generating!</h3>
+        <div class="key-fact-home">
+          <div class="key-fact-logo">
+            <%= image_tag "001-yield.svg", size: "100" %>
+          </div>
+          <div class="key-fact-content">
+            <h3> The company pays you each year for the electricity you are generating!</h3>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="container text-center buttons-home-beforefooter">
-      <%= link_to "Start investing now", projects_path, class: "btn-main-green" %>
-      <%= link_to "Learn more", learn_more_path, class: "btn-ancilliary" %>
+    <section>
+      <div class="home-call-to-action-section">
+        <div class="home-section-header">
+          <h1>Explore our service</h1>
+        </div>
+        <div class="home-section-content">
+          <%= link_to "Start investing now", projects_path, class: "btn-main-green" %>
+          <%= link_to "Learn more", learn_more_path, class: "btn-ancilliary" %>
+        </div>
+      </div>
     </section>
   </div>
 </div>

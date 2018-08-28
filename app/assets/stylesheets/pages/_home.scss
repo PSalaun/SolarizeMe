@@ -1,91 +1,66 @@
 // Specific CSS for your home-page
+.container-fluid {
+  padding: 0px;
+}
+
 #key-facts-home {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-
-  > h1 {
-    align-self:center;
-  }
-}
-
-.key-fact-home {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-
-  .key-fact-logo {
-    flex: 1 1 20%;
-    min-width: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .key-fact-content {
-    flex: 1 1 80%;
-    display: flex;
-    align-items: center;
-    h5 {
-      margin: 0px;
-    }
-  }
-}
-
-#key-facts-home {
+  align-items: center;
   color: white;
   h3 {
     font-size: 150%;
   }
-}
 
-.one-key-facts-home {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
-}
-// .one-key-facts-home-first {
-//   padding-left: 20px;
-// }
-
-.two-key-facts-home {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
-}
-// .two-key-facts-home-first{
-//     padding-left: 20px;
-// }
-
-.three-key-facts-home {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
-}
-// .three-key-facts-home-first {
-//   padding-left: 20px;
-// }
-
-  .buttons-home-beforefooter{
-    min-height: 100vh;
-    margin-bottom:20px;
+  .key-fact-home {
     display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .buttons-home-beforefooter > .btn-ancilliary{
-    padding: 10px 35px;
-  }
-  .cards-list > h2{
-    font-size: 36px;
-    color: white;
-    padding: 10px;
-  }
-  .cards-list {
-    text-align: center;
-  }
+    flex-wrap: wrap;
+    width: 80%;
 
+    .key-fact-logo {
+      flex: 1 1 20%;
+      min-width: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .key-fact-content {
+      flex: 1 1 80%;
+      display: flex;
+      align-items: center;
+      h5 {
+        margin: 0px;
+      }
+    }
+  }
+}
+
+.home-section-header {
+  flex: 0 0 20%;
+  display: flex;
+  align-items: center;
+}
+
+.home-section-content {
+  flex: 0 0 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.home-call-to-action-section {
+  height: 95vh !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+
+  .home-section-content {
+    justify-content: center;
+  }
+}
