@@ -73,7 +73,7 @@ future_campaign = Project.new(
   price_cents: 40000,
   panel_watt: 270,
   lat: 52,
-  lon: 25,
+  lon: 12,
   kwh_price_cents: 25,
   yield: 0.182,
   roi_decimals: 712,
@@ -95,7 +95,7 @@ future_campaign = Project.new(
   price_cents: 35000,
   panel_watt: 270,
   lat: 52,
-  lon: 25,
+  lon: 12,
   kwh_price_cents: 25,
   yield: 0.182,
   roi_decimals: 712,
@@ -116,7 +116,7 @@ running_coca = Project.new(
   price_cents: 32000,
   panel_watt: 320,
   lat: 52,
-  lon: 25,
+  lon: 12,
   kwh_price_cents: 22,
   yield: 0.162,
   roi_decimals: 612,
@@ -137,7 +137,7 @@ running_coca = Project.new(
   price_cents: 27000,
   panel_watt: 320,
   lat: 52,
-  lon: 25,
+  lon: 12,
   kwh_price_cents: 22,
   yield: 0.162,
   roi_decimals: 612,
@@ -159,7 +159,7 @@ running_Nike = Project.new(
   price_cents: 50000,
   panel_watt: 400,
   lat: 52,
-  lon: 25,
+  lon: 12,
   kwh_price_cents: 27,
   yield: 0.142,
   roi_decimals: 512,
@@ -181,7 +181,7 @@ current_campaign = Project.new(
   price_cents: 25000,
   panel_watt: 270,
   lat: 52,
-  lon: 25,
+  lon: 12,
   kwh_price_cents: 21,
   yield: 0.151,
   roi_decimals: 412,
@@ -236,16 +236,25 @@ investment.project = Project.where(name: "Madrid HQ").first
 investment.amount_cents = investment.number_of_panels * investment.project.price_cents
 investment.save!
 
+investment = Investment.new(
+  number_of_panels: 100,
+  state: "confirmed"
+  )
+investment.user = User.where(email: "admin@admin.com").first
+investment.project = Project.where(name: "Paris Offices").first
+investment.amount_cents = investment.number_of_panels * investment.project.price_cents
+investment.save!
+
 puts "created #{Investment.count} investments"
 
 puts "generating random outputs"
 
 days = 0
-1200.times do
+1300.times do
   output = Output.new ()
   madrid = Project.where(name: "Rome Factory").first
   output.project = madrid
-  output.quantity = madrid.panel_watt / 1000 * madrid.panels_quantity  * 5 * rand(1000) / 500
+  output.quantity = madrid.panel_watt * madrid.panels_quantity  * 5 * rand(1000) / 500 / 1000
   output.date = Date.today - days
   days += 1
   output.save!
@@ -256,10 +265,62 @@ days = 0
   output = Output.new ()
   madrid = Project.where(name: "Paris Offices").first
   output.project = madrid
-  output.quantity = madrid.panel_watt / 1000 * madrid.panels_quantity  * 5 * rand(1000) / 500
+  output.quantity = madrid.panel_watt * madrid.panels_quantity  * 5 * rand(1000) / 500 /1000
   output.date = Date.today - days
   days += 1
   output.save!
+end
+
+# on API format to test how to only extract Todays values and not tomorrows
+production_hash = {"2018-08-27 06:09:00" => 0,
+     "2018-08-27 06:27:00" => 11.34,
+     "2018-08-27 06:45:00" => 90.72,
+     "2018-08-27 07:00:00" => 158.76,
+     "2018-08-27 08:00:00" => 612.36,
+     "2018-08-27 09:00:00" => 1298.43,
+     "2018-08-27 10:00:00" => 1978.83,
+     "2018-08-27 11:00:00" => 2511.81,
+     "2018-08-27 12:00:00" => 2823.66,
+     "2018-08-27 13:00:00" => 2109.24,
+     "2018-08-27 14:00:00" => 1638.63,
+     "2018-08-27 15:00:00" => 1428.84,
+     "2018-08-27 16:00:00" => 1116.99,
+     "2018-08-27 17:00:00" => 759.78,
+     "2018-08-27 18:00:00" => 402.57,
+     "2018-08-27 19:00:00" => 124.74,
+     "2018-08-27 19:38:00" => 17.01,
+     "2018-08-27 20:16:00" => 0,
+     "2018-08-28 06:10:00" => 0,
+     "2018-08-28 06:28:00" => 11.34,
+     "2018-08-28 06:45:00" => 79.38,
+     "2018-08-28 07:00:00" => 141.75,
+     "2018-08-28 08:00:00" => 555.66,
+     "2018-08-28 09:00:00" => 1224.72,
+     "2018-08-28 10:00:00" => 1956.15,
+     "2018-08-28 11:00:00" => 2596.86,
+     "2018-08-28 12:00:00" => 3056.13,
+     "2018-08-28 13:00:00" => 3203.55,
+     "2018-08-28 14:00:00" => 3010.77,
+     "2018-08-28 15:00:00" => 2562.84,
+     "2018-08-28 16:00:00" => 1905.12,
+     "2018-08-28 17:00:00" => 1190.7,
+     "2018-08-28 18:00:00" => 555.66,
+     "2018-08-28 19:00:00" => 136.08,
+     "2018-08-28 19:37:00" => 17.01,
+     "2018-08-28 20:14:00" => 0}
+
+production_hash.each do |key, value|
+  output = Output.new ()
+  city = Project.where(name: "Paris Offices").first
+  output.project = city
+  output.detailedtime = DateTime.parse(key)
+  output.date = DateTime.parse(key).to_date
+  output.production = value
+  # output.quantity = 1000
+
+  if output.date == Date.today
+    output.save!
+  end
 end
 
 puts "generated #{Output.count} outputs"

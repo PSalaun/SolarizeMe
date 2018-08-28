@@ -4,4 +4,6 @@ window.Chartkick = Chartkick;
 import Highcharts from "highcharts";
 Chartkick.addAdapter(Highcharts);
 import "navbar";
-import "scroll";
+import "output";
+import "filter";
+import "onepagescroll"

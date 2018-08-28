@@ -15,6 +15,7 @@
   </head>
 
   <body>
+    <div class="fullpage">
     <div class="page-container">
       <%= render 'shared/navbar' %>
       <div class="yielded-content">
@@ -23,7 +24,7 @@
       </div>
       <%= render "shared/footer" %>
     </div>
-
+    </div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <%= yield :after_js %>
