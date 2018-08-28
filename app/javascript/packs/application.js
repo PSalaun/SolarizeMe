@@ -5,4 +5,3 @@ import Highcharts from "highcharts";
 Chartkick.addAdapter(Highcharts);
 import "navbar";
 import "filter";
-import "map";
