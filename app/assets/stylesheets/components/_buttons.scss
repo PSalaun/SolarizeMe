@@ -73,17 +73,17 @@
   }
 }
 
-.btn-reset-f {
+a.btn-reset-f {
   display: inline-block;
   height: 42px;
   width: 120px;
-  background-color: #EE5F5B;
   padding: 10px 20px;
   font-weight: bolder;
   border-radius: 5px;
-  border: solid #EE5F5B 1px;
   color: white;
+  text-decoration: none;
   &:hover {
+    color: white;
     opacity: 0.7;
   }
 }

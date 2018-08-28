@@ -6,3 +6,4 @@ Chartkick.addAdapter(Highcharts);
 import "onepagescroll";
 import "navbar";
 import "output";
+import "filter";
