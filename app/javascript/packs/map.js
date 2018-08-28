@@ -1,5 +1,4 @@
 import GMaps from 'gmaps/gmaps.js';
-import { autocomplete } from '../components/autocomplete';
 
 const mapElement = document.getElementById('map');
 if (mapElement) {
@@ -17,6 +16,5 @@ if (mapElement) {
 }
 
 
-autocomplete();
 
 
