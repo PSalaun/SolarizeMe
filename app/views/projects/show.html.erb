@@ -1,54 +1,89 @@
 
-<div class="project-show-page-card-container" id="js-cards-list">
-  <%= link_to "Back to the projects list", :back, class:"btn btn-goback" %>
-  <div class="card-projects-show">
-    <%= cl_image_tag @project.photo, class: "card-project-image-show" %>
 
-    <div class="card-header-projects-show text-left-show">
-      <div class="card-title-and-company-name-show">
-        <h1> <%= @project.name %> </h1>
-        <h3> <%= link_to "by #{@project.user.company_name}", user_path(@project.user) %> </h3>
+<div class="container">
+  <div class="wrapper-one-lightblue">
+  <div class="button-begin-showpage">
+    <%= link_to "Back to the projects list", :back, class:"btn btn-goback" %>
+  </div>
+    <div class="project-show-page-card-container" id="js-cards-list">
+
+      <div class="card-projects-show show-flex-one">
+        <%= cl_image_tag @project.photo, class: "card-project-image-show" %>
+        <br>
+        <div class="card-header-projects-show text-left-show">
+          <div class="card-title-and-company-name-show">
+            <h1> <%= @project.name %> </h1>
+            <h3> <%= link_to "by #{@project.user.company_name}", user_path(@project.user) %> </h3>
+          </div>
+          <%= cl_image_tag @project.user.photo, class: "card-company-logo-show" %>
+        </div>
+        <h4> <%= @project.description %></h4>
+        <br>
+        <p> <strong>Project status:</strong> <%= @project.status %> </p>
+        <br>
+
+
+        <br>
       </div>
-      <%= cl_image_tag @project.user.photo, class: "card-company-logo-show" %>
-    </div>
 
-    <div class="card-financial-details-show text-left">
-      <h4> <%= @project.description %></h4>
-      <br>
-      <h3>Crowdfunding status</h3>
-      <div class="card-financial-details-show-center">
-        <% if @project.status == "Active crowdfunding" %>
+      <div class="card-projects-show show-flex-two">
+        <h3>Key financial indicators</h3>
+        <div class="financial-indicators-show">
+          <p> <strong>Yield: </strong><%= @project.yield * 100 %> % per year  </p>
+          <p><strong>Project duration:</strong> <%= @project.duration_months %> months </p>
+          <p><strong>Estimated ROI:</strong> <%= @project.roi_decimals / 100.0 %> % </p>
+          <br>
+        </div>
+        <div class="technical-indicators-show">
+          <h3>Key technical indicators</h3>
+          <p> <strong>Panel type:</strong> <%= @project.panel_watt %> Watts</p>
+          <p> <strong>Price per panel:</strong> <%= humanized_money_with_symbol(@project.price) %></p>
+          <p> <strong>Project power:</strong> <%= @project.kwc %> kWc</p>
+        </div>
+      </div>
+
+      <div class="card-projects-show show-flex-three">
+        <div class="card-financial-details-show text-left">
+         <br>
+         <p> <strong>Project size: </strong><%= @project.panels_quantity %> panels</p>
+         <p> <strong>Still available: </strong><%= @project.available_panels %> panels </p>
+         <p> <strong>Comissioning date </strong>: <%= @project.comissioning_date %></p>
+         <br>
+                 <div class="card-financial-details-show-center">
+          <h3>Crowdfunding status</h3>
+          <% if @project.status == "Active crowdfunding" %>
           <progress  max="100" value="<%= @project.completion_rate %>"> <%= @project.completion_rate %> </progress>
           <br>
           <p> <strong><%= humanized_money_with_symbol(@project.funds_pledged) %> </strong>out of <strong><%= humanized_money_with_symbol(@project.total_cost) %> </strong>  raised ! </p>
           <br>
           <%= link_to "Invest now", new_project_investment_path(@project), class: "btn btn-success" %>
-        <% end %>
-      <p> <strong> <%= @project.remaining_crowdfunding_days %>!</strong></p>
-      </div>
-      <br>
-      <h3>Key technical indicators</h3>
-      <p> <strong>Panel type:</strong> <%= @project.panel_watt %> Watts</p>
-      <p> <strong>Price per panel:</strong> <%= humanized_money_with_symbol(@project.price) %></p>
-      <p> <strong>Project power:</strong> <%= @project.kwc %> kWc</p>
-      <p> <strong>Project size: </strong><%= @project.panels_quantity %> panels</p>
-      <p> <strong>Still available: </strong><%= @project.available_panels %> panels </p>
-      <p> <strong>Comissioning date </strong>: <%= @project.comissioning_date %></p>
-      <br>
-      <br>
-      <h3>Key financial indicators</h3>
-      <p> <strong>Project status:</strong> <%= @project.status %> </p>
-      <p> <strong>Yield: </strong><%= @project.yield * 100 %> % per year  </p>
-      <p><strong>Project duration:</strong> <%= @project.duration_months %> months </p>
-      <p><strong>Estimated ROI:</strong> <%= @project.roi_decimals / 100.0 %> % </p>
-      <br>
+          <% end %>
+          <p> <strong> <%= @project.remaining_crowdfunding_days %>!</strong></p>
+        </div>
+         <br>
+       </div>
+     </div>
 
 
-      <h3> Detailed description </h3>
-      <%= @project.long_description %>
-    </div>
+
+
+
+   </div>
   </div>
-  <%= link_to "Back to the projects list", :back, class:"btn btn-goback" %>
 </div>
 
+<div class="container">
+<div class="wrapper-two-grey">
+  <div class="project-detailed-description-show">
+    <h3> Detailed description </h3>
+    <%= @project.long_description %>
+  </div>
+  <div class="map-showpage">
+    <%= cl_image_tag @project.photo %>
+  </div>
 
+</div>
+<div class="button-back-showpage">
+<%= link_to "Back to the projects list", :back, class:"btn btn-goback" %>
+</div>
+</div>
