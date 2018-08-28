@@ -37,9 +37,9 @@ class Project < ApplicationRecord
 
   def status
     if Date.today - crowdfunding_start_date < 0
-      return "Starting soon!"
+      return "Future crowdfunding"
     elsif Date.today - crowdfunding_end_date < 0
-      return "Crowdfunding"
+      return "Active crowdfunding"
     elsif Date.today - comissioning_date < 0
       return "Under construction"
     else
