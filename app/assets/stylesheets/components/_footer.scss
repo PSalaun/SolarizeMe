@@ -4,24 +4,22 @@
   background: none;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 0px 10px;
   color: white;
   z-index: 19999;
   width: 100vw;
+  a {
+    color: white;
+    text-decoration: none;
+    padding: 0px 5px;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  > * {
+    margin: 0px 5px;
+  }
 }
 
-.footer-links {
-  display: flex;
-  align-items: center;
-}
 
-.footer-links a {
-  color: white;
-  text-decoration: none;
-  padding: 0px 5px;
-}
-
-.footer-links a:hover {
-  opacity: 1;
-}
