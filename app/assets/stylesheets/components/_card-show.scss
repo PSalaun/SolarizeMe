@@ -1,11 +1,12 @@
 .project-show-page-card-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .card-projects-show {
   height: auto;
-  width: 340px;
+  width: 400px;
   color: $text-dark;
   border: solid $light-gray 1px;
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07);
@@ -22,6 +23,13 @@
 .card-project-image-show {
   flex: 0 0 230px;
   width: 320px;
+}
+.technical-indicators-show{
+  margin-top: 100px;
+}
+
+.crowfunding-status-show{
+  margin: 60px 0 60px 0;
 }
 
 .wrapper-two-grey {
@@ -44,7 +52,45 @@
 .button-back-showpage{
   margin-top: 30px;
 }
-
+.show-flex-one, .show-flex-two, .show-flex-three {
+  height: 500px;
+}
+.show-flex-two{
+  h3{
+    font-size: 26px;
+    padding: 3px;
+  }
+  p{
+   font-size: 14px;
+    padding: 10px;
+  }
+  height: auto;
+  width: 400px;
+  color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto;
+}
+.show-flex-three{
+  h3{
+    font-size: 26px;
+    padding: 3px;
+  }
+  p{
+   font-size: 14px;
+    padding: 10px;
+  }
+  height: auto;
+  width: 400px;
+  color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto;
+}
 
 .card-header-projects-show {
   display: flex;
@@ -68,17 +114,17 @@
   border-radius: 50%;
 }
 
-.card-financial-details-show {
-  flex: 0 0 250px;
-  padding-top: 20px;
-  h3 {
-    font-size: 17px;
-    text-align: center;
-  }
-  .card-financial-details-show-center {
-    text-align: center;
-  }
-}
+// .card-financial-details-show {
+//   flex: 0 0 250px;
+//   padding-top: 20px;
+//   h3 {
+//     font-size: 17px;
+//     text-align: center;
+//   }
+//   .card-financial-details-show-center {
+//     text-align: center;
+//   }
+// }
 
 .card-country-projects-show {
   flex: 0 0 40px;
