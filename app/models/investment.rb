@@ -18,14 +18,19 @@ class Investment < ApplicationRecord
 
   def last_month_gain
     last_month_outputs = project.outputs.where(:date => 1.months.ago..Date.today)
-    p last_month_outputs
     outputs = last_month_outputs.group_by_day(:date).maximum(:quantity)
-    p outputs
     day_value = 0
     outputs.each do |date, value|
       day_value += value * project.kwh_price_cents
     end
     day_value / 100
+  end
+
+  def last_month_outputs
+    project.outputs.where(:date => 1.months.ago..Date.today)
+
+    # project.outputs.select(:date).distinct
+    # group_by_day(:date, format: "%F").maximum(:quantity)
   end
 
   def kwc

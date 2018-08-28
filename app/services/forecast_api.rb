@@ -19,14 +19,13 @@ class ForecastApi
     # API CALL
     # response = RestClient.get "https://api.forecast.solar/estimate/52.0/12.0/37/0/324.02" for testing, with non pro API settings limited coordinates
     response = RestClient.get "https://api.forecast.solar/estimate/#{lat.to_s}/#{lon.to_s}/37/0/#{kwc.to_s}"
-
     repos = JSON.parse(response)
+
+    #for the daily watt production, create a row by hour
     repos_watt = repos['result']['watts']
     date = Date.today.to_s
 
-    repos_day_production = repos['result']['watt_hours_day'][date]
     repos_watt.each do |key, value|
-
       output = Output.new ()
       city = Project.where(name: "Paris Offices").first
       output.project = city
@@ -39,6 +38,16 @@ class ForecastApi
         output.save!
       end
     end
+
+    # to avoid duplicating Quantit for many hours, create one row per day
+    repos_day_production = repos['result']['watt_hours_day'][date]
+
+    output = Output.new
+    city = Project.where(name: "Paris Offices").first
+    output.project = city
+    output.date = Date.today
+    output.quantity = repos_day_production
+    output.save!
 
     # # for testing when API exeeds requests
     # if repos_date

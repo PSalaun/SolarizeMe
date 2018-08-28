@@ -5,7 +5,7 @@ class OutputPolicy < ApplicationPolicy
     end
   end
 
-  # to False as not really needed at this point
+  # to False as API interface for external users not really needed at this point
 
   def show?
     true

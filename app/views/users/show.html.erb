@@ -24,10 +24,18 @@
         <li class="list-group-item" >Profits: <%= humanized_money_with_symbol(investment.profits) %></li>
         <li class="list-group-item" >Last month gain: <%= humanized_money_with_symbol(investment.last_month_gain) %> </li>
         <br>
-        <h2>Production today</h2>
+        <h2>Production by hour - today</h2>
 
         <%= javascript_pack_tag "init_charts" %>
         <%= line_chart investment.project.outputs.group_by_hour(:detailedtime, format: "%-l %P").average(:production) %>
+
+        <h2> Production by day - this month </h2>
+
+        <%= column_chart investment.last_month_outputs.group_by_day(:date).sum(:quantity) %>
+
+        <h2> Production by month - this year </h2>
+
+        <%= column_chart investment.project.outputs.group_by_month(:date).sum(:quantity) %>
 
         <br>
       <% end %>

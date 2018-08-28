@@ -316,7 +316,7 @@ production_hash.each do |key, value|
   output.detailedtime = DateTime.parse(key)
   output.date = DateTime.parse(key).to_date
   output.production = value
-  output.quantity = 1000
+  # output.quantity = 1000
 
   if output.date == Date.today
     output.save!
