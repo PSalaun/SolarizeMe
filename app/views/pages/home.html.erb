@@ -1,4 +1,4 @@
-<div class="home_banner_wrapper">
+<section class="home_banner_wrapper section">
   <div class="container-fluid">
     <div class="home_banner" style="">
       <div class="container home_banner_content">
@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <div id="js-cards-list">
+  <section id="js-cards-list section">
     <div class="container" id="key-facts-home" id="js-cards-list"> <h1 >About our service</h1>
       <div class="one-key-facts-home">
         <div><h1>1</h1></div>
@@ -34,14 +34,15 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
   <div class="cards-list" id="js-cards-list">
     <h2>Active campaigns</h2>
     <%= render partial: "shared/card", collection: @projects %>
   </div>
   <br>
-  <div class="container text-center buttons-home-beforefooter">
+  <section class="container text-center buttons-home-beforefooter">
       <%= link_to "Start investing now", projects_path, class: "btn-main-green" %>
       <%= link_to "Learn more", learn_more_path, class: "btn-ancilliary" %>
-  </div>
-</div>
+  </section>
+</section>
