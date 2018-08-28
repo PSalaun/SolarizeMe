@@ -6,7 +6,15 @@
   padding: 10px 8px;
   color: white;
   margin: 10px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    text-decoration: none;
+    color: white;
+    background: $button-main-darker;
+  }
 }
 
 .btn-main-blue {
@@ -17,7 +25,10 @@
   padding: 10px 8px;
   color: white;
   margin: 10px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .btn-ancilliary {
@@ -29,7 +40,9 @@
   border: 1px solid white;
   color: white;
   margin: 10px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-ancilliary-long{
@@ -37,13 +50,13 @@
 }
 
 .btn-goback {
-      background-color: #11ffee00;
-      font-size: 16px;
-      margin-bottom: 10px;
-      color: white;
-      border: solid white 1px;
-      border-radius: 5px;
-    }
+  background-color: #11ffee00;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: white;
+  border: solid white 1px;
+  border-radius: 5px;
+}
 
 .btn-filter{
   display: inline-block;

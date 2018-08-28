@@ -1,7 +1,26 @@
 // Specific CSS for your home-page
-@media only screen and (max-width: 600px) {
 #key-facts-home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
+
+.key-fact-home {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .key-fact-logo {
+    flex: 1 1 20%;
+    min-width: 100px;
+  }
+
+  .key-fact-content {
+    flex: 1 1 80%;
+  }
+}
+
 #key-facts-home h1, h5 {
   color: white !important;
   margin-top: 20px;
@@ -11,6 +30,7 @@
 }
 #key-facts-home  {
   text-align: center;
+
 }
 .one-key-facts-home {
   display: flex;
@@ -57,4 +77,4 @@
   .cards-list {
     text-align: center;
   }
-}
+
