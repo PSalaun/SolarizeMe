@@ -17,7 +17,7 @@
       <br>
       <h3>Crowdfunding status</h3>
       <div class="card-financial-details-show-center">
-        <% if @project.status == "Crowdfunding" %>
+        <% if @project.status == "Active crowdfunding" %>
           <progress  max="100" value="<%= @project.completion_rate %>"> <%= @project.completion_rate %> </progress>
           <br>
           <p> <strong><%= humanized_money_with_symbol(@project.funds_pledged) %> </strong>out of <strong><%= humanized_money_with_symbol(@project.total_cost) %> </strong>  raised ! </p>
