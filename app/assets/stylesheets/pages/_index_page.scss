@@ -7,9 +7,6 @@
 .projects-filter-panel {
   margin: 20px;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-
 
   .form-group {
     display: flex;
@@ -75,9 +72,6 @@
     width: 100%;
   }
 
-  .filter-buttons {
-    align-self: center;
-  }
 }
 
 
