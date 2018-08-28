@@ -1,17 +1,48 @@
 <div class="wrapper-projects">
-  <div class="container-fluid text-center">
-    <div class="page-header">
+  <div class="container">
+    <div class="page-header text-center">
       <h1>Our Projects</h1>
     </div>
-    <div id="filter-projects">
+    <div class="projects-filter-panel">
       <%= form_tag projects_path, method: "get" do  %>
-        <%= select_tag "query", options_for_select(Project.pluck(:country).uniq), class: "dropdown-filter", include_blank: true %> <br>
+        <div class="form-group">
+        <div class="filter-panel-header"><p>Choose location</p></div>
+        <div class="input-area">
+          <div class="category-choices">
+            <% Project.pluck(:country).uniq.each do |country| %>
+              <%= check_box_tag("location[]", country , false, class: "hidden", id: country) %>
+              <label for="<%= country %>" class="category-choice"><%= country %></label>
+            <% end %>
+          </div>
+         <!--  <%= select_tag "location", options_for_select(Project.pluck(:country).uniq), class: "dropdown-filter", include_blank: true %> -->
+        </div>
+
+        </div>
+        <div class="form-group">
+        <div class="filter-panel-header"><p>Choose category</p></div>
+        <div class="input-area">
+          <div class="category-choices">
+            <%= check_box_tag("status[]", "Future crowdfunding", false, class: "hidden", id: "future") %>
+            <label for="future" class="category-choice">Future crowdfunding</label>
+            <%= check_box_tag("status[]", "Active crowdfunding",  false, class: "hidden", id: "active") %>
+            <label for="active" class="category-choice">Active crowdfunding</label>
+            <%= check_box_tag("status[]", "under construction", false, class: "hidden", id: "construction") %>
+            <label for="construction" class="category-choice">Under construction</label>
+            <%= check_box_tag("status[]", "Operational", false, class: "hidden", id: "operational") %>
+            <label for="operational" class="category-choice">Operational</label>
+          </div>
+        </div>
+        </div>
+      <div class="filter-buttons">
         <%= submit_tag "Filter", class: "btn-filter" %>
         <%= link_to "Reset", projects_path, class:"btn-reset-f" %>
+      </div>
       <% end %>
     </div>
-    <div class="cards-list" id="js-cards-list">
-      <%= render partial: 'shared/card', collection: @projects %>
+    <div class="cards-wrapper">
+      <div class="cards-list" id="js-cards-list">
+        <%= render partial: 'shared/card', collection: @projects %>
+      </div>
     </div>
   </div>
 </div>

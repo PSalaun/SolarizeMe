@@ -4,17 +4,84 @@
   }
 }
 
-#filter-projects {
+.projects-filter-panel {
   margin: 20px;
+  width: 100%;
+
+  .form-group {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-content: center;
+  }
+
+  .filter-location-panel {
+    display: flex;
+    align-items: center;
+
+  .dropdown-filter {
+      width: 188px;
+      margin: 20px 10px 10px 10px;
+
+    }
+  }
+
+  .category-choices {
+    display: flex;
+    // justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0px;
+    width: 100%;
+  }
+
+  .category-choice {
+    flex: 0 1 20%;
+    font-weight: lighter;
+    color: white;
+    background: none;
+    padding: 5px;
+    margin: 5px 5px;
+    border: 1px solid white;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    min-width: 100px;
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+    &.active {
+      background: $brand-primary;
+      color: white;
+      opacity: 1;
+    }
+  }
+  .filter-panel-header {
+    flex: 0 1 15%;
+    min-width: 150px;
+    color: white;
+    display: flex;
+    align-items: center;
+  }
+
+  .input-area {
+    flex: 0 0 85%;
+    width: 100%;
+  }
+
 }
 
-.dropdown-filter {
-  width: 242px;
-  margin: 20px;
-}
+
 
 .cards-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+}
+
+.cards-wrapper {
+  display: flex;
+  justify-content: center;
 }
