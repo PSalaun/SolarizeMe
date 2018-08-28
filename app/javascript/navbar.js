@@ -1,10 +1,8 @@
 const navbar = document.getElementById("navbar");
 
 function scrollNavbar() {
-  // debugger;
   if (document.querySelector(".viewing-page-2")) {
       navbar.classList.add("is-visible");
-  //   navbar.style.top = "0";
   }
 }
 

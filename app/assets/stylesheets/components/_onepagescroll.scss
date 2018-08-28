@@ -90,6 +90,8 @@ body, .onepage-wrapper, html {
   display: none;
 }
 
-body.disabled-onepage-scroll, .disabled-onepage-scroll .onepage-wrapper, html {
+body.disabled-onepage-scroll, .disabled-onepage-scroll .onepage-wrapper, html.disabled-onepage-scroll {
   position: inherit;
+  overflow: unset;
+  height:auto;
 }

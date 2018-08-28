@@ -527,4 +527,5 @@ if (window.location.pathname === "/") {
   onePageScroll(".fullpage");
 } else {
   document.body.classList.add("disabled-onepage-scroll");
+  document.getElementsByTagName("html")[0].classList.add("disabled-onepage-scroll");
 }
