@@ -4,7 +4,8 @@ class OutputJob < ApplicationJob
   def perform
     projects = Project.where("comissioning_date <= ?", Date.today)
     projects.each do |project|
-      ForecastApi.new(project.id).generate_output
+      # Trigger background job for each project
+      FetchOutputProjectJob.perform_now(project.id)
     end
   end
 end

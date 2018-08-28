@@ -1,7 +1,20 @@
 .dashboard-tabs {
   // background: #53443F;
   display: flex;
-  padding: 0px 10px 0 10px
+  padding: 10px 10px 0px 10px
+}
+
+.dashboard-box {
+  box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+  h2 {
+    font-size: 15px;
+    font-weight: 300;
+    padding: 8px 5px;
+    color: $text-dark;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: left;
+  }
 }
 
 #tab-list-padding {
@@ -33,6 +46,7 @@
   text-align: center;
   padding: 10px 0;
 }
+
 .dashboard-tab:first-child {
   border-radius: 10px 0 0 0;
 }
@@ -40,7 +54,7 @@
   border-radius: 0 10px 0 0;
 }
 .dashboard-tab.active {
-  background: $main;
+  background: $blue;
   // border: 1px solid rbg(1,1,1);
   color: white;
 }

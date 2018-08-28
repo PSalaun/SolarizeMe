@@ -245,6 +245,15 @@ investment.project = Project.where(name: "Paris Offices").first
 investment.amount_cents = investment.number_of_panels * investment.project.price_cents
 investment.save!
 
+investment = Investment.new(
+  number_of_panels: 100,
+  state: "confirmed"
+  )
+investment.user = User.where(email: "john@doe.com").first
+investment.project = Project.where(name: "Paris Offices").first
+investment.amount_cents = investment.number_of_panels * investment.project.price_cents
+investment.save!
+
 puts "created #{Investment.count} investments"
 
 puts "generating random outputs"
@@ -272,56 +281,96 @@ days = 0
 end
 
 # on API format to test how to only extract Todays values and not tomorrows
-production_hash = {"2018-08-27 06:09:00" => 0,
-     "2018-08-27 06:27:00" => 11.34,
-     "2018-08-27 06:45:00" => 90.72,
-     "2018-08-27 07:00:00" => 158.76,
-     "2018-08-27 08:00:00" => 612.36,
-     "2018-08-27 09:00:00" => 1298.43,
-     "2018-08-27 10:00:00" => 1978.83,
-     "2018-08-27 11:00:00" => 2511.81,
-     "2018-08-27 12:00:00" => 2823.66,
-     "2018-08-27 13:00:00" => 2109.24,
-     "2018-08-27 14:00:00" => 1638.63,
-     "2018-08-27 15:00:00" => 1428.84,
-     "2018-08-27 16:00:00" => 1116.99,
-     "2018-08-27 17:00:00" => 759.78,
-     "2018-08-27 18:00:00" => 402.57,
-     "2018-08-27 19:00:00" => 124.74,
-     "2018-08-27 19:38:00" => 17.01,
-     "2018-08-27 20:16:00" => 0,
-     "2018-08-28 06:10:00" => 0,
-     "2018-08-28 06:28:00" => 11.34,
-     "2018-08-28 06:45:00" => 79.38,
-     "2018-08-28 07:00:00" => 141.75,
-     "2018-08-28 08:00:00" => 555.66,
-     "2018-08-28 09:00:00" => 1224.72,
-     "2018-08-28 10:00:00" => 1956.15,
-     "2018-08-28 11:00:00" => 2596.86,
-     "2018-08-28 12:00:00" => 3056.13,
-     "2018-08-28 13:00:00" => 3203.55,
-     "2018-08-28 14:00:00" => 3010.77,
-     "2018-08-28 15:00:00" => 2562.84,
-     "2018-08-28 16:00:00" => 1905.12,
-     "2018-08-28 17:00:00" => 1190.7,
-     "2018-08-28 18:00:00" => 555.66,
-     "2018-08-28 19:00:00" => 136.08,
-     "2018-08-28 19:37:00" => 17.01,
-     "2018-08-28 20:14:00" => 0}
 
-production_hash.each do |key, value|
+require "json"
+require "rest-client"
+
+project = Project.where(name: "Paris Offices").first
+
+lat = project.lat
+lon = project.lon
+kwc = project.kwc
+
+response = RestClient.get "https://api.forecast.solar/estimate/#{lat.to_s}/#{lon.to_s}/37/0/#{kwc.to_s}"
+repos = JSON.parse(response)
+
+repos_watt = repos['result']['watts']
+date = Date.today.to_s
+
+repos_day_production = repos['result']['watt_hours_day'][date]
+
+repos_watt.each do |key, value|
   output = Output.new ()
   city = Project.where(name: "Paris Offices").first
   output.project = city
   output.detailedtime = DateTime.parse(key)
   output.date = DateTime.parse(key).to_date
-  output.production = value
-  # output.quantity = 1000
+  output.production = value / 1000
 
   if output.date == Date.today
     output.save!
   end
 end
+
+# to avoid duplicating Quantit for many hours, create one row per day
+
+output = Output.new
+city = Project.where(name: "Paris Offices").first
+output.project = city
+output.date = Date.today
+output.quantity = repos_day_production / 1000
+output.save!
+
+# production_hash = {"2018-08-27 06:09:00" => 0,
+#      "2018-08-27 06:27:00" => 11.34,
+#      "2018-08-27 06:45:00" => 90.72,
+#      "2018-08-27 07:00:00" => 158.76,
+#      "2018-08-27 08:00:00" => 612.36,
+#      "2018-08-27 09:00:00" => 1298.43,
+#      "2018-08-27 10:00:00" => 1978.83,
+#      "2018-08-27 11:00:00" => 2511.81,
+#      "2018-08-27 12:00:00" => 2823.66,
+#      "2018-08-27 13:00:00" => 2109.24,
+#      "2018-08-27 14:00:00" => 1638.63,
+#      "2018-08-27 15:00:00" => 1428.84,
+#      "2018-08-27 16:00:00" => 1116.99,
+#      "2018-08-27 17:00:00" => 759.78,
+#      "2018-08-27 18:00:00" => 402.57,
+#      "2018-08-27 19:00:00" => 124.74,
+#      "2018-08-27 19:38:00" => 17.01,
+#      "2018-08-27 20:16:00" => 0,
+#      "2018-08-28 06:10:00" => 0,
+#      "2018-08-28 06:28:00" => 11.34,
+#      "2018-08-28 06:45:00" => 79.38,
+#      "2018-08-28 07:00:00" => 141.75,
+#      "2018-08-28 08:00:00" => 555.66,
+#      "2018-08-28 09:00:00" => 1224.72,
+#      "2018-08-28 10:00:00" => 1956.15,
+#      "2018-08-28 11:00:00" => 2596.86,
+#      "2018-08-28 12:00:00" => 3056.13,
+#      "2018-08-28 13:00:00" => 3203.55,
+#      "2018-08-28 14:00:00" => 3010.77,
+#      "2018-08-28 15:00:00" => 2562.84,
+#      "2018-08-28 16:00:00" => 1905.12,
+#      "2018-08-28 17:00:00" => 1190.7,
+#      "2018-08-28 18:00:00" => 555.66,
+#      "2018-08-28 19:00:00" => 136.08,
+#      "2018-08-28 19:37:00" => 17.01,
+#      "2018-08-28 20:14:00" => 0}
+
+# production_hash.each do |key, value|
+#   output = Output.new ()
+#   city = Project.where(name: "Paris Offices").first
+#   output.project = city
+#   output.detailedtime = DateTime.parse(key)
+#   output.date = DateTime.parse(key).to_date
+#   output.production = value
+#   # output.quantity = 1000
+
+#   if output.date == Date.today
+#     output.save!
+#   end
+# end
 
 puts "generated #{Output.count} outputs"
 

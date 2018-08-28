@@ -28,13 +28,33 @@ class Investment < ApplicationRecord
 
   def last_month_outputs
     project.outputs.where(:date => 1.months.ago..Date.today)
-
-    # project.outputs.select(:date).distinct
-    # group_by_day(:date, format: "%F").maximum(:quantity)
+    # kwh.where(:date => 1.months.ago..Date.today)
   end
 
   def kwc
     project.panel_watt * number_of_panels / 1000
+  end
+
+  def share_of_total_power
+    ( kwc * 100  / project.kwc) / 100.00
+  end
+
+  def watt
+    project.outputs.each do |output|
+      if output.production
+        output.production = output.production * share_of_total_power
+      end
+    end
+  end
+
+  def kwh
+    project.outputs.each do |output|
+      if output.quantity
+        output.quantity = output.quantity * share_of_total_power
+      else
+        output.quantity
+      end
+    end
   end
 
   def remaining_gains
