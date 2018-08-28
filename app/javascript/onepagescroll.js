@@ -523,4 +523,8 @@ function onePageScroll(element, options) {
    return orig;
  };
 
-onePageScroll(".fullpage");
+if (window.location.pathname === "/") {
+  onePageScroll(".fullpage");
+} else {
+  document.body.classList.add("disabled-onepage-scroll");
+}
