@@ -1,50 +1,111 @@
 <!-- VARIABLES -->
 
 <!-- This probably needs to be refactor into several components -->
-
-<div class="container dashboard-container">
-
-    <h1><%= @user.name %></h1>
-
+<div class="wrapper-projects">
+  <div class="container">
+    <%= javascript_pack_tag "init_charts" %>
     <h1>My investments</h1>
-    <ul class="list-group">
-      <% @user.investments.each do |investment| %>
-        <li class="list-group-item project-dashboard" > <strong>Name: <%= investment.project.name %> </strong></li>
-        <li class="list-group-item" >Number of panels: <%= investment.number_of_panels %></li>
-        <li class="list-group-item" >kWc: <%= investment.kwc %></li>
-        <li class="list-group-item" >Total investment: <%= humanized_money_with_symbol(investment.amount) %></li>
-        <li class="list-group-item" >Payment state: <%= investment.state %></li>
-        <li class="list-group-item" >Yield: <%= number_to_percentage(investment.project.yield * 100, precision: 2) %></li>
-        <li class="list-group-item" >Income per year: <%= humanized_money_with_symbol(investment.income_per_year) %></li>
-        <li class="list-group-item" >Active months: <%= investment.project.active_months %></li>
-        <li class="list-group-item" >Remaining months: <%= investment.project.remaining_months %></li>
-        <li class="list-group-item" >Past gains: <%= humanized_money_with_symbol(investment.past_gains) %></li>
-        <li class="list-group-item" >Forecasted remaining gains: <%= humanized_money_with_symbol(investment.remaining_gains) %></li>
-        <li class="list-group-item" >Total potential gains: <%= humanized_money_with_symbol(investment.total_gains) %></li>
-        <li class="list-group-item" >Profits: <%= humanized_money_with_symbol(investment.profits) %></li>
-        <li class="list-group-item" >Last month gain: <%= humanized_money_with_symbol(investment.last_month_gain) %> </li>
-        <br>
-        <h2>Production by hour - today</h2>
 
-        <%= javascript_pack_tag "init_charts" %>
-        <%= line_chart investment.project.outputs.group_by_hour(:detailedtime, format: "%-l %P").average(:production) %>
+    <% @user.investments.each do |investment| %>
 
-        <h2> Production by day - this month </h2>
+      <div class="cards-list" id="js-cards-list">
+        <!-- Project detail div -->
+        <%= link_to project_path(investment.project), class: "card-projects" do %>
+          <%= cl_image_tag investment.project.photo, class: "card-project-image" %>
+          <div class="container-info-card">
+            <div class="card-header-projects text-left">
+              <div class="card-title-and-company-name">
+                <h1> <%= investment.project.name %> </h1>
+                <h3> <%= investment.project.user.company_name %> </h3>
+                <br>
+              </div>
+              <%= cl_image_tag investment.project.user.photo, class: "card-company-logo" %>
+            </div>
+            <h3> <%= investment.project.description %></h3>
+            <br>
+            <div class="card-financial-details text-left">
+              <div class="card__completion-rate-text">
+                <strong><%= number_to_percentage(investment.project.completion_rate, precision: 0)%></strong> funded
+              </div>
+              <strong><p>Yield: <%= investment.project.yield * 100 %> % per year  </p></strong>
+            </div>
+            <div class="card-horizontal-line"></div>
+            <div class="card-investment-details text-left">
+              <h2>You bought <%= investment.number_of_panels %> panels (<%= investment.kwc %> kWc) for a total investment of <%= humanized_money_with_symbol(investment.amount) %></h2>
+              <h2> Income per year: <%= humanized_money_with_symbol(investment.income_per_year) %></h2>
+              <h2> Estimated lifetime gains: <%= humanized_money_with_symbol(investment.total_gains) %></h2>
+            </div>
+          </div>
+        <% end %>
 
-        <%= column_chart investment.last_month_outputs.group_by_day(:date).sum(:quantity) %>
+        <!-- Financials detail div -->
+        <div class="card-projects ">
+          <div class="container-info-card">
+            <div class="card-header-projects-finance">
+              <div class="card-title-and-company-name">
+                <h1>Project revenues</h1>
+              </div>
+            </div>
+            <div class="card-investment-details">
+              <%= pie_chart ({"Past" => investment.project.active_months, "Remaining" => investment.project.remaining_months}), id: "pie-chart", height: "200px", donut: true,
+              library: {
+                  plotOptions: {
+                    pie: {
+                      dataLabels: {
+                        enabled: false
+                       },
+                       showInLegend: true
+                    }
+                  }
+                } %>
+              <h2>
+                Project active for <%= investment.project.active_months %> months
+                <%= investment.project.remaining_months %> months remaining before end of contract
+              </h2>
+              <%= bar_chart ({"Past gains" => investment.past_gains, "Remaining gains" => investment.remaining_gains}), id: "users-chart", height: "200px" %>
+            </div>
+          </div>
+        </div>
 
-        <h2> Production by month - this year </h2>
+        <!-- Production detail div -->
+        <div class="card-projects ">
+          <div class="container-info-card">
+            <div class="card-header-projects-finance">
+              <div class="card-title-and-company-name">
+                <h1>Project revenues</h1>
+              </div>
+            </div>
+            <div>
+              <div id="hourly-output-chart" class="active">
+                <h2>Production by hour - today</h2>
+                <%= line_chart investment.project.outputs.group_by_hour(:detailedtime, format: "%-l %P").average(:production) %>
+              </div>
+              <div id="daily-output-chart-output-chart">
+                <h2> Production by day - this month </h2>
+                <%= column_chart investment.last_month_outputs.group_by_day(:date).sum(:quantity) %>
+              </div>
+              <div id="monthly-output-chart">
+                <h2> Production by month - this year </h2>
+                <%= column_chart investment.project.outputs.group_by_month(:date).sum(:quantity) %>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <%= column_chart investment.project.outputs.group_by_month(:date).sum(:quantity) %>
-
-        <br>
       <% end %>
-    </ul>
-  <br>
-  <div class="box-dashboard">
-    <%= link_to "Edit my profile", edit_user_registration_path(current_user), class: "btn-main-green" %>
-    <%= link_to 'Back', :back, class: "btn-ancilliary" %>
-   </div>
+
+      <!-- footers -->
+      <div class="box-dashboard">
+        <%= link_to "Edit my profile", edit_user_registration_path(current_user), class: "btn-main-green" %>
+        <%= link_to 'Back', :back, class: "btn-ancilliary" %>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+  const chart = selectElementById(hourly-output-chart)
+  eventListener("click")
+</script>
 
 
