@@ -11,21 +11,14 @@ class Api::V1::OutputsController < Api::V1::BaseController
   end
 
   def create
-    # require "json"
-    # require "rest-client"
-
-    # response = RestClient.get "https://api.forecast.solar/estimate/watthours/day/52/12/37/0/5.67"
-    # repos = JSON.parse(response)
-    # raise
-
-    # @output = Output.new(date: repos_date)
-    # # @output.user = current_user
-    # authorize @output
-    # if @output.save
-    #   render :show, status: :created
-    # else
-    #   render_error
-    # end
+    @output = Output.new(output_params)
+    authorize @output
+    @output.user = current_user
+    if @output.save
+      render :show, status: :created
+    else
+      render_error
+    end
   end
 
   def update
@@ -43,16 +36,9 @@ class Api::V1::OutputsController < Api::V1::BaseController
     authorize @output  # For Pundit
   end
 
-  # def output_params
-  #   # params.require(:output).permit(:date, :quantity, :project)
-  #   require "json"
-  #   require "rest-client"
-
-  #   response = RestClient.get "https://api.forecast.solar/estimate/watthours/day/52/12/37/0/5.67"
-  #   repos = JSON.parse(response)
-  #   repos
-  #   raise
-  # end
+  def output_params
+    params.require(:output).permit(:date, :quantity, :project)
+  end
 
   def render_error
     render json: { errors: @output.errors.full_messages },

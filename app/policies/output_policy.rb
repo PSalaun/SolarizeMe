@@ -5,15 +5,17 @@ class OutputPolicy < ApplicationPolicy
     end
   end
 
+  # to False as not really needed at this point
+
   def show?
     true
   end
 
   def new?
-    true
+    false
   end
 
   def create?
-    true
+    false
   end
 end

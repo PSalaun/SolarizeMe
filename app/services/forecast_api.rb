@@ -7,7 +7,6 @@ class ForecastApi
     puts project_id
     @project = Project.find(project_id.to_i)
     puts @project
-
   end
 
 
@@ -18,7 +17,7 @@ class ForecastApi
     kwc = @project.kwc
 
     # API CALL
-    # response = RestClient.get "https://api.forecast.solar/estimate/52.0/12.0/37/0/324.02"
+    # response = RestClient.get "https://api.forecast.solar/estimate/52.0/12.0/37/0/324.02" for testing, with non pro API settings limited coordinates
     response = RestClient.get "https://api.forecast.solar/estimate/#{lat.to_s}/#{lon.to_s}/37/0/#{kwc.to_s}"
 
     repos = JSON.parse(response)
@@ -27,6 +26,7 @@ class ForecastApi
 
     repos_day_production = repos['result']['watt_hours_day'][date]
     repos_watt.each do |key, value|
+
       output = Output.new ()
       city = Project.where(name: "Paris Offices").first
       output.project = city
@@ -40,6 +40,7 @@ class ForecastApi
       end
     end
 
+    # # for testing when API exeeds requests
     # if repos_date
     #   value = repos_date[1]
     #   # with json response, create a new output with the information you get

@@ -29,10 +29,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
-  # for API, not sure if necessary
-  # namespace :api, defaults: { format: :json } do
-  #   namespace :v1 do
-  #     resources :outputs, only: [ :index, :show, :update, :create ]
-  #   end
-  # end
+  # for API, not necessary at this point
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :outputs, only: [ :index, :show, :update, :create ]
+    end
+  end
 end

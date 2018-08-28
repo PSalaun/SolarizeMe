@@ -271,6 +271,7 @@ days = 0
   output.save!
 end
 
+# on API format to test how to only extract Todays values and not tomorrows
 production_hash = {"2018-08-27 06:09:00" => 0,
      "2018-08-27 06:27:00" => 11.34,
      "2018-08-27 06:45:00" => 90.72,
@@ -316,7 +317,10 @@ production_hash.each do |key, value|
   output.date = DateTime.parse(key).to_date
   output.production = value
   output.quantity = 1000
-  output.save!
+
+  if output.date == Date.today
+    output.save!
+  end
 end
 
 puts "generated #{Output.count} outputs"
