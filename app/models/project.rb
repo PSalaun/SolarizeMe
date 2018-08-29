@@ -19,7 +19,11 @@ class Project < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   def days_to_completion
-    (crowdfunding_end_date - Date.today).to_i
+    if (crowdfunding_end_date - Date.today).to_i < 0
+      days = 0
+    else
+      days = (crowdfunding_end_date - Date.today).to_i
+    end
   end
 
   def completion_rate
@@ -36,15 +40,20 @@ class Project < ApplicationRecord
   end
 
   def status
-    if Date.today - crowdfunding_start_date < 0
-      return "Future crowdfunding"
-    elsif Date.today - crowdfunding_end_date < 0
-      return "Active crowdfunding"
-    elsif Date.today - comissioning_date < 0
-      return "Under construction"
+    if Date.today - crowdfunding_end_date < 0
+      return "Crowdfunding"
     else
-      return "Operational"
+      return "Completed"
     end
+    # if Date.today - crowdfunding_start_date < 0
+    #   return "Future crowdfunding"
+    # elsif Date.today - crowdfunding_end_date < 0
+    #   return "Active crowdfunding"
+    # elsif Date.today - comissioning_date < 0
+    #   return "Under construction"
+    # else
+    #   return "Operational"
+    # end
   end
 
   def total_cost
@@ -56,13 +65,8 @@ class Project < ApplicationRecord
   end
 
   def remaining_crowdfunding_days
-    if status == "Active crowdfunding"
-      days = (crowdfunding_end_date - crowdfunding_start_date).to_i
-      return "#{days} days to go"
-    elsif status == "Under construction"
-      return "Fully funded and under construction"
-    elsif status == "Future crowdfunding"
-      return "Crowdfunding starting soon!"
+    if status == "Crowdfunding"
+      return "#{days_to_completion} days to go"
     else
       return "Project already fully funded!"
     end
