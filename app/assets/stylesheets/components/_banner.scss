@@ -56,9 +56,10 @@
   }
   .home_banner_content {
     color: white;
-    height: 40vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
 
     h1 {
