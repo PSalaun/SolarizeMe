@@ -14,8 +14,8 @@ class ForecastApi
     kwc = @project.kwc
 
     # API CALL
-    url = "https://api.forecast.solar/estimate/#{lat.to_s}/#{lon.to_s}/37/0/#{kwc.to_s}"
-    p url
+    # url = "https://api.forecast.solar/estimate/#{lat.to_s}/#{lon.to_s}/37/0/#{kwc.to_s}"
+    # p url
     # response = RestClient.get "https://api.forecast.solar/estimate/52.0/12.0/37/0/324.02" for testing, with non pro API settings limited coordinates
     response = RestClient.get url
     repos = JSON.parse(response)
