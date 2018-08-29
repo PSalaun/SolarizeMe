@@ -2,11 +2,10 @@
 
 <div class="container">
   <div class="wrapper-one-lightblue">
-  <div class="button-begin-showpage">
+    <div class="button-begin-showpage">
     <%= link_to "Back to the projects list", :back, class:"btn btn-goback" %>
-</div>
+    </div>
     <div class="project-show-page-card-container" id="js-cards-list">
-
       <div class="card-projects-show show-flex-one">
         <%= cl_image_tag @project.photo, class: "card-project-image-show" %>
         <br>
@@ -21,7 +20,6 @@
         <br>
         <p> <strong>Project status:</strong> <%= @project.status %> </p>
       </div>
-
       <div class="show-flex-two">
         <div class="financial-indicators-show">
           <h3>Key financial indicators</h3>
@@ -57,7 +55,6 @@
 
         </div>
       </div>
-
       <div class="show-flex-three">
         <h3>Key Project Indicators</h3>
         <div class="icon-container-show">
@@ -93,11 +90,6 @@
         <p> <strong> <%= @project.remaining_crowdfunding_days %>!</strong></p>
         </div>
       </div>
-
-
-
-
-
    </div>
   </div>
 </div>

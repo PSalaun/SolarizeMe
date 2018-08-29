@@ -6,7 +6,7 @@
 
 .card-projects-show {
   height: auto;
-  width: 400px;
+  width: 340px;
   color: $text-dark;
   border: solid $light-gray 1px;
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07);
@@ -22,22 +22,31 @@
 
 .card-project-image-show {
   flex: 0 0 230px;
-  width: 320px;
+  width: 280px;
+
+}
+.wrapper-one-lightblue {
+  width: 900px;
 }
 .wrapper-two-grey {
+  width: 900px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: white;
+}
+
   .project-detailed-description-show{
-    flex-direction: column;
-    margin: 15px;
+
+    margin: 100px 15px 10px 15px;
+    width: 300px;
   }
   .map-showpage img{
-    width: 650px;
+      width: 550px;
       margin: 15px;
+      align-items: right;
   }
-}
+
 .button-begin-showpage{
   margin: 10px;
 }
