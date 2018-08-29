@@ -75,17 +75,29 @@ class Project < ApplicationRecord
   def active_months
     start_date_month = comissioning_date.year * 12 + comissioning_date.month
     current_month = (Date.today.year * 12 + Date.today.month)
-    current_month - start_date_month
+    if current_month - start_date_month < 0
+      0
+    else
+      current_month - start_date_month
+    end
   end
 
   def remaining_months
-    end_date_month = end_of_contract.year * 12 + end_of_contract.month
-    current_month = (Date.today.year * 12 + Date.today.month)
-    end_date_month - current_month
+    if active_months == 0
+      duration_months
+    else
+      duration_months - active_months
+    end
+    # end_date_month = end_of_contract.year * 12 + end_of_contract.month
+    # current_month = (Date.today.year * 12 + Date.today.month)
+    # end_date_month - current_month
   end
 
+
   def duration_months
-    active_months + remaining_months
+    start_date_month = comissioning_date.year * 12 + comissioning_date.month
+    end_date_month = end_of_contract.year * 12 + end_of_contract.month
+    end_date_month - start_date_month
   end
 
   def kwc
