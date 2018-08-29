@@ -1,5 +1,5 @@
 .wrapper-one-lightblue {
-margin-top: 30px;
+  margin-top: 30px;
   height: 100%;
   display:flex;
   justify-content: space-between;
@@ -33,93 +33,93 @@ margin-top: 30px;
 
     .card-projects-show {
       height: auto;
-  // width: 340px;
-  color: $text-dark;
-  border: solid $light-gray 1px;
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07);
-  margin: 15px;
-  border-radius: 5px;
-  background-color: white;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 0 0 30%;
-  p {
-    margin: 0px;
-    padding: 0px;
+    // width: 340px;
+    color: $text-dark;
+    border: solid $light-gray 1px;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07);
+    // margin: 15px;
+    border-radius: 5px;
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 30%;
+    p {
+      margin: 0px;
+      padding: 0px;
+    }
   }
-}
 
-.card-project-image-show {
-  flex: 0 0 200px;
-  width: 320px;
+  .card-project-image-show {
+    flex: 0 0 200px;
+    width: 320px;
 
-}
-.project-detailed-description-show{
-  margin: 100px 15px 10px 15px;
-  flex: 0 0 30%;
-  color: white;
-}
-.map-showpage {
-  margin: 15px;
-  flex: 1 1 auto;
-}
-
-.button-begin-showpage{
-  margin: 10px;
-}
-.button-back-showpage{
-  margin-top: 30px;
-}
-.show-flex-one, .show-flex-two, .show-flex-three {
-  height: 600px;
-  flex: 0 0 30%;
-  margin: 0 5px;
-}
-.show-flex-two{
-  flex: 0 0 30%;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  flex: 0 0 30%;
-  color: white;
-}
-.icon-container-show{
-  display: flex;
-  padding: 10px;
-  align-items: top;
-}
-
-.show-flex-three{
-  flex: 0 0 30%;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  color: white;
-}
-
-.show-flex-four {
-  flex: 0 0 40%;
-  padding: 10px;
-  color: white;
-  height: auto;
-  p {
-    padding: 10px 30px 0 0px;
   }
-}
-
-.show-flex-five {
-  padding: 10px;
-  flex: 1 auto;
-  min-width: 340px;
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  h3 {
-    padding-bottom: 20px;
+  .project-detailed-description-show{
+    margin: 100px 15px 10px 15px;
+    flex: 0 0 30%;
     color: white;
   }
+  .map-showpage {
+    margin: 15px;
+    flex: 1 1 auto;
+  }
+
+  .button-begin-showpage{
+    margin: 10px;
+  }
+  .button-back-showpage{
+    margin-top: 30px;
+  }
+  .show-flex-one, .show-flex-two, .show-flex-three {
+    // height: 600px;
+    flex: 0 0 30%;
+  }
+  .show-flex-two{
+    min-width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    flex: 0 0 30%;
+    color: white;
+  }
+  .icon-container-show{
+    display: flex;
+    padding: 10px;
+    align-items: top;
+  }
+
+  .show-flex-three{
+    min-width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    color: white;
+  }
+
+  .show-flex-four {
+    flex: 0 0 40%;
+    min-width: 340px;
+    padding: 10px;
+    color: white;
+    height: auto;
+    p {
+      padding: 10px 30px 0 0px;
+    }
+  }
+
+  .show-flex-five {
+    padding: 10px;
+    flex: 1 auto;
+    min-width: 340px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    h3 {
+      padding-bottom: 20px;
+      color: white;
+    }
   // justify-content: center;
   // align-items: center;
 }
