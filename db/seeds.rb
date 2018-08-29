@@ -181,7 +181,7 @@ running_Nike = Project.new(
   comissioning_date: Date.new(2018, 1, 31),
   panels_quantity: 200,
   country: "France",
-  remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535106441/jgycj9bei1zkxq7c1qwu.jpg"
+  remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535564045/hrj4wc5f7pmxmvdzzxjt.jpg"
   )
 running_Nike.user = User.where(company_name: "Nike").first
 running_Nike.save!
@@ -203,7 +203,7 @@ current_campaign = Project.new(
   end_of_contract: Date.new(2038, 12, 31),
   panels_quantity: 1200,
   country: "Italy",
-  remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535106441/jgycj9bei1zkxq7c1qwu.jpg"
+  remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535564117/firi3llyyswzyrhoehkx.jpg"
   )
 current_campaign.user = User.where(company_name: "Coca-Cola").first
 current_campaign.save!
