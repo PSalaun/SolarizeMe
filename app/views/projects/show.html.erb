@@ -25,34 +25,74 @@
       <div class="show-flex-two">
         <div class="financial-indicators-show">
           <h3>Key financial indicators</h3>
-          <p> <strong>Yield: </strong><%= @project.yield * 100 %> % per year  </p>
-          <p><strong>Project duration:</strong> <%= @project.duration_months %> months </p>
-          <p><strong>Estimated ROI:</strong> <%= @project.roi_decimals / 100.0 %> % </p>
-          <br>
+          <div class="icon-container-show">
+            <h1><i class="fas fa-percent "></i></h1>
+            <p><strong>Yield: </strong><%= @project.yield * 100 %> % per year</p>
+          </div>
+          <div class="icon-container-show">
+            <h1><i class="far fa-clock"></i></h1>
+            <p><strong>Project duration:</strong> <%= @project.duration_months %> months </p>
+          </div>
+          <div class="icon-container-show">
+            <h1><i class="fas fa-chart-line icon-show"></i></h1>
+            <p><strong> Estimated ROI:</strong> <%= @project.roi_decimals / 100.0 %> % </p>
+          </div>
         </div>
         <div class="technical-indicators-show">
           <h3>Key technical indicators</h3>
-          <p> <strong>Panel type:</strong> <%= @project.panel_watt %> Watts</p>
-          <p> <strong>Price per panel:</strong> <%= humanized_money_with_symbol(@project.price) %></p>
-          <p> <strong>Project power:</strong> <%= @project.kwc %> kWc</p>
+          <div class="icon-container-show">
+            <h1><i class="fas fa-solar-panel"></i></h1>
+            <p> <strong>Panel type:</strong> <%= @project.panel_watt %> Watts</p>
+          </div>
+
+          <div class="icon-container-show">
+            <h1><i class="fas fa-euro-sign"></i></h1>
+            <p><strong>Price per panel: </strong> <%= humanized_money_with_symbol(@project.price) %></p>
+          </div>
+
+          <div class="icon-container-show">
+            <h1><i class="fas fa-leaf"></i></h1>
+            <p> <strong>CO2 reduced per panel: </strong>0.5 <br>(tons per year) </p>
+          </div>
+
         </div>
       </div>
 
       <div class="show-flex-three">
         <h3>Key Project Indicators</h3>
-        <p> <strong>Project size: </strong><%= @project.panels_quantity %> panels</p>
-        <p> <strong>Still available: </strong><%= @project.available_panels %> panels </p>
-        <p> <strong>Comissioning date </strong>: <%= @project.comissioning_date %></p>
+        <div class="icon-container-show">
+          <h1><i class="fas fa-battery-full"></i></h1>
+          <p> <strong>Project total power:</strong> <%= @project.kwc %> kWc</p>
+        </div>
+        <div class="icon-container-show">
+          <h1><i class="fas fa-sitemap"></i></h1>
+          <p> <strong>Project size: </strong><%= @project.panels_quantity %> panels</p>
+        </div>
+
+        <div class="icon-container-show">
+          <h1><i class="fas fa-cart-arrow-down"></i></h1>
+          <p> <strong>Still available: </strong><%= @project.available_panels %> panels </p></span>
+        </div>
+
+        <div class="icon-container-show">
+          <h1><i class="far fa-calendar-alt"></i></h1>
+          <p> <strong>Comissioning date </strong>: <%= @project.comissioning_date %></p>
+        </div>
+
         <div class="crowfunding-status-show">
           <h3>Crowdfunding status</h3>
           <% if @project.status == "Active crowdfunding" %>
             <progress  max="100" value="<%= @project.completion_rate %>"> <%= @project.completion_rate %> </progress>
             <p> <strong><%= humanized_money_with_symbol(@project.funds_pledged) %> </strong>out of <strong><%= humanized_money_with_symbol(@project.total_cost) %> </strong>  raised ! </p>
         </div>
-        <%= link_to "Invest now", new_project_investment_path(@project), class: "btn btn-success" %>
+        <div class="button-invest-show">
+        <%= link_to "Invest now", new_project_investment_path(@project), class: "btn btn-main-green" %>
         <% end %>
+        </div>
+        <div class="remaining-crowfunding">
         <p> <strong> <%= @project.remaining_crowdfunding_days %>!</strong></p>
         </div>
+      </div>
 
 
 

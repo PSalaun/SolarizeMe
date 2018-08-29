@@ -24,14 +24,6 @@
   flex: 0 0 230px;
   width: 320px;
 }
-.technical-indicators-show{
-  margin-top: 100px;
-}
-
-.crowfunding-status-show{
-  margin: 60px 0 60px 0;
-}
-
 .wrapper-two-grey {
   display: flex;
   align-items: center;
@@ -39,7 +31,7 @@
   color: white;
   .project-detailed-description-show{
     flex-direction: column;
-      margin: 15px;
+    margin: 15px;
   }
   .map-showpage img{
     width: 650px;
@@ -58,38 +50,62 @@
 .show-flex-two{
   h3{
     font-size: 26px;
-    padding: 3px;
+    padding-bottom: 10px;
   }
   p{
-   font-size: 14px;
-    padding: 10px;
+   font-size: 18px;
+   font-weight: lighter;
+    padding: 10px 10px 0 30px;
   }
   height: auto;
   width: 400px;
   color: white;
-  padding: 10px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   flex: 0 0 auto;
 }
+.icon-container-show{
+  display: flex;
+  padding: 10px;
+  align-items: top;
+}
+
 .show-flex-three{
   h3{
     font-size: 26px;
-    padding: 3px;
+    padding-bottom: 10px;
   }
-  p{
-   font-size: 14px;
-    padding: 10px;
+  p {
+    font-size: 18px;
+    font-weight: lighter;
+    padding: 10px 10px 0 30px;
   }
   height: auto;
   width: 400px;
   color: white;
-  padding: 10px;
+  margin: 0 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   flex: 0 0 auto;
+}
+.technical-indicators-show{
+  margin-top: 100px;
+}
+
+.crowfunding-status-show{
+  margin: 43px 40px 42px 0;
+}
+
+.button-invest-show {
+  align-self: center;
+  margin-right: 20px;
+}
+.remaining-crowfunding{
+  align-self: center;
+  margin-right: 20px;
 }
 
 .card-header-projects-show {
