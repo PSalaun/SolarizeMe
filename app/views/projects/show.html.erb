@@ -18,7 +18,7 @@
         <h5> <%= @project.description %></h5>
       </div>
       <div class="crowfunding-status-show">
-        <% if @project.status == "Active crowdfunding" %>
+
         <div class="card__completion-rate-text">
           <strong><%= number_to_percentage(@project.completion_rate, precision: 0)%></strong> funded - <strong><%= @project.remaining_crowdfunding_days %></strong>
         </div>
@@ -83,7 +83,7 @@
 
       <div class="button-invest-show">
         <%= link_to "Invest now", new_project_investment_path(@project), class: "btn btn-main-green" %>
-        <% end %>
+
       </div>
       <div class="remaining-crowfunding">
         <p> <%= @project.remaining_crowdfunding_days %>!</p>

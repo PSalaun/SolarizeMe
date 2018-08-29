@@ -222,7 +222,7 @@ investment.amount_cents = investment.number_of_panels * investment.project.price
 investment.save!
 
 investment = Investment.new(
-  number_of_panels: 1380,
+  number_of_panels: 1180,
   state: "confirmed"
   )
 investment.user = User.where(username: "johndoe").first
