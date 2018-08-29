@@ -1,12 +1,38 @@
 .wrapper-one-lightblue {
+margin-top: 30px;
+  height: 100%;
   display:flex;
-  align-items:center;
   justify-content: space-between;
   flex-wrap: wrap;
+  h3 {
+    font-size: 2rem;
+    font-weight: bolder;
+    padding-bottom: 10px;
+  }
+
+  p {
+    font-size: 1.7rem;
+    font-weight: lighter;
+    padding: 10px 5px 0 5px;
+  }
+
+  > * {
+    margin-top: 50px;
+  }
+
+  i {
+    width: 40px;
+  }
 }
 
-.card-projects-show {
-  height: auto;
+.card__completion-rate-text {
+  font-size: 2rem;
+      // font-weight: bold;
+    }
+
+
+    .card-projects-show {
+      height: auto;
   // width: 340px;
   color: $text-dark;
   border: solid $light-gray 1px;
@@ -19,22 +45,26 @@
   flex-direction: column;
   align-items: center;
   flex: 0 0 30%;
+  p {
+    margin: 0px;
+    padding: 0px;
+  }
 }
 
 .card-project-image-show {
-  flex: 0 0 230px;
-  width: 280px;
+  flex: 0 0 200px;
+  width: 320px;
 
 }
-  .project-detailed-description-show{
-    margin: 100px 15px 10px 15px;
-    flex: 0 0 30%;
-    color: white;
-  }
-  .map-showpage {
-    margin: 15px;
-    flex: 1 1 auto;
-  }
+.project-detailed-description-show{
+  margin: 100px 15px 10px 15px;
+  flex: 0 0 30%;
+  color: white;
+}
+.map-showpage {
+  margin: 15px;
+  flex: 1 1 auto;
+}
 
 .button-begin-showpage{
   margin: 10px;
@@ -48,22 +78,12 @@
   margin: 0 5px;
 }
 .show-flex-two{
-  h3{
-    font-size: 26px;
-    padding-bottom: 10px;
-  }
-  p {
-    font-size: 18px;
-    font-weight: lighter;
-    padding: 10px 5px 0 5px;
-  }
   flex: 0 0 30%;
-  // width: 400px;
-  color: white;
   display: flex;
   flex-direction: column;
   align-items: left;
-  flex: 0 0 auto;
+  flex: 0 0 30%;
+  color: white;
 }
 .icon-container-show{
   display: flex;
@@ -72,44 +92,66 @@
 }
 
 .show-flex-three{
-  h3{
-    font-size: 26px;
-    padding-bottom: 10px;
-  }
-  p {
-    font-size: 18px;
-    font-weight: lighter;
-    padding: 10px 5px 0 5px;
-  }
   flex: 0 0 30%;
-  // width: 400px;
-  color: white;
   display: flex;
   flex-direction: column;
   align-items: left;
+  color: white;
 }
+
+.show-flex-four {
+  flex: 0 0 40%;
+  padding: 10px;
+  color: white;
+  height: auto;
+  p {
+    padding: 10px 30px 0 0px;
+  }
+}
+
+.show-flex-five {
+  padding: 10px;
+  flex: 1 auto;
+  min-width: 340px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  h3 {
+    padding-bottom: 20px;
+    color: white;
+  }
+  // justify-content: center;
+  // align-items: center;
+}
+
 .technical-indicators-show{
   margin-top: 100px;
 }
 
 .crowfunding-status-show{
-  margin: 43px 40px 42px 0;
+  // margin: 43px 40px 42px 0;
+  flex: 0 0 15%;
+}
+
+.card-show-description {
+  flex: 1 auto;
 }
 
 .button-invest-show {
   align-self: center;
   margin-right: 20px;
-  margin-top: 50px;
+  margin-top: 100px;
 }
 .remaining-crowfunding{
   align-self: center;
   margin-right: 20px;
+  font-weight: bold;
 }
 
 .card-header-projects-show {
   display: flex;
   justify-content: space-between;
-  flex: 0 0 auto;
+  flex: 0 0 15%;
   width: 320px;
   padding-top: 20px;
 }
