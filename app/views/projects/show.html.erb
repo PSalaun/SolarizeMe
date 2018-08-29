@@ -1,10 +1,11 @@
 <div class="container">
-  <div class="wrapper-one-lightblue">
-    <div class="button-begin-showpage">
+
+  <div class="button-begin-showpage">
     <%= link_to "Back to the projects list", :back, class:"btn btn-goback" %>
-    </div>
-    <div class="project-show-page-card-container" id="js-cards-list">
-      <div class="card-projects-show show-flex-one">
+  </div>
+
+  <div class="wrapper-one-lightblue" id="js-cards-list">
+    <div class="card-projects-show show-flex-one">
         <%= cl_image_tag @project.photo, class: "card-project-image-show" %>
         <br>
         <div class="card-header-projects-show text-left-show">
@@ -14,11 +15,18 @@
           </div>
           <%= cl_image_tag @project.user.photo, class: "card-company-logo-show" %>
         </div>
-        <h4> <%= @project.description %></h4>
+        <div class="crowfunding-status-show">
+          <h3>Crowdfunding status</h3>
+          <% if @project.status == "Active crowdfunding" %>
+          <progress  max="100" value="<%= @project.completion_rate %>"> <%= @project.completion_rate %> </progress>
+          <p> <strong><%= humanized_money_with_symbol(@project.funds_pledged) %> </strong>out of <strong><%= humanized_money_with_symbol(@project.total_cost) %> </strong>  raised ! </p>
+        </div>
+        <h5> <%= @project.description %></h5>
         <br>
         <p> <strong>Project status:</strong> <%= @project.status %> </p>
-      </div>
-      <div class="show-flex-two">
+    </div>
+
+    <div class="show-flex-two">
         <div class="financial-indicators-show">
           <h3>Key financial indicators</h3>
           <div class="icon-container-show">
@@ -40,20 +48,18 @@
             <h1><i class="fas fa-solar-panel"></i></h1>
             <p> <strong>Panel type:</strong> <%= @project.panel_watt %> Watts</p>
           </div>
-
           <div class="icon-container-show">
             <h1><i class="fas fa-euro-sign"></i></h1>
             <p><strong>Price per panel: </strong> <%= humanized_money_with_symbol(@project.price) %></p>
           </div>
-
           <div class="icon-container-show">
             <h1><i class="fas fa-leaf"></i></h1>
             <p> <strong>CO2 reduced per panel: </strong>0.5 <br>(tons per year) </p>
           </div>
-
         </div>
-      </div>
-      <div class="show-flex-three">
+    </div>
+
+    <div class="show-flex-three">
         <h3>Key Project Indicators</h3>
         <div class="icon-container-show">
           <h1><i class="fas fa-battery-full"></i></h1>
@@ -63,47 +69,39 @@
           <h1><i class="fas fa-sitemap"></i></h1>
           <p> <strong>Project size: </strong><%= @project.panels_quantity %> panels</p>
         </div>
-
         <div class="icon-container-show">
           <h1><i class="fas fa-cart-arrow-down"></i></h1>
           <p> <strong>Still available: </strong><%= @project.available_panels %> panels </p></span>
         </div>
-
         <div class="icon-container-show">
           <h1><i class="far fa-calendar-alt"></i></h1>
           <p> <strong>Comissioning date </strong>: <%= @project.comissioning_date %></p>
         </div>
 
-        <div class="crowfunding-status-show">
-          <h3>Crowdfunding status</h3>
-          <% if @project.status == "Active crowdfunding" %>
-            <progress  max="100" value="<%= @project.completion_rate %>"> <%= @project.completion_rate %> </progress>
-            <p> <strong><%= humanized_money_with_symbol(@project.funds_pledged) %> </strong>out of <strong><%= humanized_money_with_symbol(@project.total_cost) %> </strong>  raised ! </p>
-        </div>
         <div class="button-invest-show">
-        <%= link_to "Invest now", new_project_investment_path(@project), class: "btn btn-main-green" %>
-        <% end %>
+          <%= link_to "Invest now", new_project_investment_path(@project), class: "btn btn-main-green" %>
+          <% end %>
         </div>
         <div class="remaining-crowfunding">
-        <p> <strong> <%= @project.remaining_crowdfunding_days %>!</strong></p>
+          <p> <strong> <%= @project.remaining_crowdfunding_days %>!</strong></p>
         </div>
-      </div>
-   </div>
-  </div>
-</div>
-
-<div class="container">
-<div class="wrapper-two-grey">
-  <div class="project-detailed-description-show">
-    <h3> Detailed description </h3>
-    <%= @project.long_description %>
-  </div>
-  <div class="map-showpage">
-    <%= cl_image_tag @project.photo %>
+    </div>
   </div>
 
-</div>
-<div class="button-back-showpage">
-<%= link_to "Back to the projects list", :back, class:"btn btn-goback" %>
-</div>
+
+<!--   <div class="wrapper-two-grey"> -->
+    <div class="project-detailed-description-show">
+      <h3> Detailed description </h3>
+      <%= @project.long_description %>
+    </div>
+    <div class="map-showpage">
+      <%= cl_image_tag @project.photo %>
+    </div>
+<!--   </div> -->
+
+  <div class="button-back-showpage">
+    <%= link_to "Back to the projects list", :back, class:"btn btn-goback" %>
+  </div>
+
+
 </div>
