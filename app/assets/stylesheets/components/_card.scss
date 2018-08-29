@@ -28,15 +28,30 @@
     display: flex;
     justify-content: space-between;
     flex: 1 0 auto;
-    width: 320px;
     padding-top: 20px;
-
+    width: 100%;
     .card-title-and-company-name {
       flex: 0 0 auto;
       h1 {
         margin-bottom: 5px;
+        color: black;
       }
     }
+
+  .card-header-projects-finance {
+    display: flex;
+    justify-content: space-between;
+    flex: 1 0 auto;
+    .card-title-and-company-name {
+      flex: 0 0 auto;
+      h1 {
+        margin-bottom: 5px;
+        color: black;
+      }
+    }
+     }
+
+
 
     .card-company-logo {
       height: 50px;
@@ -75,6 +90,29 @@
     }
   }
 
+  .card-investment-details  {
+    h2 {
+    color: $text-dark;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: left;
+    // padding-top: 5px;
+    // padding-bottom: 5px;
+    }
+  }
+
+
+}
+
+.container-info-card {
+  padding: 15px;
+  width: 100%;
+  height: 100%;
+  h2 {
+    font-size: 15px;
+    font-weight: 300;
+    padding: 8px 0px;
+  }
 }
 
 .card-description-projects {
@@ -108,6 +146,3 @@ progress[value]::-webkit-progress-value{
   border-radius: 7px;
   background-color: lightgreen;
 }
-
-
-

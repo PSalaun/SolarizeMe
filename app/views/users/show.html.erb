@@ -1,50 +1,164 @@
 <!-- VARIABLES -->
 
 <!-- This probably needs to be refactor into several components -->
+<div class="wrapper-projects">
+  <div class="container" id="js-cards-list">
+    <%= javascript_pack_tag "init_charts" %>
+    <div class="page-header text-center">
+      <h1>My investments</h1>
+    </div>
 
-<div class="container dashboard-container">
+    <% @user.investments.each do |investment| %>
 
-    <h1><%= @user.name %></h1>
+      <div class="cards-list" >
+        <!-- Project detail div -->
+        <%= link_to project_path(investment.project), class: "card-projects" do %>
+          <%= cl_image_tag investment.project.photo, class: "card-project-image" %>
+          <div class="container-info-card">
+            <div class="card-header-projects text-left">
+              <div class="card-title-and-company-name">
+                <h1> <%= investment.project.name %> </h1>
+                <h3> <%= investment.project.user.company_name %> </h3>
+                <br>
+              </div>
+              <%= cl_image_tag investment.project.user.photo, class: "card-company-logo" %>
+            </div>
+            <h3> <%= investment.project.description %></h3>
+            <br>
+            <div class="card-financial-details text-left">
+              <div class="card__completion-rate-text">
+                <strong><%= number_to_percentage(investment.project.completion_rate, precision: 0)%></strong> funded
+              </div>
+              <strong><p>Yield: <%= investment.project.yield * 100 %> % per year  </p></strong>
+            </div>
+            <div class="card-horizontal-line"></div>
+            <div class="card-investment-details text-left">
+              <h2>You bought <%= investment.number_of_panels %> panels (<%= investment.kwc %> kWc) for a total investment of <strong><%= humanized_money_with_symbol(investment.amount) %></strong></h2>
+              <h2> Income per year: <strong> <%= humanized_money_with_symbol(investment.income_per_year) %></strong></h2>
+              <h2> Estimated lifetime gains: <strong><%= humanized_money_with_symbol(investment.total_gains) %></strong></h2>
+            </div>
+          </div>
+        <% end %>
 
-    <h1>My investments</h1>
-    <ul class="list-group">
-      <% @user.investments.each do |investment| %>
-        <li class="list-group-item project-dashboard" > <strong>Name: <%= investment.project.name %> </strong></li>
-        <li class="list-group-item" >Number of panels: <%= investment.number_of_panels %></li>
-        <li class="list-group-item" >kWc: <%= investment.kwc %></li>
-        <li class="list-group-item" >Total investment: <%= humanized_money_with_symbol(investment.amount) %></li>
-        <li class="list-group-item" >Payment state: <%= investment.state %></li>
-        <li class="list-group-item" >Yield: <%= number_to_percentage(investment.project.yield * 100, precision: 2) %></li>
-        <li class="list-group-item" >Income per year: <%= humanized_money_with_symbol(investment.income_per_year) %></li>
-        <li class="list-group-item" >Active months: <%= investment.project.active_months %></li>
-        <li class="list-group-item" >Remaining months: <%= investment.project.remaining_months %></li>
-        <li class="list-group-item" >Past gains: <%= humanized_money_with_symbol(investment.past_gains) %></li>
-        <li class="list-group-item" >Forecasted remaining gains: <%= humanized_money_with_symbol(investment.remaining_gains) %></li>
-        <li class="list-group-item" >Total potential gains: <%= humanized_money_with_symbol(investment.total_gains) %></li>
-        <li class="list-group-item" >Profits: <%= humanized_money_with_symbol(investment.profits) %></li>
-        <li class="list-group-item" >Last month gain: <%= humanized_money_with_symbol(investment.last_month_gain) %> </li>
-        <br>
-        <h2>Production by hour - today</h2>
+        <!-- Financials detail div -->
+        <div class="card-projects ">
+          <div class="container-info-card">
+            <div class="card-header-projects-finance">
+              <div class="card-title-and-company-name">
+                <h1>Financials</h1>
+              </div>
+            </div>
+            <div class="card-investment-details">
+              <div class="dashboard-box">
+              <%= pie_chart ({"Past" => investment.project.active_months, "Remaining" => investment.project.remaining_months}), id: "pie-chart", height: "200px", donut: true,
+              library: {
+                  plotOptions: {
+                    pie: {
+                      dataLabels: {
+                        enabled: false
+                       },
+                       showInLegend: true
+                    }
+                  }
+                } %>
+              </div>
+              <h2>
+                Project active for <%= investment.project.active_months %> months,
+                <%= investment.project.remaining_months %> months remaining before end of contract
+              </h2>
+              <div class="dashboard-box">
+                <%= bar_chart ({"Past gains" => investment.past_gains, "Remaining gains" => investment.remaining_gains}), id: "users-chart", height: "200px" %>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <%= javascript_pack_tag "init_charts" %>
-        <%= line_chart investment.project.outputs.group_by_hour(:detailedtime, format: "%-l %P").average(:production) %>
+        <!-- Production detail div -->
+        <div class="card-projects ">
+          <div class="container-info-card">
+            <div class="card-header-projects-finance">
+              <div class="card-title-and-company-name">
+                <h1>Production</h1>
+              </div>
+            </div>
 
-        <h2> Production by day - this month </h2>
+            <div class="dashboard-tabs">
+              <%= link_to "Daily", "#", class: "dashboard-tab active", id: "yourdaytab" %>
+              <%= link_to "Monthly", "#", class: "dashboard-tab", id: "yourmonthtab" %>
+              <%= link_to "Yearly", "#", class: "dashboard-tab", id: "youryearstab" %>
+            </div>
 
-        <%= column_chart investment.last_month_outputs.group_by_day(:date).sum(:quantity) %>
+            <div class="dashboard-box" id="daily-production">
+              <h2>Today's performance, kW</h2>
+              <%= line_chart investment.project.outputs.group_by_hour(:detailedtime, format: "%-l %P").average("production * #{investment.share_of_total_power}"), height: "200px" %>
+            </div>
 
-        <h2> Production by month - this year </h2>
+            <div class="dashboard-box dashboard-hide" id="monthly-production">
+              <h2> Last month's production, kWh </h2>
+              <%= column_chart investment.last_month_outputs.group_by_day(:date, format: "%d %m").sum("quantity * #{investment.share_of_total_power}"), height: "200px" %>
+            </div>
 
-        <%= column_chart investment.project.outputs.group_by_month(:date).sum(:quantity) %>
+            <div class="dashboard-box dashboard-hide" id="yearly-production">
+              <h2> Last year's production, MWh </h2>
+              <%= column_chart investment.project.outputs.group_by_month(:date, format: "%Y-%m").sum("quantity * #{investment.share_of_total_power}"), height: "200px" %>
+            </div>
 
-        <br>
+            <div class="card-investment-details text-left">
+              <h2>CO2 savings</h2>
+              <h2>Benefit 2</h2>
+              <h2>benefit 3</h2>
+
+            </div>
+          </div>
+        </div>
+
+
       <% end %>
-    </ul>
-  <br>
-  <div class="box-dashboard">
-    <%= link_to "Edit my profile", edit_user_registration_path(current_user), class: "btn-main-green" %>
-    <%= link_to 'Back', :back, class: "btn-ancilliary" %>
-   </div>
+
+      <!-- footers -->
+      <div class="box-dashboard">
+        <%= link_to "Edit my profile", edit_user_registration_path(current_user), class: "btn-main-green" %>
+        <%= link_to 'Back', :back, class: "btn-ancilliary" %>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+  const dailyproduction = document.getElementById("daily-production")
+  const monthlyproduction = document.getElementById("monthly-production")
+  const yearlyproduction = document.getElementById("yearly-production")
+
+  const yourdaytab = document.getElementById("yourdaytab")
+  const yourmonthtab = document.getElementById("yourmonthtab")
+  const youryearstab = document.getElementById("youryearstab")
+
+  yourdaytab.addEventListener("click", (event) => {
+    yourdaytab.classList.add("active")
+    yourmonthtab.classList.remove("active")
+    youryearstab.classList.remove("active")
+    dailyproduction.classList.remove("dashboard-hide")
+    monthlyproduction.classList.add("dashboard-hide")
+    yearlyproduction.classList.add("dashboard-hide")
+  })
+
+  yourmonthtab.addEventListener("click", (event) => {
+    yourdaytab.classList.remove("active")
+    yourmonthtab.classList.add("active")
+    youryearstab.classList.remove("active")
+    dailyproduction.classList.add("dashboard-hide")
+    monthlyproduction.classList.remove("dashboard-hide")
+    yearlyproduction.classList.add("dashboard-hide")
+  })
+
+  youryearstab.addEventListener("click", (event) => {
+    yourdaytab.classList.remove("active")
+    yourmonthtab.classList.remove("active")
+    youryearstab.classList.add("active")
+    dailyproduction.classList.add("dashboard-hide")
+    monthlyproduction.classList.add("dashboard-hide")
+    yearlyproduction.classList.remove("dashboard-hide")
+  })
+</script>
 
 

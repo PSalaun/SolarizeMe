@@ -4,4 +4,5 @@ class Output < ApplicationRecord
   def output_today
     self.where("date = ?", Date.today)
   end
+
 end

@@ -91,6 +91,4 @@ class Project < ApplicationRecord
   def kwc
     panels_quantity * panel_watt / 1000
   end
-
-
 end
