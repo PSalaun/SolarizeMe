@@ -1,9 +1,8 @@
 const navbar = document.getElementById("navbar");
 
 function scrollNavbar() {
-  if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
-    navbar.style.top = "0";
-    navbar.classList.add("is-visible");
+  if (document.querySelector(".viewing-page-2")) {
+      navbar.classList.add("is-visible");
   }
 }
 
@@ -22,20 +21,16 @@ function navbarSolidColorOnCards() {
   }
 }
 
-function homePageNavbarDisplay() {
-  scrollNavbar();
-  navbarSolidColorOnCards();
-}
-
 // EVENTS
 if (window.location.pathname === "/") {
   hideNavbarOnHomeTop();
-  window.onscroll = function() {homePageNavbarDisplay()};
+  document.addEventListener("transitionend", scrollNavbar);
+  // window.onscroll = function() {scrollNavbar()};
 } else {
-  if (document.getElementById("js-cards-list")) {
-  window.onscroll = function() {navbarSolidColorOnCards()};
-  }
 }
 
+if (document.getElementById("js-cards-list")) {
+  window.onscroll = function() {navbarSolidColorOnCards()};
+}
 
 

@@ -25,13 +25,13 @@
           </li>
           <li>
             <%= link_to destroy_user_session_path, method: :delete do %>
-            <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+            <%= icon("fa", "sign-out-alt") %> <%= t(".sign_out", default: "Log out") %>
             <% end %>
           </li>
         </ul>
     </div>
     <% else %>
-    <%= link_to "Login", new_user_session_path %>
+    <%= link_to "Login", new_user_session_path, class:"navbar-solarize-item navbar-solarize-link" %>
     <% end %>
   </div>
 </div>

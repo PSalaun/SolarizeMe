@@ -5,7 +5,7 @@
 }
 
 .projects-filter-panel {
-  margin: 20px;
+  margin: 30px 15px;
   width: 100%;
 
   .form-group {
@@ -13,6 +13,7 @@
     flex-wrap: wrap;
     width: 100%;
     align-content: center;
+    margin: 0px;
   }
 
   .filter-location-panel {
@@ -42,21 +43,24 @@
     padding: 5px;
     margin: 5px 5px;
     border: 1px solid white;
-    border-radius: 5px;
+    border-radius: 25px;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 52px;
+    min-height: 40px;
     min-width: 100px;
     &:hover {
       opacity: 1;
       cursor: pointer;
+      font-weight: bold;
     }
     &.active {
-      background: $brand-primary;
-      color: white;
+      background: white;
+      color: $blue-plain;
       opacity: 1;
+      font-weight: bold;
+      border: none;
     }
   }
   .filter-panel-header {
@@ -70,6 +74,15 @@
   .input-area {
     flex: 0 0 85%;
     width: 100%;
+  }
+
+  .filter-buttons {
+    margin: 10px 0px;
+    display: flex;
+    justify-content: center;
+    > * {
+      margin: 0px 5px;
+    }
   }
 
 }

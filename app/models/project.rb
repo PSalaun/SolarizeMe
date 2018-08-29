@@ -56,12 +56,12 @@ class Project < ApplicationRecord
   end
 
   def remaining_crowdfunding_days
-    if status == "Crowdfunding"
+    if status == "Active crowdfunding"
       days = (crowdfunding_end_date - crowdfunding_start_date).to_i
       return "#{days} days to go"
     elsif status == "Under construction"
       return "Fully funded and under construction"
-    elsif status == "Starting soon!"
+    elsif status == "Future crowdfunding"
       return "Crowdfunding starting soon!"
     else
       return "Project already fully funded!"
