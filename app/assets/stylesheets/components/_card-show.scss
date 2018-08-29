@@ -1,9 +1,10 @@
 .wrapper-one-lightblue {
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
 
 .card-projects-show {
   height: auto;
@@ -27,15 +28,17 @@
 
 }
   .project-detailed-description-show{
-    margin: 100px 15px 10px 15px;
-    flex: 0 0 30%;
+    margin-top: 100px;
+    flex: 0 0 40%;
     color: white;
   }
   .map-showpage {
-    margin: 15px;
-    flex: 1 1 auto;
+    margin: 5px;
+    flex: 0 0 55%;
+  img{
+    max-width: 500px;
   }
-
+}
 .button-begin-showpage{
   margin: 10px;
 }
@@ -48,6 +51,7 @@
   margin: 0 5px;
 }
 .show-flex-two{
+
   h3{
     font-size: 26px;
     padding-bottom: 10px;

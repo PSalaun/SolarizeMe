@@ -46,7 +46,7 @@
           <h3>Key technical indicators</h3>
           <div class="icon-container-show">
             <h1><i class="fas fa-solar-panel"></i></h1>
-            <p> <strong>Panel type:</strong> <%= @project.panel_watt %> Watts</p>
+            <p><strong>Panel type:</strong> <%= @project.panel_watt %> Watts</p>
           </div>
           <div class="icon-container-show">
             <h1><i class="fas fa-euro-sign"></i></h1>
@@ -86,19 +86,18 @@
           <p> <strong> <%= @project.remaining_crowdfunding_days %>!</strong></p>
         </div>
     </div>
-  </div>
 
 
-<!--   <div class="wrapper-two-grey"> -->
+
     <div class="project-detailed-description-show">
       <h3> Detailed description </h3>
       <%= @project.long_description %>
     </div>
+
     <div class="map-showpage">
       <%= cl_image_tag @project.photo %>
     </div>
-<!--   </div> -->
-
+  </div>
   <div class="button-back-showpage">
     <%= link_to "Back to the projects list", :back, class:"btn btn-goback" %>
   </div>
