@@ -22,12 +22,14 @@
       padding: 50px 10px 0 10px;
       margin: 0 10px 20px 10px;
       font-family: $banner-font;
-
+      text-shadow: 1px 1px rgba(0,0,0,0.1);
     }
+
     h2 {
       font-size: 36px;
       padding: 0 10px;
       margin: 0 10px 100px 10px;
+      text-shadow: 1px 1px rgba(0,0,0,0.1);
     }
   }
 
