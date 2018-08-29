@@ -22,14 +22,10 @@
         <div class="filter-panel-header"><p>Choose category</p></div>
         <div class="input-area">
           <div class="category-choices">
-            <%= check_box_tag("status[]", "Future crowdfunding", false, class: "hidden", id: "future") %>
-            <label for="future" class="category-choice">Future crowdfunding</label>
-            <%= check_box_tag("status[]", "Active crowdfunding",  false, class: "hidden", id: "active") %>
-            <label for="active" class="category-choice">Active crowdfunding</label>
-            <%= check_box_tag("status[]", "under construction", false, class: "hidden", id: "construction") %>
-            <label for="construction" class="category-choice">Under construction</label>
-            <%= check_box_tag("status[]", "Operational", false, class: "hidden", id: "operational") %>
-            <label for="operational" class="category-choice">Operational</label>
+            <%= check_box_tag("status[]", "Crowdfunding", false, class: "hidden", id: "future") %>
+            <label for="future" class="category-choice">Crowdfunding</label>
+            <%= check_box_tag("status[]", "Completed", false, class: "hidden", id: "operational") %>
+            <label for="operational" class="category-choice">Completed</label>
           </div>
         </div>
         </div>

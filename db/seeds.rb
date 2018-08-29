@@ -13,6 +13,18 @@ User.create( email: "admin@admin.com", password: 123456, admin: true )
 
 puts "generating investors"
 User.create(
+  email: "alexis@solar.com",
+  password: 123456,
+  username: "alexis",
+  first_name: "Alexis",
+  last_name: "Steve",
+  birth_date: Faker::Date.birthday(17, 80),
+  is_company: false,
+  company_name: nil
+  )
+
+puts "generating investors"
+User.create(
   email: "john@doe.com",
   password: 123456,
   username: "johndoe",
@@ -67,26 +79,26 @@ puts "generating projects"
 
 
 
-future_campaign = Project.new(
-  name: "Rome HQ",
+running_coca = Project.new(
+  name: "Madrid HQ",
   description: "Excelent location with very reliable company!",
-  price_cents: 40000,
-  panel_watt: 270,
+  price_cents: 27000,
+  panel_watt: 320,
   lat: 52,
   lon: 12,
-  kwh_price_cents: 25,
-  yield: 0.182,
-  roi_decimals: 712,
-  crowdfunding_start_date: Date.new(2018, 10, 2),
-  crowdfunding_end_date: Date.new(2018, 11, 1),
+  kwh_price_cents: 22,
+  yield: 0.162,
+  roi_decimals: 612,
+  crowdfunding_start_date: Date.new(2018, 1, 2),
+  crowdfunding_end_date: Date.new(2018, 9, 1),
+  end_of_contract: Date.new(2030, 12, 31),
   comissioning_date: Date.new(2018, 12, 31),
-  end_of_contract: Date.new(2035, 12, 31),
-  panels_quantity: 500,
-  country: "Italy",
-  remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535108330/ch3bxjozyrm1lkj8wh3n.jpg"
+  panels_quantity: 4000,
+  country: "Spain",
+  remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535106441/jgycj9bei1zkxq7c1qwu.jpg"
   )
-future_campaign.user = User.where(company_name: "Nike").first
-future_campaign.save!
+running_coca.user = User.where(company_name: "Coca-Cola").first
+running_coca.save!
 
 future_campaign = Project.new(
   name: "Vienna HQ",
@@ -110,6 +122,7 @@ future_campaign = Project.new(
 future_campaign.user = User.where(company_name: "Nike").first
 future_campaign.save!
 
+
 running_coca = Project.new(
   name: "Madrid Depot",
   description: "Excelent location with very reliable company!",
@@ -131,27 +144,26 @@ running_coca = Project.new(
 running_coca.user = User.where(company_name: "Coca-Cola").first
 running_coca.save!
 
-running_coca = Project.new(
-  name: "Madrid HQ",
+future_campaign = Project.new(
+  name: "Rome HQ",
   description: "Excelent location with very reliable company!",
-  price_cents: 27000,
-  panel_watt: 320,
+  price_cents: 40000,
+  panel_watt: 270,
   lat: 52,
   lon: 12,
-  kwh_price_cents: 22,
-  yield: 0.162,
-  roi_decimals: 612,
-  crowdfunding_start_date: Date.new(2018, 1, 2),
-  crowdfunding_end_date: Date.new(2018, 9, 1),
-  end_of_contract: Date.new(2030, 12, 31),
+  kwh_price_cents: 25,
+  yield: 0.182,
+  roi_decimals: 712,
+  crowdfunding_start_date: Date.new(2018, 10, 2),
+  crowdfunding_end_date: Date.new(2018, 11, 1),
   comissioning_date: Date.new(2018, 12, 31),
-  panels_quantity: 4000,
-  country: "Spain",
-  remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535106441/jgycj9bei1zkxq7c1qwu.jpg"
+  end_of_contract: Date.new(2035, 12, 31),
+  panels_quantity: 500,
+  country: "Italy",
+  remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535108330/ch3bxjozyrm1lkj8wh3n.jpg"
   )
-running_coca.user = User.where(company_name: "Coca-Cola").first
-running_coca.save!
-
+future_campaign.user = User.where(company_name: "Nike").first
+future_campaign.save!
 
 running_Nike = Project.new(
   name: "Paris Offices",
@@ -201,7 +213,16 @@ puts "created #{Project.count} projects"
 puts "generating investments"
 
 investment = Investment.new(
-  number_of_panels: 1000,
+  number_of_panels: 20,
+  state: "confirmed"
+  )
+investment.user = User.where(username: "alexis").first
+investment.project = Project.where(name: "Rome Factory").first
+investment.amount_cents = investment.number_of_panels * investment.project.price_cents
+investment.save!
+
+investment = Investment.new(
+  number_of_panels: 1380,
   state: "confirmed"
   )
 investment.user = User.where(username: "johndoe").first
@@ -228,7 +249,7 @@ investment.amount_cents = investment.number_of_panels * investment.project.price
 investment.save!
 
 investment = Investment.new(
-  number_of_panels: 500,
+  number_of_panels: 3700,
   state: "confirmed"
   )
 investment.user = User.where(username: "johndoe").first

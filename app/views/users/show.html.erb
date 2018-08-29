@@ -49,7 +49,7 @@
               </div>
               <div class="card-horizontal-line"></div>
               <div class="card-investment-details text-left">
-                <h2>You bought <%= investment.number_of_panels %> panels (<%= investment.kwc %> kWc) for a total investment of <strong><%= humanized_money_with_symbol(investment.amount) %></strong></h2>
+                <h2>You bought <strong><%= investment.number_of_panels %> panels</strong> (<%= investment.kwc %> kWc) for a total investment of <strong><%= humanized_money_with_symbol(investment.amount) %></strong></h2>
                 <h2> Income per year: <strong> <%= humanized_money_with_symbol(investment.income_per_year) %></strong></h2>
                 <h2> Estimated lifetime gains: <strong><%= humanized_money_with_symbol(investment.total_gains) %></strong></h2>
               </div>
@@ -107,6 +107,9 @@
 
               <div class="dashboard-box" id="daily-production-<%= investment.id %>">
                 <h2>Today's performance, kW</h2>
+                <% if investment.project.comissioning_date > Date.today %>
+                <%= "Project not yet operational" %>
+                <% end %>
                 <%= line_chart investment.project.outputs.group_by_hour(:detailedtime, format: "%-l %P").average("production * #{investment.share_of_total_power}"), height: "200px" %>
               </div>
 
@@ -122,13 +125,11 @@
 
               <div class="card-investment-details text-left">
                 <br>
-                <h2>You will save <%= investment.co2_tonn_lifetime %> tonns of CO2.</h2>
-
-                <h2>Equivalent to <%= number_with_precision(investment.elephants_lifetime, :precision => 0) %> elephants or:</h2>
+                <h2>You will save in total <%= investment.co2_tonn_lifetime %> tonns (<%= number_with_precision(investment.elephants_lifetime, :precision => 0) %> elephants) of CO2. This is equivalent to:</h2>
                 <h2> <i class="fas fa-tree"></i> Planting <%= number_with_precision(investment.co2_tonn_lifetime, :precision => 0) %> trees!</h2>
                 <h2> <i class="fas fa-car-side"></i> Driving <%= number_with_precision(investment.km_car_lifetime, :precision => 0) %> km! </h2>
                 <h2> <i class="fas fa-globe-americas"></i> Its <%= number_with_precision(investment.turns_world_lifetime, :precision => 0) %> times around the world!</h2>
-                <h2>Good job!</h2>
+                <h2><strong>Good job!</strong></h2>
               </div>
             </div>
           </div>
