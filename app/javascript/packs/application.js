@@ -7,3 +7,7 @@ import "onepagescroll";
 import "navbar";
 import "output";
 import "filter";
+import {dashboard} from "dashboardtabs";
+import {dashboardtab} from "dashboardtabs";
+dashboard();
+dashboardtab();
