@@ -1,7 +1,7 @@
 .project-show-page-card-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 
 .card-projects-show {
@@ -17,55 +17,148 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 0 0 auto;
+}
 
+.card-project-image-show {
+  flex: 0 0 230px;
+  width: 280px;
 
-  .card-project-image-show {
-    flex: 0 0 230px;
-    width: 320px;
+}
+.wrapper-one-lightblue {
+  width: 900px;
+}
+.wrapper-two-grey {
+  width: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+
+  .project-detailed-description-show{
+
+    margin: 100px 15px 10px 15px;
+    width: 300px;
+  }
+  .map-showpage img{
+      width: 550px;
+      margin: 15px;
+      align-items: right;
   }
 
-  .card-header-projects-show {
-    display: flex;
-    justify-content: space-between;
-    flex: 1 0 auto;
-    width: 320px;
-    padding-top: 20px;
-
-    .card-title-and-company-name-show {
-      flex: 0 0 auto;
-      h1 {
-        margin-bottom: 5px;
-      }
-    }
-
-    .card-company-logo-show {
-      height: 50px;
-      width: 50px;
-      flex: 0 0 50px;
-      border-radius: 50%;
-    }
+.button-begin-showpage{
+  margin: 10px;
+}
+.button-back-showpage{
+  margin-top: 30px;
+}
+.show-flex-one, .show-flex-two, .show-flex-three {
+  height: 500px;
+}
+.show-flex-two{
+  h3{
+    font-size: 26px;
+    padding-bottom: 10px;
   }
-
-  .card-financial-details-show {
-    flex: 0 0 250px;
-    padding-top: 20px;
-    h3 {
-      font-size: 17px;
-      text-align: center;
-    }
-    .card-financial-details-show-center {
-      text-align: center;
-    }
+  p{
+   font-size: 18px;
+   font-weight: lighter;
+    padding: 10px 10px 0 30px;
   }
+  height: auto;
+  width: 400px;
+  color: white;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  flex: 0 0 auto;
+}
+.icon-container-show{
+  display: flex;
+  padding: 10px;
+  align-items: top;
+}
 
-  .card-country-projects-show {
-    flex: 0 0 40px;
-    align-self: flex-end;
+.show-flex-three{
+  h3{
+    font-size: 26px;
+    padding-bottom: 10px;
+  }
+  p {
+    font-size: 18px;
+    font-weight: lighter;
+    padding: 10px 10px 0 30px;
+  }
+  height: auto;
+  width: 400px;
+  color: white;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  flex: 0 0 auto;
+}
+.technical-indicators-show{
+  margin-top: 100px;
+}
+
+.crowfunding-status-show{
+  margin: 43px 40px 42px 0;
+}
+
+.button-invest-show {
+  align-self: center;
+  margin-right: 20px;
+}
+.remaining-crowfunding{
+  align-self: center;
+  margin-right: 20px;
+}
+
+.card-header-projects-show {
+  display: flex;
+  justify-content: space-between;
+  flex: 0 0 auto;
+  width: 320px;
+  padding-top: 20px;
+}
+
+.card-title-and-company-name-show {
+  flex: 0 0 auto;
+  h1 {
+    margin-bottom: 5px;
   }
 }
 
+.card-company-logo-show {
+  height: 50px;
+  width: 50px;
+  flex: 0 0 50px;
+  border-radius: 50%;
+}
+
+// .card-financial-details-show {
+//   flex: 0 0 250px;
+//   padding-top: 20px;
+//   h3 {
+//     font-size: 17px;
+//     text-align: center;
+//   }
+//   .card-financial-details-show-center {
+//     text-align: center;
+//   }
+// }
+
+.card-country-projects-show {
+  flex: 0 0 40px;
+  align-self: flex-end;
+}
+
+
 .card-description-projects-show {
-  position: absolute;
+  position: flex;
   left: 10px;
   width: 150px;
 
