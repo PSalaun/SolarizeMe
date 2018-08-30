@@ -94,6 +94,7 @@ running_coca = Project.new(
   end_of_contract: Date.new(2030, 12, 31),
   comissioning_date: Date.new(2018, 12, 31),
   panels_quantity: 4000,
+  address: "Madrid",
   country: "Spain",
   remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535106441/jgycj9bei1zkxq7c1qwu.jpg"
   )
@@ -116,6 +117,7 @@ future_campaign = Project.new(
   comissioning_date: Date.new(2018, 12, 31),
   end_of_contract: Date.new(2035, 12, 31),
   panels_quantity: 800,
+  address: "Vienna",
   country: "Austria",
   remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535108270/hlt6yqkbp36ju5uk49jj.jpg"
   )
@@ -138,6 +140,7 @@ running_coca = Project.new(
   end_of_contract: Date.new(2030, 12, 31),
   comissioning_date: Date.new(2018, 12, 31),
   panels_quantity: 2000,
+  address: "Madrid",
   country: "Spain",
   remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535108222/avuoydt0sicqtpiybyee.jpg"
   )
@@ -159,6 +162,7 @@ future_campaign = Project.new(
   comissioning_date: Date.new(2018, 12, 31),
   end_of_contract: Date.new(2035, 12, 31),
   panels_quantity: 500,
+  address: "Rome",
   country: "Italy",
   remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535108330/ch3bxjozyrm1lkj8wh3n.jpg"
   )
@@ -180,6 +184,7 @@ running_Nike = Project.new(
   end_of_contract: Date.new(2038, 1, 31),
   comissioning_date: Date.new(2018, 1, 31),
   panels_quantity: 200,
+  address: "Paris",
   country: "France",
   remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535564045/hrj4wc5f7pmxmvdzzxjt.jpg"
   )
@@ -202,6 +207,7 @@ current_campaign = Project.new(
   comissioning_date: Date.new(2015, 12, 31),
   end_of_contract: Date.new(2038, 12, 31),
   panels_quantity: 1200,
+  address: "Rome",
   country: "Italy",
   remote_photo_url: "https://res.cloudinary.com/dafctmpcz/image/upload/v1535564117/firi3llyyswzyrhoehkx.jpg"
   )

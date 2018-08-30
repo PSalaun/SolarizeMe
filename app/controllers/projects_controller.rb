@@ -19,13 +19,8 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @investment = Investment.new
     authorize @project
-    @projects = Project.where.not(latitude: nil, longitude: nil)
-    @markers = @projects.map do |project|
-      {
-        lat: project.latitude,
-        lng: project.longitude
-      }
-    end
+    @markers = []
+    @markers.push({lat: @project.latitude, lng: @project.longitude}) if @project.latitude && @project.longitude
   end
 end
 
