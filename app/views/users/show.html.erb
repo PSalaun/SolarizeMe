@@ -29,6 +29,7 @@
       <div id="main-dashboard-<%= investment.id %>" class="investment-all-dashes <%= 'dashboard-hide' if countdash > 0 %>" data-investmentprod="<%= investment.id %>" data-investment="<%= investment.id %>" >
       <% countdash += 1 %>
         <div class="cards-list" >
+
           <!-- Project detail div -->
           <%= link_to project_path(investment.project), class: "card-projects" do %>
             <%= cl_image_tag investment.project.photo, class: "card-project-image" %>
@@ -63,20 +64,21 @@
             <div class="container-info-card">
               <div class="card-investment-details">
                 <div class="dashboard-box">
-                <h2>
-                  Project active for <%= investment.project.active_months %> months, <%= investment.project.remaining_months %> months remaining before end of contract
-                </h2>
-                <%= pie_chart ({"Past" => investment.project.active_months, "Remaining" => investment.project.remaining_months}), id: "pie-chart-#{investment.id}", height: "200px", donut: true,
-                library: {
-                    plotOptions: {
-                      pie: {
-                        dataLabels: {
-                          enabled: false
-                         },
-                         showInLegend: true
+                  <h2>Project duration, months</h2>
+                  <%= pie_chart ({"Past" => investment.project.active_months, "Remaining" => investment.project.remaining_months}), id: "pie-chart-#{investment.id}", height: "200px", donut: true,
+                  library: {
+                      plotOptions: {
+                        pie: {
+                          dataLabels: {
+                            enabled: false
+                           },
+                           showInLegend: true
+                        }
                       }
-                    }
-                  } %>
+                    } %>
+                  <h2>
+                    Operational for <%= investment.project.active_months %> months, <%= investment.project.remaining_months %> months remaining.
+                  </h2>
                 </div>
                 <div class="dashboard-box">
                   <h2>Investment income in EUR</h2>
