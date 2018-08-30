@@ -1,16 +1,14 @@
 .card-projects {
-  height: 580px;
-  width: 340px;
-  color: $text-dark;
-  border: solid $light-gray 1px;
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07);
-  margin: 15px;
-  border-radius: 5px;
-  background: white;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    height: 440px;
+    width: 340px;
+    color: #484848;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.07);
+    margin: 15px;
+    border-radius: 5px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   // justify-content: space-between;
 
   &:hover {
@@ -24,17 +22,32 @@
     width: 320px;
   }
 
+  .card-content {
+    width: 100%;
+    padding: 12px;
+    padding-top: 54px;
+  }
+
   .card-header-projects {
+    background-size: cover;
+    position: relative;
     display: flex;
+    background-position: center;
     justify-content: space-between;
     flex: 1 0 auto;
+    padding: 23px;
+    border-radius: 5px 5px 0 0;
     padding-top: 20px;
     width: 100%;
     .card-title-and-company-name {
-      flex: 0 0 auto;
+      position: absolute;
+      bottom: 20px;
       h1 {
         margin-bottom: 5px;
-        color: black;
+        color: white;
+      }
+      h3 {
+        color: white;
       }
     }
 
@@ -58,6 +71,9 @@
       width: 50px;
       flex: 0 0 50px;
       border-radius: 50%;
+      position: absolute;
+      right: 22px;
+      bottom: 24px;
     }
   }
 
