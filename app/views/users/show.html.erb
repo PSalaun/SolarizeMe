@@ -70,14 +70,15 @@
                   <h2>Investment income in EUR</h2>
                   <%= bar_chart ({"Past gains" => investment.past_gains, "Remaining gains" => investment.remaining_gains}), id: "users-chart-#{investment.id}", height: "200px" %>
                 </div>
+                <div class="card-investment-details text-left">
+                  <br>
                   <h2>You bought <strong><%= investment.number_of_panels %> panels</strong> (<%= investment.kwc %> kWc) for a total investment of <strong><%= humanized_money_with_symbol(investment.amount) %></strong></h2>
                   <h2> Income per year: <strong> <%= humanized_money_with_symbol(investment.income_per_year) %></strong></h2>
                   <h2>
                     Operational for <%= investment.project.active_years %> years, <%= investment.project.remaining_years %> years remaining.
                   </h2>
                   <h2> Estimated lifetime gains: <strong><%= humanized_money_with_symbol(investment.total_gains) %></strong></h2>
-
-
+                </div>
               </div>
             </div>
           </div>
