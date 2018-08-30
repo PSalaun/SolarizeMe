@@ -10,17 +10,19 @@
 
 
     <!-- tab to select project -->
-    <div class="dashboard-tabs">
-      <% count = 0 %>
-      <% @user.investments.each do |investment| %>
-        <% if count == 0 %>
-          <%= link_to "#{investment.project.name}", "#", class: "all-investment-tabs dashboard-tab active", id: "investment-dash-tab-#{investment.id}" %>
-        <% else %>
-          <%= link_to "#{investment.project.name}", "#", class: "all-investment-tabs dashboard-tab", id: "investment-dash-tab-#{investment.id}" %>
+<!--     <div class="investment-all-dashes"> -->
+      <div class="dashboard-tabs">
+        <% count = 0 %>
+        <% @user.investments.each do |investment| %>
+          <% if count == 0 %>
+            <%= link_to "#{investment.project.name}", "#", class: "all-investment-tabs dashboard-tab active", id: "investment-dash-tab-#{investment.id}" %>
+          <% else %>
+            <%= link_to "#{investment.project.name}", "#", class: "all-investment-tabs dashboard-tab", id: "investment-dash-tab-#{investment.id}" %>
+          <% end %>
+          <% count += 1 %>
         <% end %>
-        <% count += 1 %>
-      <% end %>
-    </div>
+      </div>
+<!--     </div> -->
 
     <% countdash = 0 %>
     <% @user.investments.each do |investment| %>

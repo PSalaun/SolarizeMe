@@ -38,8 +38,8 @@
         <h1><i class="fas fa-cart-arrow-down"></i></h1>
         <p> <strong> <%= @project.available_panels %> panels </strong> still available </p>
       </div>
-      <div id="total-investment-value-calculated">
-        <p>This is the value</p>
+      <div>
+        <p>Select the number of panels you would like to buy</p>
       </div>
       <div>
 
@@ -74,7 +74,9 @@
 
   </div>
 
-<script>
+<!-- Work in progress script to calculate value from investment on same page -->
+
+<!-- <script>
   const calculatedvalue = document.getElementById("total-investment-value-calculated").innerText
   console.log(calculatedvalue)
   const pricepanel = document.getElementById("price-of-selected-panels").innerHTML
@@ -88,4 +90,4 @@
   document.addEventListener("click", (event) => {
     console.log(numberpanels)
   })
-</script>
+</script> -->
