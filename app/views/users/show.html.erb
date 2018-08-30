@@ -101,7 +101,7 @@
               <div class="dashboard-box" id="daily-production-<%= investment.id %>">
                 <h2>Today's production, kW</h2>
                 <% if investment.project.comissioning_date > Date.today %>
-                <%= "Project not yet operational" %>
+                  <%= "project not yet operational" %>
                 <% end %>
                 <%= line_chart investment.project.outputs.group_by_hour(:detailedtime, format: "%-l %P").average("production * #{investment.share_of_total_power}"), height: "200px" %>
               </div>
