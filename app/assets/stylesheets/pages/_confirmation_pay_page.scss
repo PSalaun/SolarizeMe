@@ -11,11 +11,11 @@
 }
 
 .payment-header {
-  flex: 0 0 25%;
+  flex: 0 0 20%;
 }
 
 .payment-content {
-  flex: 0 0 70%;
+  flex: auto;
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -31,27 +31,49 @@
 .payment-content-project_name {
   display: flex;
   h3 {
-  font-size: 2rem;
+    font-size: 2rem;
   // font-weight: bolder;
-  }
+}
 }
 
 .payment-content-sections {
   display: flex;
+  // justify-content: space-between;
+}
+
+.payment-content-sections_left-panel {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   justify-content: space-between;
 }
 
 .payment-content-purchase, .payment-content-gains {
   display: flex;
   width: 100%;
+  margin-bottom: 35px;
 }
 
 .payment-content-purchase-icon, .payment-content-gains-icon {
-  flex: 0 0 25%;
+  flex: 0 0 15%;
 }
 
 .payment-content-purchase-infos, .payment-content-gains-infos {
-  flex: 0 0 80%;
+  flex: auto;
+  p:first-child {
+    font-size: 2.3rem;
+    line-height: 40px;
+  }
+
+  p {
+    line-height: 30px;
+  }
+}
+
+.payment-content-stripe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .confirmation-container{
@@ -79,10 +101,9 @@
 }
 
 .stripe-button-el {
-  margin-top: 30px;
-  margin-bottom: 10px;
   width:200px;
   padding: 10px;
+  display: none;
 }
 
 .button-go-back-confirm {
