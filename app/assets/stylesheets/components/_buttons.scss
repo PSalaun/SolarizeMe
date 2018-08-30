@@ -15,6 +15,7 @@ $btn-toggle-width: 100px;
   justify-content: center;
   font-weight: bold;
   box-shadow: 1px 1px rgba(0,0,0,0.1);
+  text-shadow: 1px 1px rgba(0,0,0,0.1);
   &:hover {
     text-decoration: none;
     color: white;
@@ -35,6 +36,7 @@ $btn-toggle-width: 100px;
   justify-content: center;
   box-shadow: 1px 1px rgba(0,0,0,0.1);
   font-weight: bold;
+  text-shadow: 1px 1px rgba(0,0,0,0.1);
 }
 
 .btn-ancilliary {
@@ -51,6 +53,7 @@ $btn-toggle-width: 100px;
   justify-content: center;
   box-shadow: 1px 1px rgba(0,0,0,0.1);
   font-weight: bold;
+  text-shadow: 1px 1px rgba(0,0,0,0.1);
   &:hover {
     text-decoration: none;
     color: white;
@@ -75,6 +78,7 @@ $btn-toggle-width: 100px;
   justify-content: center;
   align-items: center;
   font-weight: bold;
+  text-shadow: 1px 1px rgba(0,0,0,0.1);
 }
 
 .btn-filter{
@@ -88,6 +92,7 @@ $btn-toggle-width: 100px;
   border: solid #469AE0 1px;
   color: white;
   font-weight: bold;
+  text-shadow: 1px 1px rgba(0,0,0,0.1);
   &:hover {
     opacity: 0.7;
   }
@@ -103,6 +108,7 @@ a.btn-reset-f {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  text-shadow: 1px 1px rgba(0,0,0,0.1);
   &:hover {
     color: white;
     opacity: 0.7;
@@ -120,6 +126,7 @@ a.btn-reset-f {
   flex-direction: column;
   align-items: center;
   font-weight: bold;
+  text-shadow: 1px 1px rgba(0,0,0,0.1);
   &:hover {
     text-decoration: none;
     border: none
