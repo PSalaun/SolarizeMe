@@ -38,6 +38,11 @@
         <h1><i class="fas fa-cart-arrow-down"></i></h1>
         <p> <strong> <%= @project.available_panels %> panels </strong> still available </p>
       </div>
+
+      <div class="remaining-crowfunding">
+        <p> <%= @project.remaining_crowdfunding_days %>!</p>
+      </div>
+
       <div>
         <p>Select the number of panels you would like to buy</p>
       </div>
@@ -46,13 +51,6 @@
       </div>
       <div class="investment-content-invest_action">
         <%= render "investments/form", project: @project, investment: @investment, class:"investment-form" %>
-      </div>
-
-      <div class="button-invest-show">
-        <%= link_to "Invest now", new_project_investment_path(@project), class: "btn btn-main-green" %>
-      </div>
-      <div class="remaining-crowfunding">
-        <p> <%= @project.remaining_crowdfunding_days %>!</p>
       </div>
 
     </div>
