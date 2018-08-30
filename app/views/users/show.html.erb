@@ -1,16 +1,10 @@
 <!-- VARIABLES -->
-
-<!-- This probably needs to be refactor into several components -->
-<div class="wrapper-projects">
-  <div class="container" id="js-cards-list">
-    <%= javascript_pack_tag "init_charts" %>
-    <div class="page-header text-center">
+<div class="page-header text-center">
       <h1>My investments</h1>
     </div>
-
-
     <!-- tab to select project -->
 <!--     <div class="investment-all-dashes"> -->
+  <div class="container">
       <div class="dashboard-tabs">
         <% count = 0 %>
         <% @user.investments.each do |investment| %>
@@ -22,7 +16,13 @@
           <% count += 1 %>
         <% end %>
       </div>
+   </div>
 <!--     </div> -->
+<!-- This probably needs to be refactor into several components -->
+<div style="background-color: #165469; box-shadow: 1px 5px 18px 5px #00000036;
+}" class="wrapper-projects">
+  <div class="container" id="js-cards-list">
+    <%= javascript_pack_tag "init_charts" %>
 
     <% countdash = 0 %>
     <% @user.investments.each do |investment| %>
