@@ -1,6 +1,11 @@
 <div class="wrapper-projects">
   <div class="container-fluid container-filter">
 
+      <div class="container index-filter-toggle">
+        <button data-toggle="collapse" data-target="#index-filter-panel" class="btn-toggle">
+          <p class="rotate">&#9660;</p>
+          <p> Toggle filters</p></button>
+      </div>
     <div id="index-filter-panel" class="collapse">
       <div class="projects-filter-panel">
         <%= form_tag projects_path, method: "get" do  %>
@@ -38,11 +43,7 @@
       </div>
     </div>
   </div>
-  <div class="container index-filter-toggle">
-    <button data-toggle="collapse" data-target="#index-filter-panel" class="btn-toggle">
-      <p class="rotate">&#9660;</p>
-    Toggle filters</button>
-  </div>
+
   <div class="container">
     <div class="page-header text-center">
       <h1>Our Projects</h1>
