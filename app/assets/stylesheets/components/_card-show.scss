@@ -84,10 +84,23 @@
     flex: 0 0 30%;
     color: white;
   }
+
   .icon-container-show{
-    display: flex;
     padding: 10px;
     align-items: top;
+    font-size: 24px;
+    p {
+      padding: 0px;
+    }
+    i {
+      width: 28px;
+      opacity: .5;
+      font-size: 17px;
+    }
+    .form-control-label {
+      font-size: 24px;
+      font-weight: bold;
+    }
   }
 
   .show-flex-three{

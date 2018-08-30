@@ -228,6 +228,15 @@ investment.amount_cents = investment.number_of_panels * investment.project.price
 investment.save!
 
 investment = Investment.new(
+  number_of_panels: 10,
+  state: "confirmed"
+  )
+investment.user = User.where(username: "alexis").first
+investment.project = Project.where(name: "Paris Offices").first
+investment.amount_cents = investment.number_of_panels * investment.project.price_cents
+investment.save!
+
+investment = Investment.new(
   number_of_panels: 1180,
   state: "confirmed"
   )
@@ -264,7 +273,7 @@ investment.amount_cents = investment.number_of_panels * investment.project.price
 investment.save!
 
 investment = Investment.new(
-  number_of_panels: 100,
+  number_of_panels: 90,
   state: "confirmed"
   )
 investment.user = User.where(email: "admin@admin.com").first
@@ -312,42 +321,41 @@ end
 require "json"
 require "rest-client"
 
-project = Project.where(name: "Paris Offices").first
+projects = Project.where("comissioning_date <= ?", Date.today)
+projects.each do |project|
 
-lat = project.lat
-lon = project.lon
-kwc = project.kwc
+  lat = project.lat
+  lon = project.lon
+  kwc = project.kwc
 
-response = RestClient.get "https://api.forecast.solar/estimate/#{lat.to_s}/#{lon.to_s}/37/0/#{kwc.to_s}"
-repos = JSON.parse(response)
+  response = RestClient.get "https://api.forecast.solar/estimate/#{lat.to_s}/#{lon.to_s}/37/0/#{kwc.to_s}"
+  repos = JSON.parse(response)
 
-repos_watt = repos['result']['watts']
-date = Date.today.to_s
+  repos_watt = repos['result']['watts']
+  date = Date.today.to_s
 
-repos_day_production = repos['result']['watt_hours_day'][date]
+  repos_day_production = repos['result']['watt_hours_day'][date]
 
-repos_watt.each do |key, value|
-  output = Output.new ()
-  city = Project.where(name: "Paris Offices").first
-  output.project = city
-  output.detailedtime = DateTime.parse(key)
-  output.date = DateTime.parse(key).to_date
-  output.production = value / 1000
+  repos_watt.each do |key, value|
+    output = Output.new ()
+    output.project = project
+    output.detailedtime = DateTime.parse(key)
+    output.date = DateTime.parse(key).to_date
+    output.production = value / 1000
 
-  if output.date == Date.today
-    output.save!
+    if output.date == Date.today
+      output.save!
+    end
   end
+
+  # to avoid duplicating Quantit for many hours, create one row per day
+  output = Output.new
+  output.project = project
+  output.date = Date.today
+  output.quantity = repos_day_production / 1000
+  output.save!
+
 end
-
-# to avoid duplicating Quantit for many hours, create one row per day
-
-output = Output.new
-city = Project.where(name: "Paris Offices").first
-output.project = city
-output.date = Date.today
-output.quantity = repos_day_production / 1000
-output.save!
-
 # production_hash = {"2018-08-27 06:09:00" => 0,
 #      "2018-08-27 06:27:00" => 11.34,
 #      "2018-08-27 06:45:00" => 90.72,

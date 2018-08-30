@@ -26,8 +26,7 @@ class ForecastApi
 
     repos_watt.each do |key, value|
       output = Output.new ()
-      city = Project.where(name: "Paris Offices").first
-      output.project = city
+      output.project = @project
       output.detailedtime = DateTime.parse(key)
       output.date = DateTime.parse(key).to_date
       output.production = value / 1000

@@ -31,39 +31,26 @@
         <div class="cards-list" >
 
           <!-- Project detail div -->
-          <%= link_to project_path(investment.project), class: "card-projects" do %>
-            <%= cl_image_tag investment.project.photo, class: "card-project-image" %>
-            <div class="container-info-card">
-              <div class="card-header-projects text-left">
-                <div class="card-title-and-company-name">
-                  <h1> <%= investment.project.name %> </h1>
-                  <h3> <%= investment.project.user.company_name %> </h3>
-                  <br>
-                </div>
-                <%= cl_image_tag investment.project.user.photo, class: "card-company-logo" %>
-              </div>
-              <h3> <%= investment.project.description %></h3>
-              <br>
-              <div class="card-financial-details text-left">
-                <div class="card__completion-rate-text">
-                  <strong><%= number_to_percentage(investment.project.completion_rate, precision: 0)%></strong> funded
-                </div>
-                <strong><p>Yield: <%= investment.project.yield * 100 %> % per year  </p></strong>
-              </div>
-              <div class="card-horizontal-line"></div>
-              <div class="card-investment-details text-left">
-                <h2>You bought <strong><%= investment.number_of_panels %> panels</strong> (<%= investment.kwc %> kWc) for a total investment of <strong><%= humanized_money_with_symbol(investment.amount) %></strong></h2>
-                <h2> Income per year: <strong> <%= humanized_money_with_symbol(investment.income_per_year) %></strong></h2>
+          <div class="card-projects card-projects-dash ">
+            <%= render 'shared/card', :card => investment.project %>
+          </div>
 
-              </div>
-            </div>
-          <% end %>
+
 
           <!-- Financials detail div -->
-          <div class="card-projects ">
+          <div class="card-projects card-projects-dash ">
             <div class="container-info-card">
+
+              <!-- tab select income or duration -->
+
+              <div class="dashboard-tabs">
+                <%= link_to "Duration", "javascript:void();", class: "dashboard-tab active", id: "yourdurationtab-#{investment.id}" %>
+                <%= link_to "Income", "javascript:void();", class: "dashboard-tab", id: "yourincometab-#{investment.id}" %>
+              </div>
+
               <div class="card-investment-details">
-                <div class="dashboard-box">
+
+                <div class="dashboard-box" id="duration-box-<%= investment.id %>">
                   <h2>Project duration, months</h2>
                   <%= pie_chart ({"Past" => investment.project.active_months, "Remaining" => investment.project.remaining_months}), id: "pie-chart-#{investment.id}", height: "200px", donut: true,
                   library: {
@@ -76,21 +63,27 @@
                         }
                       }
                     } %>
-                  <h2>
-                    Operational for <%= investment.project.active_months %> months, <%= investment.project.remaining_months %> months remaining.
-                  </h2>
+
                 </div>
-                <div class="dashboard-box">
+
+                <div class="dashboard-box dashboard-hide" id="income-box-<%= investment.id %>">
                   <h2>Investment income in EUR</h2>
                   <%= bar_chart ({"Past gains" => investment.past_gains, "Remaining gains" => investment.remaining_gains}), id: "users-chart-#{investment.id}", height: "200px" %>
                 </div>
-              <h2> Estimated lifetime gains: <strong><%= humanized_money_with_symbol(investment.total_gains) %></strong></h2>
+                  <h2>You bought <strong><%= investment.number_of_panels %> panels</strong> (<%= investment.kwc %> kWc) for a total investment of <strong><%= humanized_money_with_symbol(investment.amount) %></strong></h2>
+                  <h2> Income per year: <strong> <%= humanized_money_with_symbol(investment.income_per_year) %></strong></h2>
+                  <h2>
+                    Operational for <%= investment.project.active_years %> years, <%= investment.project.remaining_years %> years remaining.
+                  </h2>
+                  <h2> Estimated lifetime gains: <strong><%= humanized_money_with_symbol(investment.total_gains) %></strong></h2>
+
+
               </div>
             </div>
           </div>
 
           <!-- Production detail div -->
-          <div class="card-projects ">
+          <div class="card-projects card-projects-dash">
             <div class="container-info-card">
 
               <!-- tab to select production by period -->
