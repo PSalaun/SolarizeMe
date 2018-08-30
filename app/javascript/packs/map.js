@@ -375,15 +375,44 @@ if (mapElement) {
   });
   map.setStyle('map_style');
   const markers = JSON.parse(mapElement.dataset.markers);
-  map.addMarkers(markers);
+
+  // map.addMarkers(markers);
   if (markers.length === 0) {
     map.setZoom(2);
   } else if (markers.length === 1) {
     map.setCenter(markers[0].lat, markers[0].lng);
-    map.setZoom(4);
+    map.setZoom(5);
   } else {
     map.fitLatLngBounds(markers);
   }
+
+
+// adding marker
+  var image = new google.maps.MarkerImage(
+    // INCLUDE CL url
+    'http://res.cloudinary.com/dafctmpcz/image/upload/w_30,h_30,c_scale/v1535641240/pyris3jnzi4qdsnk2gpi.ico',
+    new google.maps.Size(50, 50),    // size of the image
+    new google.maps.Point(0, 0), // origin, in this case top-left corner
+    new google.maps.Point(9, 25)    // anchor, i.e. the point half-way along the bottom of the image
+);
+
+map.addMarker({
+    lat: markers[0].lat,
+    lng: markers[0].lng,
+
+    icon: image,
+    infoWindow: {
+        content: '<p>SolarizeMe</p>'
+    }
+});
+
+  // var markerSpecial = ({
+  //   markers.lat:
+  //   markers.lng:
+
+  //   icon: 'favicon.ico'
+  // });
+
 }
 
 
