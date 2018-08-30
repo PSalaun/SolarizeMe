@@ -1,6 +1,5 @@
 <%= link_to project_path(card), class: "card-projects" do %>
-  <%= cl_image_tag card.photo, class: "card-project-image" %>
-  <div class="card-header-projects text-left">
+  <div class="card-header-projects text-left" style="background-image: url( <%= cl_image_path card.photo %>);">
     <div class="card-title-and-company-name">
       <h1> <%= card.name %> </h1>
       <h3> <%= card.user.company_name %> </h3>
