@@ -107,6 +107,25 @@ class Project < ApplicationRecord
     end_date_month - start_date_month
   end
 
+  def to_years(month)
+    long = month / 12.0
+    decimals = long * 10
+    decimals_to_int = decimals.to_i
+    decimals_to_int / 10.0
+  end
+
+  def duration_years
+    to_years(duration_months)
+  end
+
+  def remaining_years
+    to_years(remaining_months)
+  end
+
+  def active_years
+    to_years(active_months)
+  end
+
   def kwc
     panels_quantity * panel_watt / 1000
   end
