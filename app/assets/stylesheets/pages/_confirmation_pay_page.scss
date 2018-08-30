@@ -43,7 +43,7 @@
 
 .payment-content-sections_left-panel {
   display: flex;
-  flex: 1;
+  flex: 0 1 60%;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -55,7 +55,9 @@
 }
 
 .payment-content-purchase-icon, .payment-content-gains-icon {
-  flex: 0 0 15%;
+  flex: 0 0 20%;
+  display: flex;
+  align-items: center;
 }
 
 .payment-content-purchase-infos, .payment-content-gains-infos {
