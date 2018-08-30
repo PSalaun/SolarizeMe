@@ -2,7 +2,6 @@
 
   <div class="wrapper-one-lightblue" id="js-cards-list">
     <%= render 'shared/card', :card => @project %>
-
     <div class="show-flex-two">
       <div class="financial-indicators-show">
         <h3>Key project indicators</h3>
@@ -23,7 +22,6 @@
         </div>
       </div>
     </div>
-
     <div class="show-flex-three">
       <h3>Start investing now!</h3>
       <div class="icon-container-show" id="price-of-selected-panels">
@@ -43,25 +41,29 @@
           <%= render "investments/form", project: @project, investment: @investment, class:"investment-form" %>
         </div>
       </div>
-
     </div>
-
     <div class="show-flex-four">
       <h3> Detailed description </h3>
       <p><%= @project.long_description %><p>
-      </div>
-      <div class="show-flex-five">
-        <h3> Location </h3>
-        <img src="https://via.placeholder.com/450x450" alt="">
+    </div>
+    <div class="show-flex-five">
+      <h3> Location </h3>
+      <div id="map"
+            style="width: 100%;
+            height: 600px;"
+            data-markers="<%= @markers.to_json %>">
       </div>
     </div>
 
-    <div class="button-back-showpage">
-      <%= link_to "Back", :back, class:"btn btn-goback" %>
-    </div>
 
 
   </div>
+
+  <div class="button-back-showpage">
+    <%= link_to "Back", :back, class:"btn btn-goback" %>
+  </div>
+
+</div>
 
 <!-- Work in progress script to calculate value from investment on same page -->
 

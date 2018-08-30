@@ -12,12 +12,15 @@ class ProjectsController < ApplicationController
     else
       @projects = policy_scope(Project).all
     end
+
   end
 
   def show
     @project = Project.find(params[:id])
     @investment = Investment.new
     authorize @project
+    @markers = []
+    @markers.push({lat: @project.latitude, lng: @project.longitude}) if @project.latitude && @project.longitude
   end
 end
 
