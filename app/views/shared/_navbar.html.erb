@@ -33,9 +33,6 @@
         </li>
         <% if user_signed_in? %>
           <li>
-            <%= link_to "All projects", projects_path, class: "navbar-solarize-item navbar-solarize-link" %>
-          </li>
-          <li>
             <%= link_to "My dashboard", user_path(current_user), class: "navbar-solarize-item navbar-solarize-link" %>
           </li>
           <li>

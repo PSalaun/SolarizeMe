@@ -8,9 +8,17 @@
 .investment-all-dashes {
   .card-projects {
     height: 580px;
-
     &:hover {
-    opacity: 1;
+      opacity: 1;
+    }
+    .card-project-image {
+      height: 200px;
+
+    }
+    .card-title-and-company-name {
+      h1, h3 {
+        color: black;
+      }
     }
   }
 }

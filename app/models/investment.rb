@@ -28,7 +28,9 @@ class Investment < ApplicationRecord
   end
 
   def kwc
-    project.panel_watt * number_of_panels / 1000
+    two_decimal_wc = project.panel_watt * number_of_panels / 10
+    wc_int = two_decimal_wc.to_i
+    wc_decimals = wc_int / 100.0
   end
 
   def share_of_total_power
@@ -64,7 +66,10 @@ class Investment < ApplicationRecord
   end
 
   def co2_tonn_lifetime
-    kwh_lifetime * 0.352 / 1000
+    kwh = kwh_lifetime * 0.352 / 1000
+    kwh_decimals = kwh * 100
+    kwh_integer = kwh_decimals.to_i
+    kwh_flote_one_decimal = kwh_integer / 100.0
   end
 
   def elephants_lifetime

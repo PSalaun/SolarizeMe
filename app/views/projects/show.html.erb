@@ -1,9 +1,5 @@
 <div class="container">
 
-  <div class="button-begin-showpage">
-    <%= link_to "Back", :back, class:"btn btn-goback" %>
-  </div>
-
   <div class="wrapper-one-lightblue" id="js-cards-list">
     <%= render 'shared/card', :card => @project %>
     <div class="show-flex-two">
@@ -32,19 +28,18 @@
         <p><i class="fas fa-euro-sign"></i> <strong> <%= humanized_money_with_symbol(@project.price) %></strong>  per panel </p>
       </div>
       <div class="icon-container-show">
-        <h1><i class="fas fa-cart-arrow-down"></i></h1>
-        <p> <strong> <%= @project.available_panels %> panels </strong> still available </p>
+         <p> <i class="fas fa-cart-arrow-down"></i><strong> <%= @project.available_panels %> panels </strong> still available </p>
       </div>
-      <div class="remaining-crowfunding">
+      <div class="icon-container-show">
         <p> <%= @project.remaining_crowdfunding_days %>!</p>
       </div>
-      <div>
-        <p>Select the number of panels you would like to buy</p>
+      <div class="icon-container-show">
+        <p>Select your purchase</p>
       </div>
-      <div>
-      </div>
-      <div class="investment-content-invest_action">
-        <%= render "investments/form", project: @project, investment: @investment, class:"investment-form" %>
+      <div class="icon-container-show">
+        <div class="investment-content-invest_action">
+          <%= render "investments/form", project: @project, investment: @investment, class:"investment-form" %>
+        </div>
       </div>
     </div>
     <div class="show-flex-four">
