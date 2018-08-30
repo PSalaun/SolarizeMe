@@ -18,7 +18,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 40%;
+    width: 80%;
 
     .key-fact-logo {
       flex: 0 0 100px;
@@ -30,7 +30,8 @@
     }
 
     .key-fact-content {
-      flex: auto;
+      word-wrap: break-word;
+      flex: 1 1;
       display: flex;
       align-items: center;
       h5 {
@@ -48,7 +49,7 @@
 
 .home-section-content {
   flex: 0 0 65%;
-  width: 100%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -69,6 +70,10 @@
 
   .home-section-content {
     justify-content: center;
+
+    h1 {
+      margin-bottom: 30px;
+    }
   }
 }
 
@@ -76,6 +81,7 @@
   .home-about {
     .home-section-content {
       flex: 0 0 70%;
+      align-items: center;
     }
     .key-fact-home {
       width: 90%;
@@ -95,6 +101,8 @@
       .key-fact-content {
         justify-content: center;
         text-align: center;
+        min-width: 0;
+        word-wrap: break-word;
       }
     }
   }

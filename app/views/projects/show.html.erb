@@ -6,42 +6,47 @@
       <div class="financial-indicators-show">
         <h3>Key project indicators</h3>
         <div class="icon-container-show">
-          <p><i class="fas fa-chart-line icon-show"></i> <strong> <%= @project.roi_decimals / 100.0 %> % </strong> Estimated ROI </p>
+          <p>Estimated ROI</p>
+          <i class="fas fa-chart-line icon-show"></i> <strong> <%= @project.roi_decimals / 100.0 %> % </strong>
         </div>
         <div class="icon-container-show">
-          <p><i class="fas fa-solar-panel"></i> <strong><%= @project.panel_watt %> Watts </strong> panel type </p>
+          <p>Panel Type</p>
+            <i class="fas fa-solar-panel"></i> <strong><%= @project.panel_watt %> Watts </strong>
         </div>
         <div class="icon-container-show">
-          <p><i class="fas fa-sitemap"></i> <strong><%= @project.panels_quantity %> </strong> total panels</p>
+          <p>Total Panels</p>
+            <i class="fas fa-sitemap"></i> <strong><%= @project.panels_quantity %> </strong>
         </div>
         <div class="icon-container-show">
-          <p><i class="fas fa-battery-full"></i> <strong><%= @project.kwc %> kWc </strong> project power</p>
+          <p>Project Power</p>
+            <i class="fas fa-battery-full"></i> <strong><%= @project.kwc %> kWc </strong>
         </div>
         <div class="icon-container-show">
-          <p> <i class="far fa-calendar-alt"></i> <strong>Comissioning date </strong>: <%= @project.comissioning_date %></p>
+          <p>Start Date</p>
+            <i class="far fa-calendar-alt"></i> <strong><%= @project.comissioning_date %> </strong>
         </div>
       </div>
     </div>
     <div class="show-flex-three">
       <h3>Start investing now!</h3>
       <div class="icon-container-show" id="price-of-selected-panels">
-        <p><i class="fas fa-euro-sign"></i> <strong> <%= humanized_money_with_symbol(@project.price) %></strong>  per panel </p>
+        <p> Price per panel </p>
+        <strong> <%= humanized_money_with_symbol(@project.price) %></strong>
       </div>
       <div class="icon-container-show">
-         <p> <i class="fas fa-cart-arrow-down"></i><strong> <%= @project.available_panels %> panels </strong> still available </p>
+        <p> Available for purchase </p>
+        <strong> <%= @project.available_panels %> panels </strong>
       </div>
-      <div class="icon-container-show">
-        <p> <%= @project.remaining_crowdfunding_days %>!</p>
-      </div>
-      <div class="icon-container-show">
-        <p>Select your purchase</p>
-      </div>
+      <p></p>
+      <p></p>
+      <h3>Select your purchase</h3>
       <div class="icon-container-show">
         <div class="investment-content-invest_action">
           <%= render "investments/form", project: @project, investment: @investment, class:"investment-form" %>
         </div>
       </div>
     </div>
+
     <div class="show-flex-four">
       <h3> Detailed description </h3>
       <p><%= @project.long_description %><p>

@@ -1,18 +1,19 @@
 <div class="wrapper-projects">
-
   <div class="container-fluid container-filter">
-    <div class="projects-filter-panel">
-      <%= form_tag projects_path, method: "get" do  %>
+
+    <div id="index-filter-panel" class="collapse">
+      <div class="projects-filter-panel">
+        <%= form_tag projects_path, method: "get" do  %>
         <div class="filter-panel-header"><p>Choose location</p></div>
-          <div class="form-group">
-            <div class="input-area">
-              <div class="category-choices">
-                <% Project.pluck(:country).uniq.each do |country| %>
-                  <%= check_box_tag("location[]", country , false, class: "hidden", id: country) %>
-                  <label for="<%= country %>" class="category-choice"><%= country %></label>
-                <% end %>
-              </div>
-             <!--  <%= select_tag "location", options_for_select(Project.pluck(:country).uniq), class: "dropdown-filter", include_blank: true %> -->
+        <div class="form-group">
+          <div class="input-area">
+            <div class="category-choices">
+              <% Project.pluck(:country).uniq.each do |country| %>
+              <%= check_box_tag("location[]", country , false, class: "hidden", id: country) %>
+              <label for="<%= country %>" class="category-choice"><%= country %></label>
+              <% end %>
+            </div>
+            <!--  <%= select_tag "location", options_for_select(Project.pluck(:country).uniq), class: "dropdown-filter", include_blank: true %> -->
           </div>
         </div>
 
@@ -28,27 +29,30 @@
           </div>
         </div>
 
-      <div class="filter-buttons">
-        <%= submit_tag "Filter", class: "btn-filter" %>
-        <%= link_to "Reset", projects_path, class: "btn-reset-f" %>
-      </div>
-      <% end %>
+        <div class="filter-buttons">
+          <%= submit_tag "Filter", class: "btn-filter" %>
+          <%= link_to "Reset", projects_path, class: "btn-reset-f" %>
+        </div>
+        <% end %>
 
+      </div>
     </div>
   </div>
-
-
-    <div class="container">
+  <div class="container index-filter-toggle">
+    <button data-toggle="collapse" data-target="#index-filter-panel" class="btn-toggle">
+      <p>&#9660;</p>
+    Toggle filters</button>
+  </div>
+  <div class="container">
     <div class="page-header text-center">
       <h1>Our Projects</h1>
-      <br>
       <p>Opportunities for investment in renewable energy</p>
     </div>
-      <div class="cards-wrapper">
-        <div class="cards-list" id="js-cards-list">
-          <%= render partial: 'shared/card', collection: @projects %>
-        </div>
+    <div class="cards-wrapper">
+      <div class="cards-list" id="js-cards-list">
+        <%= render partial: 'shared/card', collection: @projects %>
       </div>
     </div>
+  </div>
 
 </div>

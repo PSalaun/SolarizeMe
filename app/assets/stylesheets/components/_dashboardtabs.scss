@@ -6,8 +6,15 @@
 }
 
 .investment-all-dashes {
+  .card-projects-dash {
+    height: 500px;
+    h1, h3 {
+      color: black;
+    .card-projects {
+      height: 500px;
+    }
+  }
   .card-projects {
-    height: 580px;
     &:hover {
       opacity: 1;
     }
@@ -16,8 +23,6 @@
 
     }
     .card-title-and-company-name {
-      h1, h3 {
-        color: black;
       }
     }
   }
