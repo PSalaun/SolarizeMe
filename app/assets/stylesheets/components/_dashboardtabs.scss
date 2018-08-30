@@ -6,21 +6,30 @@
 }
 
 .investment-all-dashes {
+
   .card-projects-dash {
     height: 500px;
     h1, h3 {
       color: black;
     .card-projects {
       height: 500px;
+
     }
   }
+
+  // box-shadow: 0 8px 6px -6px black;
+
   .card-projects {
     &:hover {
       opacity: 1;
     }
+    .card-header-projects {
+      top: -15px;
+    }
     .card-project-image {
       height: 200px;
-
+      .card-projects-dash {
+      }
     }
     .card-title-and-company-name {
       }
@@ -78,7 +87,7 @@
   border-radius: 0 10px 0 0;
 }
 .dashboard-tab.active {
-  background: $blue;
+  background: #165469;
   // border: 1px solid rbg(1,1,1);
   color: white;
 }
