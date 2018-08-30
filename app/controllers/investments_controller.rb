@@ -3,6 +3,8 @@ class InvestmentsController < ApplicationController
 
   def show
     @investment = Investment.find(params[:id])
+    @project = @investment.project
+
     authorize @investment
   end
 
@@ -15,11 +17,13 @@ class InvestmentsController < ApplicationController
   def create
     @investment = Investment.new(params_investment)
     authorize @investment
-    @investment.project = Project.find(params[:project_id])
+    @project = Project.find(params[:project_id])
+    @investment.project = @project
     @investment.user = current_user
     @investment.state = "pending"
+
     if @investment.save!
-      redirect_to new_project_investment_payment_path(@investment.project, @investment)
+      redirect_to new_project_investment_payment_path(@project, @investment)
     else
       render :new
     end
