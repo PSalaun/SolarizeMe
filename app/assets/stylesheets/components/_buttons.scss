@@ -134,4 +134,15 @@ a.btn-reset-f {
   &:focus {
     outline: none;
   }
+
+  .rotate {
+    -moz-transition: all 0.8s linear;
+    -webkit-transition: all 0.8s linear;
+    transition: all 0.8s linear;
+  }
+  .rotate.down {
+    -moz-transform:rotate(180deg);
+    -webkit-transform:rotate(180deg);
+    transform:rotate(180deg);
+  }
 }

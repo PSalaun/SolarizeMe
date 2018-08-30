@@ -11,3 +11,4 @@ import {dashboard} from "dashboardtabs";
 import {dashboardtab} from "dashboardtabs";
 dashboard();
 dashboardtab();
+import "animations";
