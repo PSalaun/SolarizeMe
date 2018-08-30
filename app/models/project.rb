@@ -22,7 +22,11 @@ class Project < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
 
   def days_to_completion
-    (crowdfunding_end_date - Date.today).to_i
+    if (crowdfunding_end_date - Date.today).to_i < 0
+      days = 0
+    else
+      days = (crowdfunding_end_date - Date.today).to_i
+    end
   end
 
   def completion_rate
@@ -39,15 +43,20 @@ class Project < ApplicationRecord
   end
 
   def status
-    if Date.today - crowdfunding_start_date < 0
-      return "Future crowdfunding"
-    elsif Date.today - crowdfunding_end_date < 0
-      return "Active crowdfunding"
-    elsif Date.today - comissioning_date < 0
-      return "Under construction"
+    if Date.today - crowdfunding_end_date < 0
+      return "Crowdfunding"
     else
-      return "Operational"
+      return "Completed"
     end
+    # if Date.today - crowdfunding_start_date < 0
+    #   return "Future crowdfunding"
+    # elsif Date.today - crowdfunding_end_date < 0
+    #   return "Active crowdfunding"
+    # elsif Date.today - comissioning_date < 0
+    #   return "Under construction"
+    # else
+    #   return "Operational"
+    # end
   end
 
   def total_cost
@@ -60,12 +69,7 @@ class Project < ApplicationRecord
 
   def remaining_crowdfunding_days
     if status == "Crowdfunding"
-      days = (crowdfunding_end_date - crowdfunding_start_date).to_i
-      return "#{days} days to go"
-    elsif status == "Under construction"
-      return "Fully funded and under construction"
-    elsif status == "Starting soon!"
-      return "Crowdfunding starting soon!"
+      return "#{days_to_completion} days to go"
     else
       return "Project already fully funded!"
     end
@@ -78,22 +82,32 @@ class Project < ApplicationRecord
   def active_months
     start_date_month = comissioning_date.year * 12 + comissioning_date.month
     current_month = (Date.today.year * 12 + Date.today.month)
-    current_month - start_date_month
+    if current_month - start_date_month < 0
+      0
+    else
+      current_month - start_date_month
+    end
   end
 
   def remaining_months
-    end_date_month = end_of_contract.year * 12 + end_of_contract.month
-    current_month = (Date.today.year * 12 + Date.today.month)
-    end_date_month - current_month
+    if active_months == 0
+      duration_months
+    else
+      duration_months - active_months
+    end
+    # end_date_month = end_of_contract.year * 12 + end_of_contract.month
+    # current_month = (Date.today.year * 12 + Date.today.month)
+    # end_date_month - current_month
   end
 
+
   def duration_months
-    active_months + remaining_months
+    start_date_month = comissioning_date.year * 12 + comissioning_date.month
+    end_date_month = end_of_contract.year * 12 + end_of_contract.month
+    end_date_month - start_date_month
   end
 
   def kwc
     panels_quantity * panel_watt / 1000
   end
-
-
 end

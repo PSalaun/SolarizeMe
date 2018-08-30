@@ -35,6 +35,13 @@ gem 'carrierwave', '~> 1.2'
 
 gem 'geocoder'
 
+gem "simple_token_authentication"
+
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
+gem "sidekiq-cron"
+gem 'rufus-scheduler', '~> 3.4.0'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end

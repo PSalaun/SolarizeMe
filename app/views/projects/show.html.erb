@@ -1,63 +1,89 @@
+<div class="container">
 
-<div class="project-show-page-card-container" id="js-cards-list">
-  <%= link_to "Back to the projects list", :back, class:"btn btn-goback" %>
-  <div class="card-projects-show">
-    <%= cl_image_tag @project.photo, class: "card-project-image-show" %>
-
-    <div class="card-header-projects-show text-left-show">
-      <div class="card-title-and-company-name-show">
-        <h1> <%= @project.name %> </h1>
-        <h3> <%= link_to "by #{@project.user.company_name}", user_path(@project.user) %> </h3>
-      </div>
-      <%= cl_image_tag @project.user.photo, class: "card-company-logo-show" %>
-    </div>
-
-    <div class="card-financial-details-show text-left">
-      <h4> <%= @project.description %></h4>
-      <br>
-      <h3>Crowdfunding status</h3>
-      <div class="card-financial-details-show-center">
-        <% if @project.status == "Active crowdfunding" %>
-          <progress  max="100" value="<%= @project.completion_rate %>"> <%= @project.completion_rate %> </progress>
-          <br>
-          <p> <strong><%= humanized_money_with_symbol(@project.funds_pledged) %> </strong>out of <strong><%= humanized_money_with_symbol(@project.total_cost) %> </strong>  raised ! </p>
-          <br>
-          <%= link_to "Invest now", new_project_investment_path(@project), class: "btn btn-success" %>
-        <% end %>
-      <p> <strong> <%= @project.remaining_crowdfunding_days %>!</strong></p>
-      </div>
-      <br>
-      <h3>Key technical indicators</h3>
-      <p> <strong>Panel type:</strong> <%= @project.panel_watt %> Watts</p>
-      <p> <strong>Price per panel:</strong> <%= humanized_money_with_symbol(@project.price) %></p>
-      <p> <strong>Project power:</strong> <%= @project.kwc %> kWc</p>
-      <p> <strong>Project size: </strong><%= @project.panels_quantity %> panels</p>
-      <p> <strong>Still available: </strong><%= @project.available_panels %> panels </p>
-      <p> <strong>Comissioning date </strong>: <%= @project.comissioning_date %></p>
-      <br>
-      <br>
-      <h3>Key financial indicators</h3>
-      <p> <strong>Project status:</strong> <%= @project.status %> </p>
-      <p> <strong>Yield: </strong><%= @project.yield * 100 %> % per year  </p>
-      <p><strong>Project duration:</strong> <%= @project.duration_months %> months </p>
-      <p><strong>Estimated ROI:</strong> <%= @project.roi_decimals / 100.0 %> % </p>
-      <br>
-
-
-      <h3> Detailed description </h3>
-      <%= @project.long_description %>
-    </div>
-
-
+  <div class="button-begin-showpage">
+    <%= link_to "Back", :back, class:"btn btn-goback" %>
   </div>
-  <div class="container">
+
+  <div class="wrapper-one-lightblue" id="js-cards-list">
+    <%= render 'shared/card', :card => @project %>
+    <div class="show-flex-two">
+      <div class="financial-indicators-show">
+        <h3>Key project indicators</h3>
+        <div class="icon-container-show">
+          <p><i class="fas fa-chart-line icon-show"></i> <strong> <%= @project.roi_decimals / 100.0 %> % </strong> Estimated ROI </p>
+        </div>
+        <div class="icon-container-show">
+          <p><i class="fas fa-solar-panel"></i> <strong><%= @project.panel_watt %> Watts </strong> panel type </p>
+        </div>
+        <div class="icon-container-show">
+          <p><i class="fas fa-sitemap"></i> <strong><%= @project.panels_quantity %> </strong> total panels</p>
+        </div>
+        <div class="icon-container-show">
+          <p><i class="fas fa-battery-full"></i> <strong><%= @project.kwc %> kWc </strong> project power</p>
+        </div>
+        <div class="icon-container-show">
+          <p> <i class="far fa-calendar-alt"></i> <strong>Comissioning date </strong>: <%= @project.comissioning_date %></p>
+        </div>
+      </div>
+    </div>
+    <div class="show-flex-three">
+      <h3>Start investing now!</h3>
+      <div class="icon-container-show" id="price-of-selected-panels">
+        <p><i class="fas fa-euro-sign"></i> <strong> <%= humanized_money_with_symbol(@project.price) %></strong>  per panel </p>
+      </div>
+      <div class="icon-container-show">
+        <h1><i class="fas fa-cart-arrow-down"></i></h1>
+        <p> <strong> <%= @project.available_panels %> panels </strong> still available </p>
+      </div>
+      <div class="remaining-crowfunding">
+        <p> <%= @project.remaining_crowdfunding_days %>!</p>
+      </div>
+      <div>
+        <p>Select the number of panels you would like to buy</p>
+      </div>
+      <div>
+      </div>
+      <div class="investment-content-invest_action">
+        <%= render "investments/form", project: @project, investment: @investment, class:"investment-form" %>
+      </div>
+    </div>
+    <div class="show-flex-four">
+      <h3> Detailed description </h3>
+      <p><%= @project.long_description %><p>
+    </div>
+    <div class="show-flex-five">
+      <h3> Location </h3>
+      <img src="https://via.placeholder.com/450x450" alt="">
+    </div>
+
     <div id="map"
       style="width: 100%;
       height: 600px;"
       data-markers="<%= @markers.to_json %>">
     </div>
+
   </div>
-  <%= link_to "Back to the projects list", :back, class:"btn btn-goback" %>
+
+  <div class="button-back-showpage">
+    <%= link_to "Back", :back, class:"btn btn-goback" %>
+  </div>
+
 </div>
 
+<!-- Work in progress script to calculate value from investment on same page -->
 
+<!-- <script>
+  const calculatedvalue = document.getElementById("total-investment-value-calculated").innerText
+  console.log(calculatedvalue)
+  const pricepanel = document.getElementById("price-of-selected-panels").innerHTML
+  console.log(pricepanel)
+  const numberpanels = document.getElementById("investment_number_of_panels").innerText
+  console.log(numberpanels)
+  // investment_number_of_panels
+  // number-panels-selected-investment
+
+
+  document.addEventListener("click", (event) => {
+    console.log(numberpanels)
+  })
+</script> -->

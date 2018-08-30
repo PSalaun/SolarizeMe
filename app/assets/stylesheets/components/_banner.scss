@@ -22,26 +22,14 @@
       padding: 50px 10px 0 10px;
       margin: 0 10px 20px 10px;
       font-family: $banner-font;
-
+      text-shadow: 1px 1px rgba(0,0,0,0.1);
     }
+
     h2 {
       font-size: 36px;
       padding: 0 10px;
       margin: 0 10px 100px 10px;
-    }
-    .btn_projects {
-      background-color: #88D881;
-      font-size: 16px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-    }
-    .btn_learn-more {
-      background-color: #11ffee00;
-      font-size: 16px;
-      margin-bottom: 100px;
-      color: white;
-      border: solid white 1px;
-      border-radius: 5px;
+      text-shadow: 1px 1px rgba(0,0,0,0.1);
     }
   }
 
@@ -53,30 +41,54 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .home_banner_wrapper {
+    width: 100vw;
+  }
+
   .home_banner {
     background-color: blue;
-    height: 100vh;
+    min-height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), asset-url('solarpower.png');
+    background-size: cover;
+    background-position: center;
   }
   .home_banner_content {
     color: white;
-    height: 40vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: flex-start;
+
+    h1 {
+      font-size: 55px;
+      padding: 50px 10px 0 10px;
+      margin: 0 10px 20px 10px;
+      font-family: $banner-font;
+    }
+
+    h2 {
+      font-size: 36px;
+      padding: 0 10px;
+      margin: 0 10px 40px 10px;
+    }
+
+    .banner-text {
+      flex: 1 1 80%;
+    }
+
+    .banner-buttons {
+      display: flex;
+      flex: 1 1 20%;
+    }
 
   }
   .cards-list > h2{
     font-size: 46px;
     color: white;
   }
-  .home_banner_wrapper .container-fluid {
-    padding: 0px;
-  }
 }
-
-

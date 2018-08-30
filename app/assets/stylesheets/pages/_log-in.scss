@@ -1,6 +1,5 @@
 .container-login a, h2, label {
   color: white;
-  padding: 5px
 }
 
 .container-login h2 {
@@ -9,4 +8,8 @@
 
 .container-login a:hover{
   opacity: 0.7;
+}
+
+.container-login {
+  width: 380px;
 }

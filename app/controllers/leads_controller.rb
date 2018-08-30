@@ -1,5 +1,5 @@
 class LeadsController < ApplicationController
-  skip_before_action :authenticate_user!
+  before_action :skip_authorization
 
   def new
     @lead = Lead.new

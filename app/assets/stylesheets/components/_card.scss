@@ -1,16 +1,14 @@
 .card-projects {
-  height: 580px;
-  width: 340px;
-  color: $text-dark;
-  border: solid $light-gray 1px;
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07);
-  margin: 15px;
-  border-radius: 5px;
-  background: white;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    height: 440px;
+    width: 340px;
+    color: #484848;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.07);
+    margin: 15px;
+    border-radius: 5px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   // justify-content: space-between;
 
   &:hover {
@@ -24,33 +22,68 @@
     width: 320px;
   }
 
+  .card-content {
+    width: 100%;
+    padding: 12px;
+    padding-top: 54px;
+  }
+
   .card-header-projects {
+    background-size: cover;
+    position: relative;
+    display: flex;
+    background-position: center;
+    justify-content: space-between;
+    flex: 1 0 auto;
+    padding: 23px;
+    border-radius: 5px 5px 0 0;
+    padding-top: 20px;
+    width: 100%;
+    .card-title-and-company-name {
+      position: absolute;
+      bottom: 20px;
+      h1 {
+        margin-bottom: 5px;
+        color: white;
+      }
+      h3 {
+        color: white;
+      }
+    }
+
+  .card-header-projects-finance {
     display: flex;
     justify-content: space-between;
     flex: 1 0 auto;
-    width: 320px;
-    padding-top: 20px;
-
     .card-title-and-company-name {
       flex: 0 0 auto;
       h1 {
         margin-bottom: 5px;
+        color: black;
       }
     }
+     }
+
+
 
     .card-company-logo {
       height: 50px;
       width: 50px;
       flex: 0 0 50px;
       border-radius: 50%;
+      position: absolute;
+      right: 22px;
+      bottom: 24px;
     }
   }
 
   .card-financial-details {
     flex: 0 0 70px;
+    width: 100%;
     .card__completion-rate-text {
       font-size: 2rem;
       // font-weight: bold;
+      width: 100%;
     }
     p {
       margin-bottom: 2px;
@@ -58,7 +91,7 @@
   }
 
   .card-horizontal-line {
-    width: 90%;
+    width: 100%;
     height: 1px;
     background-color: $light-gray;
     margin-top: 10px;
@@ -75,6 +108,29 @@
     }
   }
 
+  .card-investment-details  {
+    h2 {
+    color: $text-dark;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: left;
+    // padding-top: 5px;
+    // padding-bottom: 5px;
+    }
+  }
+
+
+}
+
+.container-info-card {
+  padding: 15px;
+  width: 100%;
+  height: 100%;
+  h2 {
+    font-size: 15px;
+    font-weight: 300;
+    padding: 8px 0px;
+  }
 }
 
 .card-description-projects {
@@ -97,8 +153,8 @@ progress[value] {
   /* Reset the default appearance */
   -webkit-appearance: none;
   appearance: none;
-  width: 300px;
-  height: 10px;
+  width: 100%;
+  height: 20px;
 }
 progress[value]::-webkit-progress-bar {
   border-radius: 8px;
@@ -108,6 +164,3 @@ progress[value]::-webkit-progress-value{
   border-radius: 7px;
   background-color: lightgreen;
 }
-
-
-

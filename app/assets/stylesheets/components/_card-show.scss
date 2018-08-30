@@ -1,71 +1,184 @@
-.project-show-page-card-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.wrapper-one-lightblue {
+  margin-top: 30px;
+  height: 100%;
+  display:flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  h3 {
+    font-size: 2rem;
+    font-weight: bolder;
+    padding-bottom: 10px;
+  }
+
+  p {
+    font-size: 1.7rem;
+    font-weight: lighter;
+    padding: 10px 5px 0 5px;
+  }
+
+  > * {
+    margin-top: 50px;
+  }
+
+  i {
+    width: 40px;
+  }
 }
 
-.card-projects-show {
-  height: auto;
-  width: 340px;
-  color: $text-dark;
-  border: solid $light-gray 1px;
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07);
-  margin: 15px;
-  border-radius: 5px;
-  background-color: white;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.card__completion-rate-text {
+  font-size: 2rem;
+      // font-weight: bold;
+    }
 
+
+    .card-projects-show {
+      height: auto;
+    // width: 340px;
+    color: $text-dark;
+    border: solid $light-gray 1px;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07);
+    // margin: 15px;
+    border-radius: 5px;
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 30%;
+    p {
+      margin: 0px;
+      padding: 0px;
+    }
+  }
 
   .card-project-image-show {
-    flex: 0 0 230px;
+    flex: 0 0 200px;
     width: 320px;
+
+  }
+  .project-detailed-description-show{
+    margin: 100px 15px 10px 15px;
+    flex: 0 0 30%;
+    color: white;
+  }
+  .map-showpage {
+    margin: 15px;
+    flex: 1 1 auto;
   }
 
-  .card-header-projects-show {
+  .button-begin-showpage{
+    margin: 10px;
+  }
+  .button-back-showpage{
+    margin-top: 30px;
+  }
+  .show-flex-one, .show-flex-two, .show-flex-three {
+    // height: 600px;
+    flex: 0 0 30%;
+  }
+  .show-flex-two{
+    min-width: 340px;
     display: flex;
-    justify-content: space-between;
-    flex: 1 0 auto;
-    width: 320px;
-    padding-top: 20px;
+    flex-direction: column;
+    align-items: left;
+    flex: 0 0 30%;
+    color: white;
+  }
+  .icon-container-show{
+    display: flex;
+    padding: 10px;
+    align-items: top;
+  }
 
-    .card-title-and-company-name-show {
-      flex: 0 0 auto;
-      h1 {
-        margin-bottom: 5px;
-      }
-    }
+  .show-flex-three{
+    min-width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    color: white;
+  }
 
-    .card-company-logo-show {
-      height: 50px;
-      width: 50px;
-      flex: 0 0 50px;
-      border-radius: 50%;
+  .show-flex-four {
+    flex: 0 0 40%;
+    min-width: 340px;
+    padding: 10px;
+    color: white;
+    height: auto;
+    p {
+      padding: 10px 30px 0 0px;
     }
   }
 
-  .card-financial-details-show {
-    flex: 0 0 250px;
-    padding-top: 20px;
+  .show-flex-five {
+    padding: 10px;
+    flex: 1 auto;
+    min-width: 340px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
     h3 {
-      font-size: 17px;
-      text-align: center;
+      padding-bottom: 20px;
+      color: white;
     }
-    .card-financial-details-show-center {
-      text-align: center;
-    }
-  }
+  // justify-content: center;
+  // align-items: center;
+}
 
-  .card-country-projects-show {
-    flex: 0 0 40px;
-    align-self: flex-end;
+.technical-indicators-show{
+  margin-top: 100px;
+}
+
+.crowfunding-status-show{
+  // margin: 43px 40px 42px 0;
+  flex: 0 0 15%;
+}
+
+.card-show-description {
+  flex: 1 auto;
+}
+
+.button-invest-show {
+  align-self: center;
+  margin-right: 20px;
+  margin-top: 100px;
+}
+.remaining-crowfunding{
+  align-self: center;
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+.card-header-projects-show {
+  display: flex;
+  justify-content: space-between;
+  flex: 0 0 15%;
+  width: 320px;
+  padding-top: 20px;
+}
+
+.card-title-and-company-name-show {
+  flex: 0 0 auto;
+  h1 {
+    margin-bottom: 5px;
   }
 }
 
+.card-company-logo-show {
+  height: 50px;
+  width: 50px;
+  flex: 0 0 50px;
+  border-radius: 50%;
+}
+
+
+.card-country-projects-show {
+  flex: 0 0 40px;
+  align-self: flex-end;
+}
+
+
 .card-description-projects-show {
-  position: absolute;
+  position: flex;
   left: 10px;
   width: 150px;
 
@@ -93,18 +206,37 @@
 
 
 
-progress[value] {
-  /* Reset the default appearance */
-  -webkit-appearance: none;
-  appearance: none;
-  width: 300px;
-  height: 10px;
-}
-progress[value]::-webkit-progress-bar {
-  border-radius: 8px;
-  background-color: #345995;
-}
-progress[value]::-webkit-progress-value{
-  border-radius: 7px;
-  background-color: lightgreen;
-}
+// progress[value] {
+//   /* Reset the default appearance */
+//   -webkit-appearance: none;
+//   appearance: none;
+//   width: 300px;
+//   height: 10px;
+// }
+// progress[value]::-webkit-progress-bar {
+//   border-radius: 8px;
+//   background-color: #345995;
+// }
+// progress[value]::-webkit-progress-value{
+//   border-radius: 7px;
+//   background-color: lightgreen;
+// }
+
+// .card-financial-details-show {
+//   flex: 0 0 250px;
+//   padding-top: 20px;
+//   h3 {
+//     font-size: 17px;
+//     text-align: center;
+//   }
+//   .card-financial-details-show-center {
+//     text-align: center;
+//   }
+// }
+// .wrapper-two-grey {
+//   // width: 900px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+
+// }

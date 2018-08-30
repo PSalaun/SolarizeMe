@@ -17,6 +17,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @investment = Investment.new
     authorize @project
     @projects = Project.where.not(latitude: nil, longitude: nil)
     @markers = @projects.map do |project|

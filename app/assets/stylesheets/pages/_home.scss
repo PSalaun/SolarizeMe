@@ -1,60 +1,70 @@
 // Specific CSS for your home-page
-@media only screen and (max-width: 600px) {
+.container-fluid {
+  padding: 0px;
+}
+
 #key-facts-home {
-}
-#key-facts-home h1, h5 {
-  color: white !important;
-  margin-top: 20px;
-}
-#key-facts-home h5 {
-  font-weight: 300;
-}
-#key-facts-home  {
-  text-align: center;
-}
-.one-key-facts-home {
+  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  flex-direction: column;
-}
-// .one-key-facts-home-first {
-//   padding-left: 20px;
-// }
+  color: white;
+  h3 {
+    font-size: 150%;
+  }
 
-.two-key-facts-home {
+  .key-fact-home {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+
+    .key-fact-logo {
+      flex: 1 1 20%;
+      min-width: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .key-fact-content {
+      flex: 1 1 80%;
+      display: flex;
+      align-items: center;
+      h5 {
+        margin: 0px;
+      }
+    }
+  }
+}
+
+.home-section-header {
+  flex: 0 0 20%;
   display: flex;
+  align-items: center;
+}
+
+.home-section-content {
+  flex: 0 0 65%;
+  display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  flex-direction: column;
 }
-// .two-key-facts-home-first{
-//     padding-left: 20px;
-// }
 
-.three-key-facts-home {
+.home-call-to-action-section {
+  background-image: linear-gradient(-240deg, rgba(63, 200, 168, 17.6) 6%, rgba(27, 22, 54, 0.6) 77%), asset-url('installpanels.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
   flex-direction: column;
-}
-// .three-key-facts-home-first {
-//   padding-left: 20px;
-// }
+  justify-content: center;
+  align-items: center;
+  color: white;
 
-  .buttons-home-beforefooter{
-    margin-bottom:20px;
-    display-inline: block;
-  }
-  .buttons-home-beforefooter > .btn-ancilliary{
-    padding: 10px 35px;
-  }
-  .cards-list > h2{
-    font-size: 36px;
-    color: white;
-    padding: 10px;
-  }
-  .cards-list {
-    text-align: center;
+  .home-section-content {
+    justify-content: center;
   }
 }
