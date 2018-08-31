@@ -2,7 +2,7 @@
   <%= simple_form_for(([ @project, investment]), method: :post, url: project_investments_path(@project))  do |f| %>
     <%= f.input :number_of_panels, label: "Choose your panels", required: true, wrapper_html: { class: 'number-panels-form', id: 'number-panels-selected-investment'}%>
 
-    <%= f.button :submit, "Buy now", class: "btn btn-success" %>
+    <%= f.button :submit, "Invest now", class: "btn btn-main-green" %>
   <% end %>
 </div>
 

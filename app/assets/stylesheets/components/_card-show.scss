@@ -101,9 +101,14 @@
       font-size: 18px;
       font-weight: bold;
     }
-
   }
-
+.estimated-roi-show {
+      border-left: solid #004c64 6px;
+      border-radius: 4px;
+      p{
+        font-weight: bolder;
+      }
+    }
   .show-flex-three{
     min-width: 340px;
     display: flex;
@@ -113,13 +118,17 @@
     border-radius: 5px;
     text-align: center;
     padding-top: 40px;
-    box-shadow: 1px 2px 1px 1px #9d9d9d;
+    background: #004c64;
+    box-shadow: inset 0 1px 13px 0 rgba(0, 0, 0, 0.53);
   .investment-container-form{
   width: auto;
   }
   >h3 {
     font-size: 2.5rem;
     letter-spacing: 2px;
+  }
+  .btn-main-green {
+    width: auto;
   }
 
   }
