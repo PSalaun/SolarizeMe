@@ -98,17 +98,30 @@
       font-size: 17px;
     }
     .form-control-label {
-      font-size: 24px;
+      font-size: 18px;
       font-weight: bold;
     }
+
   }
 
   .show-flex-three{
     min-width: 340px;
     display: flex;
     flex-direction: column;
-    align-items: left;
     color: white;
+    border: solid white 2px;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 40px;
+    box-shadow: 1px 2px 1px 1px #9d9d9d;
+  .investment-container-form{
+  width: auto;
+  }
+  >h3 {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+  }
+
   }
 
   .show-flex-four {

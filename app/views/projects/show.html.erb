@@ -39,14 +39,12 @@
       </div>
       <p></p>
       <p></p>
-      <h3>Select your purchase</h3>
       <div class="icon-container-show">
         <div class="investment-content-invest_action">
           <%= render "investments/form", project: @project, investment: @investment, class:"investment-form" %>
         </div>
       </div>
     </div>
-
     <div class="show-flex-four">
       <h3> Detailed description </h3>
       <p><%= @project.long_description %><p>
@@ -59,31 +57,8 @@
             data-markers="<%= @markers.to_json %>">
       </div>
     </div>
-
-
-
   </div>
-
   <div class="button-back-showpage">
     <%= link_to "Back", :back, class:"btn btn-goback" %>
   </div>
-
 </div>
-
-<!-- Work in progress script to calculate value from investment on same page -->
-
-<!-- <script>
-  const calculatedvalue = document.getElementById("total-investment-value-calculated").innerText
-  console.log(calculatedvalue)
-  const pricepanel = document.getElementById("price-of-selected-panels").innerHTML
-  console.log(pricepanel)
-  const numberpanels = document.getElementById("investment_number_of_panels").innerText
-  console.log(numberpanels)
-  // investment_number_of_panels
-  // number-panels-selected-investment
-
-
-  document.addEventListener("click", (event) => {
-    console.log(numberpanels)
-  })
-</script> -->
