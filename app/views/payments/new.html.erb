@@ -12,8 +12,8 @@
             <%= image_tag "002-credit-card.svg", size: "80" %>
           </div>
           <div class="payment-content-purchase-infos">
-            <p> <strong>Total amount due: <%= humanized_money_with_symbol(@investment.amount) %> </strong></p>
-            <p> Your are purchasing  <%= @investment.number_of_panels %> panels </p>
+            <p> <strong>Total amount due: <span><%= humanized_money_with_symbol(@investment.amount) %></span> </strong></p>
+            <p> Your are purchasing  <%= pluralize(@investment.number_of_panels, "panel") %> </p>
             <p> Price per panel:  <%= humanized_money_with_symbol(@investment.project.price) %></p>
           </div>
         </div>
@@ -22,12 +22,15 @@
             <%= image_tag "001-yield.svg", size: "80" %>
           </div>
           <div class="payment-content-gains-infos">
-            <p><strong>Lifetime income: <%= humanized_money_with_symbol(@investment.total_gains) %> </strong>(approx)</p>
+            <p><strong>Lifetime income: <span><%= humanized_money_with_symbol(@investment.total_gains) %></span> </strong>(approx)</p>
             <p>Income per year: <%= humanized_money_with_symbol(@investment.income_per_year) %> (approx)</p>
             <p>Project duration: <%= @investment.project.duration_months / 12 %> years </p>
           </div>
         </div>
       </div>
+    </div>
+    <div class="payment-buttons">
+      <%= link_to 'Back', :back, class: "btn btn-goback" %>
       <div class="payment-content-stripe">
         <%= form_tag project_investment_payments_path(@investment) do %>
         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -46,7 +49,6 @@
       <% end %>
     </div>
   </div>
-  <%= link_to 'Back', :back, class: "btn btn-goback" %>
 </div>
 </div>
 

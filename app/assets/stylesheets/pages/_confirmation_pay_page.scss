@@ -4,7 +4,7 @@
   align-items: center;
   color: white;
   height: 70vh;
-
+  width: 60%;
   p {
     font-size: 1.7rem;
   }
@@ -45,7 +45,7 @@
 
 .payment-content-sections_left-panel {
   display: flex;
-  flex: 0 1 60%;
+  width: 100%;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -65,8 +65,13 @@
 .payment-content-purchase-infos, .payment-content-gains-infos {
   flex: auto;
   p:first-child {
-    font-size: 2.3rem;
+    font-size: 2.2rem;
     line-height: 40px;
+    span {
+      font-size: 2.7rem;
+      font-weight: bolder;
+      text-shadow: 1px 1px rgba(0,0,0,0.2);
+    }
   }
 
   p {
@@ -113,4 +118,10 @@
 .button-go-back-confirm {
   align-self: flex-start;
   margin-top: 80px;
+}
+
+.payment-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
