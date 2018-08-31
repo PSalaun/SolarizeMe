@@ -113,7 +113,7 @@
                 <br>
                 <h2><strong><%= investment.kwc %> kWc</strong> produced by your <%= investment.number_of_panels %> panels</h2>
                 <h2><strong><%= investment.co2_tonn_lifetime %></strong> tons of CO2 will be saved in total.</h2>
-                <h2><strong> You will save the equivalent of planting   <%= number_with_precision(investment.co2_tonn_lifetime, :precision => 0) %><i class="fas fa-tree"></i> or <i class="fas fa-car-side"></i> <%= number_with_precision(investment.turns_world_lifetime, :precision => 0) %> times around the world. Good job!</strong></h2>
+                <h2><strong> You did as much good for the planet as if you had planted <%= number_with_precision(investment.co2_tonn_lifetime, :precision => 0) %> <i class="fas fa-tree"></i>. Good job!</strong></h2>
               </div>
             </div>
           </div>
