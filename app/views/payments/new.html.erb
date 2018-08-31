@@ -24,6 +24,7 @@
           <div class="payment-content-gains-infos">
             <p><strong>Lifetime income: <span><%= humanized_money_with_symbol(@investment.total_gains) %></span> </strong>(approx)</p>
             <p>Income per year: <%= humanized_money_with_symbol(@investment.income_per_year) %> (approx)</p>
+            <p>CO2 savings: <%= @investment.co2_tonn_lifetime %> tons </p>
             <p>Project duration: <%= @investment.project.duration_months / 12 %> years </p>
           </div>
         </div>
