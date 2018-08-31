@@ -5,9 +5,22 @@
   // width: 100%;
 }
 
+.card-investment-details {
+  h2:last-child {
+    font-size: 1.9rem;
+    border-left: 3px solid #484848;
+    padding-left: 10px;
+    padding-right: 5px;
+    position: absolute;
+    bottom: 25px;
+    height: 75px;
+  }
+}
+
 .investment-all-dashes {
 
   .card-projects-dash {
+      position: relative;
     height: 500px;
     h1, h3 {
       color: black;

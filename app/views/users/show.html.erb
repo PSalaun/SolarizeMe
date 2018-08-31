@@ -72,12 +72,9 @@
                 </div>
                 <div class="card-investment-details text-left">
                   <br>
-                  <h2>You bought <strong><%= investment.number_of_panels %> panels</strong> (<%= investment.kwc %> kWc) for a total investment of <strong><%= humanized_money_with_symbol(investment.amount) %></strong></h2>
-                  <h2> Income per year: <strong> <%= humanized_money_with_symbol(investment.income_per_year) %></strong></h2>
-                  <h2>
-                    Operational for <%= investment.project.active_years %> years, <%= investment.project.remaining_years %> years remaining.
-                  </h2>
-                  <h2> Estimated lifetime gains: <strong><%= humanized_money_with_symbol(investment.total_gains) %></strong></h2>
+                  <h2><strong><%= humanized_money_with_symbol(investment.amount) %></strong> invested</h2>
+                  <h2><strong> <%= humanized_money_with_symbol(investment.income_per_year) %></strong> income per year</h2>
+                  <h2><strong><%= humanized_money_with_symbol(investment.total_gains) %> gains estimated until the end of the contract</strong></h2>
                 </div>
               </div>
             </div>
@@ -114,10 +111,9 @@
 
               <div class="card-investment-details text-left">
                 <br>
-                <h2>You will save in total <%= investment.co2_tonn_lifetime %> tonns of CO2. This is equivalent to:</h2>
-                <h2> <i class="fas fa-tree"></i> Planting <%= number_with_precision(investment.co2_tonn_lifetime, :precision => 0) %> trees!</h2>
-                <h2> <i class="fas fa-car-side"></i> Driving <%= number_with_precision(investment.turns_world_lifetime, :precision => 0) %> times around the world!</h2>
-                <h2><strong>Good job!</strong></h2>
+                <h2><strong><%= investment.kwc %> kWc</strong> produced by your <%= investment.number_of_panels %> panels</h2>
+                <h2><strong><%= investment.co2_tonn_lifetime %></strong> tons of CO2 will be saved in total.</h2>
+                <h2><strong> You will save the equivalent of planting   <%= number_with_precision(investment.co2_tonn_lifetime, :precision => 0) %><i class="fas fa-tree"></i> or <i class="fas fa-car-side"></i> <%= number_with_precision(investment.turns_world_lifetime, :precision => 0) %> times around the world. Good job!</strong></h2>
               </div>
             </div>
           </div>
