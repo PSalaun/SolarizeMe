@@ -12,3 +12,4 @@ import {dashboardtab} from "dashboardtabs";
 dashboard();
 dashboardtab();
 import "animations";
+import {activeTabSelector} from "navbar";

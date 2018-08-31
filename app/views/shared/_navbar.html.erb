@@ -10,11 +10,12 @@
   </div>
 
  <!-- Right Navigation -->
+  <% current_page?(projects_path)? "active" : "" %>
   <div class="navbar-solarize-right hidden-xs hidden-sm">
-    <%= link_to "All projects", projects_path, class: "navbar-solarize-item navbar-solarize-link" %>
+    <%= link_to "All projects", projects_path, class: "navbar-solarize-item navbar-solarize-link #{current_page?(projects_path)? "active" : ""}", id: "navbar-all-projects" %>
     <!-- Dropdown list appearing on mobile onlyhidden-xs hidden-sm -->
     <% if user_signed_in? %>
-      <%= link_to "My dashboard", user_path(current_user), class: "navbar-solarize-item navbar-solarize-link" %>
+      <%= link_to "My dashboard", user_path(current_user), class: "navbar-solarize-item navbar-solarize-link #{current_page?(user_path(current_user))? "active" : ""}", id: "navbar-dashboard"%>
       <%= link_to destroy_user_session_path, method: :delete do %>
         <%= icon("fa", "sign-out-alt") %> <%= t(".sign_out", default: "Log out") %>
       <% end %>

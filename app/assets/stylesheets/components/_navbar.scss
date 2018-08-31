@@ -16,6 +16,7 @@
   a {
     color: white;
     text-decoration: none;
+
   }
 }
 
@@ -64,6 +65,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  .active {
+    font-weight: bold;
+  }
 }
 
 /* Basic navbar item */
@@ -82,11 +86,14 @@
   color: white;
   // color: #616668;
   font-size: 16px;
+
+
 }
 .navbar-solarize-link:hover {
   // color: #da552f;
   color: white;
   text-decoration: none;
+
 }
 
 /* Dropdown menu */
