@@ -119,9 +119,9 @@
 
           <div class="card-investment-details text-left">
             <hr>
-            <h2><strong><%= investment.kwc %> kWc</strong> produced by your <%= investment.number_of_panels %> panels</h2>
+            <h2><strong><%= investment.kwc %> kWc</strong> total power installed (<%= investment.number_of_panels %> panels)</h2>
             <h2><strong><%= investment.co2_tonn_lifetime %></strong> tons of CO2 will be saved in total.</h2>
-            <h2> It's like <strong>you had planted <%= number_with_precision(investment.co2_tonn_lifetime, :precision => 0) %> <i class="fas fa-tree"></i></strong>. Good job!</h2>
+            <h2> It's equivalent to <strong>planting <%= number_with_precision(investment.trees_lifetime, :precision => 0) %> <i class="fas fa-tree"></i></strong>. Good job!</h2>
           </div>
         </div>
       </div>
