@@ -1,5 +1,5 @@
 .card-projects {
-    height: 440px;
+    height: 460px;
     width: 340px;
     color: #484848;
     box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.07);
@@ -159,7 +159,7 @@ progress[value] {
 }
 progress[value]::-webkit-progress-bar {
   border-radius: 8px;
-  background-color: #345995;
+  background-color: #light-gray;
 }
 progress[value]::-webkit-progress-value{
   border-radius: 7px;
