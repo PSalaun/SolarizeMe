@@ -21,6 +21,25 @@ function navbarSolidColorOnCards() {
   }
 }
 
+// function activeTabSelector() {
+//   const projects = document.getElementById("navbar-all-projects")
+//   const dashboard = document.getElementById("navbar-dashboard")
+
+//   console.log(projects)
+
+//   projects.addEventListener("click", (event) => {
+//     console.log(projects)
+//     projects.classList.add("active")
+//     dashboard.classList.remove("active")
+//   })
+
+//   dashboard.addEventListener("click", (event) => {
+//     console.log(dashboard)
+//     projects.classList.remove("active")
+//     dashboard.classList.add("active")
+//   })
+// }
+
 // EVENTS
 if (window.location.pathname === "/") {
   hideNavbarOnHomeTop();
@@ -34,3 +53,4 @@ if (document.getElementById("js-cards-list")) {
 }
 
 
+export { activeTabSelector }
