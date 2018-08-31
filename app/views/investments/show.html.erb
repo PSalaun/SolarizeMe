@@ -1,6 +1,9 @@
 <div class="container after-payment">
   <div class="after-payment-header"><h1> Your payment is <%= @investment.state %>! </h1></div>
   <div class="after-payment-content">
+    <div class="after-payment-content-introduction">
+      <p>Congratulations, your investment is being processed. You will soon receive an email with all the details. We advice you to print this confirmation page as well.</p>
+    </div>
     <table>
       <tbody>
         <tr>
@@ -22,5 +25,8 @@
       </tbody>
     </table>
   </div>
-  <%= link_to "Go to my dashboard", user_path(current_user), class:"btn-main-green"  %>
+  <div class="after-payment-buttons">
+    <%= link_to "Go to my dashboard", user_path(current_user), class:"btn-main-green"  %>
+    <div class="btn-ancilliary">Print this page</div>
+  </div>
 </div>
