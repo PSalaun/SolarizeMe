@@ -219,16 +219,15 @@
 
   .project-show-informations-panel {
     justify-content: center;
-  }
 
-  .show-flex-three{
-    width: 100%;
-    padding-top: 0px;
-    height: 70px;
+    .show-flex-three{
+      width: 100%;
+      padding-top: 0px;
+      height: 70px;
 
-    .icon-container-show {
-      padding: 5px 10px;
-    }
+      .icon-container-show {
+        padding: 5px 10px;
+      }
     // We don't have the place to show these informations on the mobile view
     h3, #price-of-selected-panels, #available-panels {
       display: none;
@@ -262,4 +261,7 @@
     flex: 0 0 52%;
     padding: 0px;
   }
+}
+
+
 }
