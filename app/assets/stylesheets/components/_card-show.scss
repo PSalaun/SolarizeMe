@@ -61,102 +61,61 @@
 
 .card__completion-rate-text {
   font-size: 2rem;
-      // font-weight: bold;
-    }
+}
 
+.button-back-showpage{
+  margin-top: 30px;
+}
 
-    .card-projects-show {
-      height: auto;
-    // width: 340px;
-    color: $text-dark;
-    border: solid $light-gray 1px;
-    box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07);
-    // margin: 15px;
-    border-radius: 5px;
-    background-color: white;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 0 0 30%;
-    p {
-      margin: 0px;
-      padding: 0px;
-    }
-  }
+.show-flex-one, .show-flex-two, .show-flex-three {
+  flex: 0 0 30%;
+}
 
-  .card-project-image-show {
-    flex: 0 0 200px;
-    width: 320px;
+.show-flex-two{
+  min-width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-left: 40px;
+  color: white;
+}
 
+.icon-container-show{
+  padding: 10px;
+  align-items: top;
+  font-size: 24px;
+  p {
+    padding: 0px;
   }
-  .project-detailed-description-show{
-    margin: 100px 15px 10px 15px;
-    flex: 0 0 100%;
-    color: white;
+  i {
+    width: 28px;
+    opacity: .5;
+    font-size: 17px;
   }
-  .map-showpage {
-    margin: 15px;
-    flex: 0 0 100%;
+  .form-control-label {
+    font-size: 18px;
+    font-weight: bold;
   }
+}
+.estimated-roi-show {
+  border-left: solid #004c64 6px;
+  border-radius: 4px;
+  p{
+    font-weight: bolder;
+  }
+}
+.show-flex-three{
+  min-width: 340px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  border: solid #004c64 2px;
+  border-radius: 5px;
+  text-align: center;
+  padding-top: 40px;
+  background: #004c64;
+  box-shadow: outset 0 1px 13px 0 rgba(0, 0, 0, 0.53);
 
-  .button-begin-showpage{
-    margin: 10px;
-  }
-  .button-back-showpage{
-    margin-top: 30px;
-  }
-  .show-flex-one, .show-flex-two, .show-flex-three {
-    // height: 600px;
-    flex: 0 0 30%;
-  }
-  .show-flex-two{
-    min-width: 340px;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    margin-left: 40px;
-    color: white;
-  }
-
-  .icon-container-show{
-    padding: 10px;
-    align-items: top;
-    font-size: 24px;
-    p {
-      padding: 0px;
-    }
-    i {
-      width: 28px;
-      opacity: .5;
-      font-size: 17px;
-    }
-    .form-control-label {
-      font-size: 18px;
-      font-weight: bold;
-    }
-  }
-  .estimated-roi-show {
-    border-left: solid #004c64 6px;
-    border-radius: 4px;
-    p{
-      font-weight: bolder;
-    }
-  }
-  .show-flex-three{
-    min-width: 340px;
-    display: flex;
-    flex-direction: column;
-    color: white;
-    border: solid #004c64 2px;
-    border-radius: 5px;
-    text-align: center;
-    padding-top: 40px;
-    background: #004c64;
-    box-shadow: outset 0 1px 13px 0 rgba(0, 0, 0, 0.53);
-  // .investment-container-form{
-  // width: auto;
-  // }
   >h3 {
     font-size: 2.5rem;
     letter-spacing: 2px;
@@ -186,157 +145,16 @@
   display: flex;
   flex-direction: column;
   height: auto;
+
   h3 {
     padding-bottom: 20px;
     color: white;
   }
-    // #map > img {
-    //   height: 50px;
-    //   width: 50px;
-    // }
-  // justify-content: center;
-  // align-items: center;
 }
-
-.technical-indicators-show{
-  margin-top: 100px;
-}
-
-.crowfunding-status-show{
-  // margin: 43px 40px 42px 0;
-  flex: 0 0 15%;
-}
-
-.card-show-description {
-  flex: 1 auto;
-}
-
-.button-invest-show {
-  align-self: center;
-  margin-right: 20px;
-  margin-top: 100px;
-}
-.remaining-crowfunding{
-  align-self: center;
-  margin-right: 20px;
-  font-weight: bold;
-}
-
-.card-header-projects-show {
-  display: flex;
-  justify-content: space-between;
-  flex: 0 0 15%;
-  width: 320px;
-  padding-top: 20px;
-}
-
-.card-title-and-company-name-show {
-  flex: 0 0 auto;
-  h1 {
-    margin-bottom: 5px;
-  }
-}
-
-.card-company-logo-show {
-  height: 50px;
-  width: 50px;
-  flex: 0 0 50px;
-  border-radius: 50%;
-}
-
-
-.card-country-projects-show {
-  flex: 0 0 40px;
-  align-self: flex-end;
-}
-
-
-.card-description-projects-show {
-  position: flex;
-  left: 10px;
-  width: 150px;
-
-  p {
-    font-size: 14px;
-    opacity: 0.7;
-    font-weight: lighter;
-    top: 30px;
-  }
-}
-
-.card-link-projects-show {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  z-index: 2;
-  background: black;
-  opacity: 0;
-}
-.card-link-projects-show:hover {
-  opacity: 0.1;
-}
-
-
-.investment {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-  height: 70vh;
-
-  p {
-    font-size: 1.7rem;
-  }
-}
-
-.investment-header {
-  flex: 0 0 25%;
-}
-
-.investment-content {
-  flex: 0 0 50%;
-  width: 80%;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.investment-content-infos {
-  flex: 0 0 40%;
-
-  table {
-    width: 100%;
-  }
-
-  tr {
-    height:40px;
-  }
-
-  td:first-of-type {
-    width: 70%;
-    h3 {
-      font-size: 2rem;
-      font-weight: bolder;
-    }
-  }
-
-}
-
-.investment .btn-goback {
-  flex: 0 0 10%;
-}
-
-.investment-form {
-  display: flex;
-  justify-content: flex-end;
-}
-
 
 .investment-container-form {
-
   padding: 10px;
-  width: 200px;
+  width: 100%;
   padding: 0;
   display: flex;
   justify-content: center;
@@ -366,14 +184,27 @@
   padding: 10px 5px 10px 5px;
 }
 
+@media only screen and (max-width: 1024px) {
+  .project-show-informations-panel {
+    flex: 0 0 50%;
+  }
+  .project-show-investment-panel {
+    flex: 0 0 50%;
+    justify-content: center;
+  }
+  .show-flex-three {
+    width:33%;
+  }
+}
+
 @media only screen and (max-width: 670px) {
 
-  .wrapper-one-lightblue {
+  .project-show-container {
     flex: 0 0 100%;
     justify-content: center;
   }
 
-  .flex-two-fixed {
+  .project-show-investment-panel {
     height: 70px;
     width: 100vw;
     display: block;
@@ -384,6 +215,10 @@
     left: 0;
     border-radius: 0px;
     box-shadow: 0 -1px 2px 2px rgba(0,0,0,0.2);
+  }
+
+  .project-show-informations-panel {
+    justify-content: center;
   }
 
   .show-flex-three{
